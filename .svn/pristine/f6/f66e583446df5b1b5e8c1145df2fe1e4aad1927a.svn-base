@@ -1,0 +1,3 @@
+db.type=h2
+db.path=AlvisAE_DB
+db.connectionpool=true

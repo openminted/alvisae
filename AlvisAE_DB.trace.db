@@ -1,0 +1,12 @@
+09-28 14:04:05 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+insert into user (is_active, is_admin, login, props, password) values (?,?,?,?,?) [42102-147]
+09-28 14:04:05 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+insert into user (is_active, is_admin, login, props, password) values (?,?,?,?,?) [42102-147]
+09-28 14:07:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+insert into user (is_active, is_admin, login, props, password) values (?,?,?,?,?) [42102-147]
+09-28 14:07:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+insert into user (is_active, is_admin, login, props, password) values (?,?,?,?,?) [42102-147]

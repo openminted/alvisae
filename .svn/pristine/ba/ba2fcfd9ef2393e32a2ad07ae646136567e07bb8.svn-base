@@ -1,0 +1,100 @@
+<!--
+  alvisae-workflow : AlvisAE Workflow definition
+  attributes:
+    schema : identifier of the schema to which this workflow applies, the parser must check the system has an annotation schema corresponding to the value of this attribute
+-->
+<!ELEMENT alvisae-workflow
+  ( task-definition+ )
+>
+<!ATTLIST alvisae-workflow
+  schema
+    NMTOKENS
+    #REQUIRED
+>
+
+<!--
+  task : Task definition
+  attributes:
+    name : name of the task, the parser must check the name is unique
+    cardinality : cardinality of the task, the parser must check the value is a positive integer or special value '*', default: 1
+    visibility : visibility of annotations, default: restricted, three values:
+      restricted : owner only; if published: annotators of tasks that depend on it
+      protected  : owner and annotators that perform the same task in parallel, the parser must check that the cardinality is greater than 1
+      public : owner only; if published, any user
+-->
+<!ELEMENT task-definition
+  ( dependencies? , edit-annotations )
+>
+<!ATTLIST task-definition
+  name
+    ID
+    #REQUIRED
+
+  cardinality
+    NMTOKENS
+    "1"
+
+  visibility
+    ( restricted | protected | public)
+    "restricted"
+>
+
+
+<!--
+  dependencies : defines which task must be completed before this task can be started.
+  a task may at most review a single other task, and/or follows 1 or several other tasks
+-->
+<!ELEMENT dependencies
+  ( review-of? , successor-of* )
+>
+
+
+<!--
+  review-of : defines which task this task reviews
+  attributes :
+    task : name of the reviewed task, the parser must check the value is a task name
+-->
+<!ELEMENT review-of
+  EMPTY
+>
+<!ATTLIST review-of
+  task
+    IDREF
+    #REQUIRED
+>
+
+<!--
+  successor-of : defines after which task this task must be performed
+  attributes :
+    task : name of the reviewed task, the parser must check the value is a task name
+-->
+<!ELEMENT successor-of
+  EMPTY
+>
+<!ATTLIST successor-of
+  task
+    IDREF
+    #REQUIRED
+>
+
+
+<!--
+  edit-annotations : specifies which annotation types can be edited in this task
+-->
+<!ELEMENT edit-annotations
+  ( all-annotation-types | annotation-type* )
+>
+
+<!--
+  all-types : all annotation types of the schema
+-->
+<!ELEMENT all-annotation-types
+  EMPTY
+>
+
+<!--
+  annotationtype : an annotation type in the schema, the parser must check the contents is an annotation type of the schema
+-->
+<!ELEMENT annotation-type
+  ( #PCDATA )
+>
