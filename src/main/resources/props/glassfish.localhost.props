@@ -1,7 +1,0 @@
-db.type=postgresql
-db.server=localhost
-db.port=5432
-db.dbname=annotation
-db.username=mba
-db.password=785mokt
-db.schema=annot_schema_instance
