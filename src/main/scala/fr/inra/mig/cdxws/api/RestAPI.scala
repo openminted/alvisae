@@ -100,6 +100,7 @@ object RestAPI {
     }
   }
 
+ 
   def campaign_annotators_json() = {
     transaction {
       val annotators_by_campaign = CadixeDB.annotators_by_campaign().toList.groupBy(_._1.id).map { case (k,v) => k -> (v.map {_._2} ) }
@@ -546,10 +547,86 @@ object RestAPI {
 
   def dispatch : LiftRules.DispatchPF = {
 
+    
+    
+            // ------------- @ba adds begin----------------------------------
+    // list of projects    
+    case Req("api" :: "projects" :: Nil,_,GetRequest) => {
+        user.is match {
+          case Some(user) =>
+            user.is_admin match {
+              //deny listing campaigns to non-admin
+              case false =>
+                () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+              case _ =>
+                transaction {
+                  val campaigns = from(CadixeDB.campaigns)((c) =>select(c) orderBy(c.id asc))
+                  val jsonResponse = campaigns map { c => ("id" -> c.id) ~ ("name" -> c.name) }
+                  () => Full(JsonResponse(("projects" -> jsonResponse)))
+                }
+            }
+          case None =>
+            () => Full(BadResponse())
+        }
+      }  
+    
+          //list of document of a projects
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: Nil,_,GetRequest) => {
+        user.is match {
+          case Some(user) if (user.is_admin) =>
+            () => Full({
+                transaction {
+                  val campaign = CadixeDB.getCampaignById(campaign_id)
+
+                  campaign match {
+                    case Some(campaign) =>
+                      JsonResponse(campaign_documents_json(campaign))
+
+                    case None =>
+                      ResponseWithReason(NotFoundResponse(), "Specified campaign no found")
+                  }
+                }
+              })
+          case _ =>
+            () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))
+        }
+      }
+    
+     case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: "annotations" :: Nil,_,GetRequest) => {
+        user.is match {
+          case Some(user) if (user.is_admin) =>
+            () => Full({
+                transaction {
+                  val annotations = CadixeDB.getAnnotationsByCampaignIdAndDocumentId(campaign_id, document_id)
+
+                annotations match {
+                    case _ => 
+                      JsonResponse(annotations.map(json_of_annotation_set(_, None)))
+                      
+                    //case None =>
+                    //  ResponseWithReason(NotFoundResponse(), "Annotations no found")
+                  }
+                }
+              })
+          case _ =>
+            () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))
+        }
+      }
+    
+    //-------------------@Ba adds end----------------------------------------------------------------------
+
+    
+    
+    
     //Retrieve AlvisAE webService version
     case Req("api" :: "version" :: Nil,_,GetRequest) => {
 
         () => Full(JsonResponse( "version" -> 2.1) )
+      }
+    
+    case Req("api" :: "annee" :: Nil,_,GetRequest) => {
+
+        () => Full(JsonResponse( "annee" -> 2011) )
       }
 
       //List Authorizations
@@ -606,6 +683,7 @@ object RestAPI {
             () => Full(BadResponse())
         }
       }
+    
 
       //List users registered in AlvisAE
     case Req("api" :: "user" :: Nil,_,GetRequest) => {
@@ -1631,7 +1709,10 @@ object RestAPI {
             () => Full(ResponseWithReason(BadResponse(), "Unkown user"))
         }
       }
+     
   }
+  
+  
 
   def jsonBody(req : Req) =
     req.body.map(bytes => new String(bytes, "UTF-8")) map parse
@@ -1641,5 +1722,6 @@ object RestAPI {
     case Req("api" :: "annotation" :: _,_,_) => Full(AuthRole("logged"))
     case Req("api" :: "authorizations" :: _,_,_) => Full(AuthRole("logged"))
     case Req("api" :: "campaigns" :: _,_,_) => Full(AuthRole("logged"))
+    case Req("api" :: "projects" :: _,_,_) => Full(AuthRole("logged"))
   }
 }
