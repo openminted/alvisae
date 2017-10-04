@@ -625,6 +625,15 @@ object CadixeDB extends org.squeryl.Schema {
     val ids_star = referenceTransitiveClosure(ids)
     annotation_sets.where(as => as.id in ids_star)
   }
+  
+  // ---------- @ba adds start
+    def getAnnotationsByCampaignIdAndDocumentId(campaign_id : Long, document_id : Long )  = {
+    from(annotation_sets)((as) => where(as.campaign_id === campaign_id and as.doc_id === document_id ) select(as)).toList
+    }
+  
+  // ------------@ba adds end
+  
+  
   /*
    * assumes ids does not contain any duplicates
    */
