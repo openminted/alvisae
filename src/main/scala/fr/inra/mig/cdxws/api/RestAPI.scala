@@ -613,6 +613,77 @@ object RestAPI {
         }
       }
     
+   //Create a project
+    case Req("api" :: "projects" :: Nil,_,PostRequest) => {
+        user.is match {
+          case Some(user) =>
+            user.is_admin match {
+              //deny user creation to non-admin
+              case false =>
+                () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+              case _ =>
+                () => for(name <- S.param("name").map(_.toString) ?~ "missing name parameter" ~> 400;
+                          creator <- S.param("creator").map(_.toString) ?~ "missing creator parameter" ~> 400)
+                            yield {
+
+                    // val remoteIp = S.containerRequest.map(_.remoteAddress).openOr("localhost")
+                    //val is_active = S.param("is_active").map(_.toBoolean).openOr(true)
+
+                    transaction {
+                      CadixeDB.getCampaignByName(name) match {
+                        case Some(previousCampaign) =>
+                          ConflictResponse("Can not create new project because the name '" + name + "' is already used")
+                        case _ =>
+                          val newCampaign = CadixeDB.createCampaign(name, "")
+                          val jsonResponse = ("id" -> newCampaign.id) ~ ("name" -> newCampaign.name)
+                          JsonResponse(("projects" -> jsonResponse))
+                      }
+                    }
+                  }
+            }
+          case None =>
+            () => Full(BadResponse())
+        }
+      }
+    
+    
+       //Create a document
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: Nil,_,PostRequest) => {
+        user.is match {
+          case Some(user) =>
+            user.is_admin match {
+              //deny user creation to non-admin
+              case false =>
+                () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+              case _ =>
+                () => for(name <- S.param("name").map(_.toString) ?~ "missing name parameter" ~> 400;
+                          content <- S.param("content").map(_.toString) ?~ "missing content parameter" ~> 400;
+                          format <- S.param("format").map(_.toString) ?~ "missing format parameter" ~> 400;
+                          format <- S.param("state").map(_.toString) ?~ "missing format parameter" ~> 400)
+                            yield {
+
+                    // val remoteIp = S.containerRequest.map(_.remoteAddress).openOr("localhost")
+                    //val is_active = S.param("is_active").map(_.toBoolean).openOr(true)
+
+                    transaction {
+                      CadixeDB.getCampaignByName(name) match {
+                        case Some(previousDocument) =>
+                          ConflictResponse("Can not create new project because the name '" + name + "' is already used")
+                        case _ =>
+                          val newDocument = CadixeDB.createDocument(user, content)
+                          val jsonResponse = ("id" -> newDocument.id) ~ ("name" -> newDocument.description)
+                          JsonResponse(("document" -> jsonResponse))
+                      }
+                    }
+                  }
+            }
+          case None =>
+            () => Full(BadResponse())
+        }
+      }
+     
+     
+     
     //-------------------@Ba adds end----------------------------------------------------------------------
 
     
