@@ -639,13 +639,17 @@ object CadixeDB extends org.squeryl.Schema {
     annotation_sets.deleteWhere(as => as.campaign_id === campaign_id and as.doc_id === document_id and as.user_id === user_id )
   }
 
-  def removeDocument(campaign_id : Long, document_id : Long){
-    removeAllAnnotations(campaign_id, document_id)
-    documents.deleteWhere(d => d.campaign_id === campaign_id and d.doc_id === document_id)
+  def removeDocument(document_id : Long, campaign_id : Long){
+    annotation_sets.deleteWhere(as => as.doc_id === document_id)
     campaign_documents.deleteWhere(dc => dc.doc_id === document_id and dc.campaign_id === campaign_id)
+    documents.deleteWhere(d => d.id === document_id)
   }
 
   def removeCampaign(campaign_id : Long){
+    campaign_documents.deleteWhere(c => c.campaign_id === campaign_id)
+    task_definitions.deleteWhere(td => td.campaign_id === campaign_id)
+    user_campaignauthorizations.deleteWhere(uc => uc.campaign_id === campaign_id)
+    campaign_annotators.deleteWhere(ca => ca.campaign_id === campaign_id)
     campaigns.deleteWhere(c => c.id === campaign_id)
   }
 
