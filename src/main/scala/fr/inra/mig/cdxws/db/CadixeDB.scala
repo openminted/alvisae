@@ -627,10 +627,28 @@ object CadixeDB extends org.squeryl.Schema {
   }
   
   // ---------- @ba adds start
-    def getAnnotationsByCampaignIdAndDocumentId(campaign_id : Long, document_id : Long )  = {
+  def getAnnotationsByCampaignIdAndDocumentId(campaign_id : Long, document_id : Long )  = {
     from(annotation_sets)((as) => where(as.campaign_id === campaign_id and as.doc_id === document_id ) select(as)).toList
-    }
-  
+  }
+
+  def removeAllAnnotations(campaign_id : Long, document_id : Long){
+    annotation_sets.deleteWhere(as => as.campaign_id === campaign_id and as.doc_id === document_id)
+  }
+
+  def removeAllAnnotations(campaign_id : Long, document_id : Long, user_id : Long){
+    annotation_sets.deleteWhere(as => as.campaign_id === campaign_id and as.doc_id === document_id and as.user_id === user_id )
+  }
+
+  def removeDocument(campaign_id : Long, document_id : Long){
+    removeAllAnnotations(campaign_id, document_id)
+    documents.deleteWhere(d => d.campaign_id === campaign_id and d.doc_id === document_id)
+    campaign_documents.deleteWhere(dc => dc.doc_id === document_id and dc.campaign_id === campaign_id)
+  }
+
+  def removeCampaign(campaign_id : Long){
+    campaigns.deleteWhere(c => c.id === campaign_id)
+  }
+
   // ------------@ba adds end
   
   
