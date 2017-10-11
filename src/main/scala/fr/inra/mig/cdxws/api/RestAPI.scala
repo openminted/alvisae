@@ -666,11 +666,12 @@ object RestAPI {
                     //val is_active = S.param("is_active").map(_.toBoolean).openOr(true)
 
                     transaction {
-                      CadixeDB.getCampaignByName(name) match {
-                        case Some(previousDocument) =>
-                          ConflictResponse("Can not create new project because the name '" + name + "' is already used")
-                        case _ =>
-                          val newDocument = CadixeDB.createDocument(user, content)
+                      CadixeDB.getCampaignById(campaign_id) match {
+                        case None =>
+                          ResponseWithReason(NotFoundResponse(), "Specified project no found")
+                        case Some(theProject) =>
+                          val newDocument = CadixeDB.createDocument(user, content, description = name)
+                          CadixeDB.addDocument2Campaign(newDocument, theProject)
                           val jsonResponse = ("id" -> newDocument.id) ~ ("name" -> newDocument.description)
                           JsonResponse(("document" -> jsonResponse))
                       }
