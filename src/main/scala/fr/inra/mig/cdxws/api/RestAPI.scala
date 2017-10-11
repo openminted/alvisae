@@ -725,7 +725,7 @@ object RestAPI {
 
     // delete project
     //Remove all the AnnotationSet revision corresponding to the specified Task
-    case Req("api" :: "projects" :: AsLong(campaign_id) :: "delete" :: Nil, _, GetRequest) => {
+    case Req("api" :: "projects" :: AsLong(campaign_id)  :: Nil, _, DeleteRequest) => {
       user.is match {
         case Some(user) =>
           user.is_admin match {
@@ -746,7 +746,7 @@ object RestAPI {
 
     // delete project
     //Remove all the AnnotationSet revision corresponding to the specified Task
-    case Req("api" :: "projects" :: AsLong(campaign_id) :: documents :: AsLong(document_id) :: "delete" :: Nil, _, GetRequest) => {
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: Nil, _, DeleteRequest) => {
       user.is match {
         case Some(user) =>
           user.is_admin match {
@@ -764,7 +764,25 @@ object RestAPI {
       }
     }
 
+    // delete project
+    //Remove all the AnnotationSet revision corresponding to the specified Task
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: "annotations" :: AsLong(user_id) :: Nil, _, DeleteRequest) => {
+      user.is match {
+        case Some(user) =>
+          user.is_admin match {
+            case false =>
+              () => Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+            case _ =>
+              transaction {
+                CadixeDB.removeAllAnnotations(document_id, campaign_id, user_id)
+                () => Full (OkResponse())
+              }
+          }
+        case None =>
+          () => Full(BadResponse())
 
+      }
+    }
 
      
     //-------------------@Ba adds end----------------------------------------------------------------------
