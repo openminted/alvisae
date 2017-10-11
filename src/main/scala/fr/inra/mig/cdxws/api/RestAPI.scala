@@ -25,6 +25,7 @@ import org.squeryl.PrimitiveTypeMode._
 import fr.inra.mig.cdxws.db.CadixeDB.UsersAutorizations
 import fr.inra.mig.cdxws.db._
 import fr.inra.mig.cdxws.db.AnnotationSetType._
+import scala.None
 
 object RestAPI {
   implicit val formats = Serialization.formats(NoTypeHints)
@@ -550,6 +551,8 @@ object RestAPI {
     
     
             // ------------- @ba adds begin----------------------------------
+
+
     // list of projects    
     case Req("api" :: "projects" :: Nil,_,GetRequest) => {
         user.is match {
@@ -591,7 +594,8 @@ object RestAPI {
             () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))
         }
       }
-    
+
+      // list annotations related to a document
      case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: "annotations" :: Nil,_,GetRequest) => {
         user.is match {
           case Some(user) if (user.is_admin) =>
@@ -682,8 +686,86 @@ object RestAPI {
             () => Full(BadResponse())
         }
       }
-     
-     
+
+/*    //Create an annotation /!\ problem @ba I don't yet understand what are the data to send ???? request more precision to Robert and Richard
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: annotations :: AsLong(annotator_id) :: Nil,_,PostRequest) => {
+      user.is match {
+        case Some(user) =>
+          user.is_admin match {
+            //deny user creation to non-admin
+            case false =>
+              () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+            case _ =>
+              () => for(name <- S.param("name").map(_.toString) ?~ "missing name parameter" ~> 400;
+                        content <- S.param("content").map(_.toString) ?~ "missing content parameter" ~> 400;
+                        format <- S.param("format").map(_.toString) ?~ "missing format parameter" ~> 400;
+                        format <- S.param("state").map(_.toString) ?~ "missing format parameter" ~> 400)
+              yield {
+
+                // val remoteIp = S.containerRequest.map(_.remoteAddress).openOr("localhost")
+                //val is_active = S.param("is_active").map(_.toBoolean).openOr(true)
+
+                transaction {
+                  CadixeDB.getCampaignById(campaign_id) match {
+                    case None =>
+                      ResponseWithReason(NotFoundResponse(), "Specified project no found")
+                    case Some(theProject) =>
+                      CadixeDB.addUserAnnotationSet(theDocument, user, theProject, AnnotationSetType.AlvisNLPAnnotation, text_annotations, None, None, description)
+                      CadixeDB.addDocument2Campaign(newDocument, theProject)
+                      val jsonResponse = ("id" -> newDocument.id) ~ ("name" -> newDocument.description)
+                      JsonResponse(("document" -> jsonResponse))
+                  }
+                }
+              }
+          }
+        case None =>
+          () => Full(BadResponse())
+      }
+    }*/
+
+    // delete project
+    //Remove all the AnnotationSet revision corresponding to the specified Task
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "delete" :: Nil, _, GetRequest) => {
+      user.is match {
+        case Some(user) =>
+          user.is_admin match {
+              case false =>
+                () => Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+              case _ =>
+                transaction {
+                   CadixeDB.removeCampaign(campaign_id)
+                   () => Full (OkResponse())
+              }
+        }
+        case None =>
+          () => Full(BadResponse())
+
+      }
+    }
+
+
+    // delete project
+    //Remove all the AnnotationSet revision corresponding to the specified Task
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: documents :: AsLong(document_id) :: "delete" :: Nil, _, GetRequest) => {
+      user.is match {
+        case Some(user) =>
+          user.is_admin match {
+            case false =>
+              () => Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+            case _ =>
+              transaction {
+                CadixeDB.removeDocument(document_id, campaign_id)
+                () => Full (OkResponse())
+              }
+          }
+        case None =>
+          () => Full(BadResponse())
+
+      }
+    }
+
+
+
      
     //-------------------@Ba adds end----------------------------------------------------------------------
 
