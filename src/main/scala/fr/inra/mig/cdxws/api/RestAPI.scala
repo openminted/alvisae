@@ -26,6 +26,7 @@ import fr.inra.mig.cdxws.db.CadixeDB.UsersAutorizations
 import fr.inra.mig.cdxws.db._
 import fr.inra.mig.cdxws.db.AnnotationSetType._
 import scala.None
+import net.liftweb.http.js.JsExp
 
 object RestAPI {
   implicit val formats = Serialization.formats(NoTypeHints)
@@ -101,7 +102,7 @@ object RestAPI {
     }
   }
 
- 
+
   def campaign_annotators_json() = {
     transaction {
       val annotators_by_campaign = CadixeDB.annotators_by_campaign().toList.groupBy(_._1.id).map { case (k,v) => k -> (v.map {_._2} ) }
@@ -122,7 +123,7 @@ object RestAPI {
         CadixeDB.invalidatedAnnotationSet(as.campaign_id, as.user_id, Some(as.id)).headOption.nonEmpty
     }
 
-    val json = 
+    val json =
       ("id" -> as.id) ~
     ("task_id" -> as.task_id) ~
     ("owner" -> as.user_id) ~
@@ -136,10 +137,10 @@ object RestAPI {
     ("groups" -> parse(as.groups)) ~
     ("relations" -> parse(as.relations)) ~
     ("invalidated" -> invalidated)
-    as.unmatched match { 
+    as.unmatched match {
       case Some(backRefs) => json ~ ("unmatched" ->  parse(backRefs))
       case None => json
-    } 
+    }
   }
 
   def json_summary_of_annotation_set(as : AnnotationSet, invalidatedAnnSetIds : Set[Long]) = {
@@ -214,7 +215,7 @@ object RestAPI {
       //so head revision present in visible AnnotationSets list should be removed if there is already a corresponding referenced outdated one,
       val fetchedUsersAnnSet = referencedAnnotationSets.filter{ as => as.`type`.equals(UserAnnotation) }.map{ as => (as.task_id, as.user_id) }.toSet
       val filteredOtherVisibleAnnSets = otherVisibleAnnSets.filter{ as => !fetchedUsersAnnSet.contains((as.task_id, as.user_id)) }
-      
+
       val summarizedAnnSets = (filteredOtherVisibleAnnSets ++ completeAnnSets).distinct
 
 
@@ -229,13 +230,13 @@ object RestAPI {
     val invalidatedByOutdated = CadixeDB.getInvalidatedAnnotationSet(campaign.id, user.id);
     val invalidatedAnnSetIds = invalidatedByOutdated.keys.map{_.id}.toSet
     val outdatedAnnSetIds = invalidatedByOutdated.values.flatten.map{_.id}.toSet
-    
+
     json_document(doc, schema, Some(taskdef), completeAnnSets, summarizedAnnSets, invalidatedAnnSetIds, outdatedAnnSetIds)
   }
 
   def json_document(doc : Document, schema : String, taskdef : Option[TaskDefinition], completeAnnSets : List[AnnotationSet], summarizedAnnSets : List[AnnotationSet], invalidatedAnnSetIds : Set[Long], outdatedAnnSetIds : Set[Long] = Set()) = {
     val jsCompleteAnnSets = completeAnnSets.map(as => json_of_annotation_set(as, Some(invalidatedAnnSetIds)))
-    
+
     val jsonDoc = ("document" -> (
         ("id" -> doc.id) ~
         ("contents" -> doc.contents) ~
@@ -248,12 +249,12 @@ object RestAPI {
       }) ~
     ("schema" -> parse(schema)) ~
     ("outdated" -> outdatedAnnSetIds)
-    
+
     taskdef match {
-      case Some(taskdef) =>  
+      case Some(taskdef) =>
         jsonDoc ~
         ("edited_task" -> json_of_task_definition(taskdef))
-      case None =>  
+      case None =>
         jsonDoc
     }
   }
@@ -387,7 +388,7 @@ object RestAPI {
     val allTasks = from(document_assignment, task_definitions)((da, td) =>
       where(da.user_id === user_id
             and da.campaign_id === campaign_id
-            and td.campaign_id === da.campaign_id      
+            and td.campaign_id === da.campaign_id
             and td.id === task_id.?
       )
       select(da, td)
@@ -454,9 +455,9 @@ object RestAPI {
     val finishedTask = taskInstances. map { taskInst =>
       (taskInst.task_id, taskInst.doc_id) -> (TaskStatus.Done.equals(taskInst.status) || TaskStatus.Unavailable_Done.equals(taskInst.status))
     }.toMap
-    
+
     val invalidated = (CadixeDB.getInvalidatedAnnotationSet(campaign_id, user_id)).keys.map{_.id}.toSet
-     
+
     //update task status and Annotation set invalidated status
     for (taskInst <- taskInstances) {
       if (TaskStatus.ToDo.equals(taskInst.status)) {
@@ -543,17 +544,97 @@ object RestAPI {
     def toResponse = InMemoryResponse(message.getBytes("UTF-8"), "Content-Type" -> "text/plain; charset=utf-8" :: headers, cookies, 409)
   }
 
+
+  // ------------- @ba adds begin----------------------------------
+
+  Object MessageLevel{
+
+      val debug  = "DEBUG"
+      val info   = "INFO"
+      val waring = "WARN"
+      val error = "ERROR"
+
+  }
+
+
+  Object DocumentStatus{
+
+    val d_new  = "NEW"
+    val a_in_progress   = "ANNOTATION-IN-PROGRESS"
+    val a_complete = "ANNOTATION-IN-PROGRESS"
+    val c_in_progress = "CURATION-IN-PROGRESS"
+    val c_complte = "CURATION-IN-PROGRESS"
+
+  }
+
+  Object AnnotationStatus {
+
+    val a_new  = "NEW"
+    val a_locked   = "LOCKED"
+    val a_complete = "COMPLETE"
+    val c_in_progress = "IN-PROGRESS"
+
+  }
+
+
+  def json_aero_project_List(projects: List[Campaign]) = {
+    projects.map {
+      ps =>
+        ("id" -> ps.id) ~
+        ("name" -> ps.name)
+    }
+  }
+
+
+  def json_aero_document_list(docs : List[Document]) = {
+  docs.map { d =>
+        ("id" -> d.id) ~
+        ("name" -> d.description) ~
+        ("state" -> "state value here")
+    }
+  }
+
+
+
+  def json_aero_annotation_list(docs : List[Document]) = {
+    docs.map { d =>
+      ("user" -> d.user_id) ~
+      ("state" -> d.type) ~
+      ("timestamp" -> "timestamp value")
+    }
+  }
+
+
+  def json_aero_curation_list(docs : List[Document]) = {
+    docs.map { d =>
+      ("id" -> d.id) ~
+        ("description" -> d.description)
+    }
+  }
+
+  def json_aero_message_list(messages : List[ResponseWithReason]) = {
+    messages.map { m =>
+      ("message" -> m.reason) ~
+      ("level" -> "level value")
+    }
+  }
+
+  def json_aero_response(r_body : JsExp, r_msg : JsExp){
+    ("message" : m_body) ~
+    ("body": r_msg)
+  }
+
+  // ------------- @ba adds begin----------------------------------
+
 // ---------------------------------------------------------------------------
   object user extends RequestVar[Option[User]](None)
 
+
+
   def dispatch : LiftRules.DispatchPF = {
 
-    
-    
-            // ------------- @ba adds begin----------------------------------
 
-
-    // list of projects    
+    // list of projects
     case Req("api" :: "projects" :: Nil,_,GetRequest) => {
         user.is match {
           case Some(user) =>
@@ -571,8 +652,8 @@ object RestAPI {
           case None =>
             () => Full(BadResponse())
         }
-      }  
-    
+      }
+
           //list of document of a projects
     case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: Nil,_,GetRequest) => {
         user.is match {
@@ -604,9 +685,9 @@ object RestAPI {
                   val annotations = CadixeDB.getAnnotationsByCampaignIdAndDocumentId(campaign_id, document_id)
 
                 annotations match {
-                    case _ => 
+                    case _ =>
                       JsonResponse(annotations.map(json_of_annotation_set(_, None)))
-                      
+
                     //case None =>
                     //  ResponseWithReason(NotFoundResponse(), "Annotations no found")
                   }
@@ -616,7 +697,7 @@ object RestAPI {
             () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))
         }
       }
-    
+
    //Create a project
     case Req("api" :: "projects" :: Nil,_,PostRequest) => {
         user.is match {
@@ -649,8 +730,8 @@ object RestAPI {
             () => Full(BadResponse())
         }
       }
-    
-    
+
+
        //Create a document
     case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: Nil,_,PostRequest) => {
         user.is match {
@@ -784,18 +865,18 @@ object RestAPI {
       }
     }
 
-     
+
     //-------------------@Ba adds end----------------------------------------------------------------------
 
-    
-    
-    
+
+
+
     //Retrieve AlvisAE webService version
     case Req("api" :: "version" :: Nil,_,GetRequest) => {
 
         () => Full(JsonResponse( "version" -> 2.1) )
       }
-    
+
     case Req("api" :: "annee" :: Nil,_,GetRequest) => {
 
         () => Full(JsonResponse( "annee" -> 2011) )
@@ -855,7 +936,7 @@ object RestAPI {
             () => Full(BadResponse())
         }
       }
-    
+
 
       //List users registered in AlvisAE
     case Req("api" :: "user" :: Nil,_,GetRequest) => {
@@ -1266,7 +1347,7 @@ object RestAPI {
             () => Full({
                 transaction {
 
-            
+
                   val campaign = if (user.is_admin) {
                     //admin can get the info even if he is not taking part in the campaign
                     CadixeDB.getCampaignById(campaign_id)
@@ -1285,7 +1366,7 @@ object RestAPI {
 
                       val taskInstances = getTaskInstancesList(user_id, campaign_id);
                       //generate json
-                      val json = taskInstances.toList.sortWith( (a, b) => ( 
+                      val json = taskInstances.toList.sortWith( (a, b) => (
                           if (a.status.id==b.status.id) { a.doc_id < b.doc_id } else { a.status.id<b.status.id }
                         )).map  {
                         taskInst => json_task_instance(taskInst)
@@ -1475,44 +1556,44 @@ object RestAPI {
       //request the list of task instances that can be reviewed by the specified Task
     case Req("api" :: "user" :: AsLong(user_id) :: "campaign" :: AsLong(campaign_id) :: "document" :: AsLong(doc_id) :: "task" :: AsLong(task_id) :: "reviewable" :: Nil,_,GetRequest) => {
         user.is match {
-          case Some(user) => 
+          case Some(user) =>
             transaction {
               import CadixeDB._
-  
+
               //check that specified Task is defined
-              from(task_definitions)((td) => where(td.campaign_id === campaign_id and td.id === task_id) select(td) 
+              from(task_definitions)((td) => where(td.campaign_id === campaign_id and td.id === task_id) select(td)
               ).headOption match {
                 case Some(taskDef)  =>
-                  
-                  //check that specified Task is a review 
+
+                  //check that specified Task is a review
                   from(task_precedencies)((tp) => where(tp.successor_id === taskDef.id and tp.direct===true and tp.reviewing_dep===true) select(tp)).toList
                   .map{_.predecessor_id}.headOption match {
-                    
+
                     case Some(reviewed_taskId)  =>
 
                       //check that specified user is assigned to the document to be reviewed
-                      from(document_assignment)((da) => where(da.user_id === user_id and da.campaign_id === campaign_id and da.doc_id === doc_id) select(da) 
+                      from(document_assignment)((da) => where(da.user_id === user_id and da.campaign_id === campaign_id and da.doc_id === doc_id) select(da)
                       ).headOption match {
                         case Some(_)  =>
-                          
+
                           //retrieve reviewable Tasks instances
-                          val reviewableTaskInstances = from(annotation_sets) ((as) => 
+                          val reviewableTaskInstances = from(annotation_sets) ((as) =>
                             where(as.task_id === reviewed_taskId
                                   and as.doc_id === doc_id
                                   and campaign_id === campaign_id
                                   and as.head === true
                                   and as.published.isNotNull)
                             select(as)
-                          ).toList. map { as => 
-                            
+                          ).toList. map { as =>
+
                             TaskInstance(as.task_id, as.doc_id, as.user_id, TaskStatus.Done, false, Some(as.id), Some(as.created), as.published, None) }
-                      
+
                           //generate json
                           val json = reviewableTaskInstances.map  {
                             taskInst => json_task_instance(taskInst)
                           }
-                          () => Full(JsonResponse(json))                      
-                          
+                          () => Full(JsonResponse(json))
+
                         case None =>
                           () => Full(ResponseWithReason(ForbiddenResponse(), "The specified User can not review this document"))
                       }
@@ -1562,7 +1643,7 @@ object RestAPI {
                           }
                           val unmatchedStr = json \\ "unmatched"
                           val unmatched =  if (unmatchedStr.children.nonEmpty) { Some(compact(render(unmatchedStr))) } else { None }
-                                                  
+
                           val nas = AnnotationSet(task_id, as.doc_id, as.user_id, as.campaign_id,
                                                   compact(render(json \\ "text_annotations")),
                                                   compact(render(json \\ "groups")),
@@ -1571,7 +1652,7 @@ object RestAPI {
                                                   //FIXME Not safe if concurrent access!!
                                                   as.revision + 1,
                                                   as.`type`, as.description, CadixeDB.now(), publicationDate, unmatched);
-                                                  
+
                           try {
                             transaction {
                               CadixeDB.annotation_sets.insert(nas)
@@ -1612,9 +1693,9 @@ object RestAPI {
         user.is match {
           case None =>
             () => Full(ResponseWithReason(BadResponse(), "Unknown user"))
-            
-          case Some(user) => 
-        
+
+          case Some(user) =>
+
             transaction {
               import CadixeDB._
               //TODO add "viewDocuments" Authorization check here!
@@ -1622,41 +1703,41 @@ object RestAPI {
               S.param("documentid") match {
                 case Full(documentId) => documentId
                   CadixeDB.getCampaignById(campaign_id) match {
-                    case None => 
+                    case None =>
                       () => Full(ResponseWithReason(BadResponse(), "No such campaign") )
 
-                    case Some(campaign) => 
+                    case Some(campaign) =>
                       S.param("taskname") match {
-                        case Full(taskname) => 
+                        case Full(taskname) =>
                           CadixeDB.getTaskDefinition(campaign.id, taskname) match {
-                            case None => 
+                            case None =>
                               () => Full(ResponseWithReason(BadResponse(), "No such task in the specified campaign") )
 
-                            case Some(task) => 
+                            case Some(task) =>
                               CadixeDB.getDocumentByExternalId(documentId)match {
-                                case None => 
+                                case None =>
                                   () => Full(ResponseWithReason(BadResponse(), "No such document in the specified campaign") )
 
-                                case Some(document) => 
-                                  
+                                case Some(document) =>
+
                                   from(document_assignment)((da) =>
                                     where(da.user_id === user.id and da.campaign_id === campaign.id and da.doc_id === document.id)
                                     select(da)).headOption match {
-                                    case None => 
+                                    case None =>
                                       () => Full(ResponseWithReason(ForbiddenResponse(), "This document is not assigned to the specified user in this campaign") )
 
-                                    case Some(da) => 
+                                    case Some(da) =>
                                       val resp =  ("campaign_id" -> campaign.id) ~ ("doc_id" -> document.id) ~  ("task_id" -> task.id)
                                       () => Full(JsonResponse(resp))
-                              
-                                  }    
-                              }    
-                          }    
-                        case _ => 
+
+                                  }
+                              }
+                          }
+                        case _ =>
                           () => Full(ResponseWithReason(BadResponse(), "A task name must be specified") )
                       }
                   }
-                case _ => 
+                case _ =>
                   () => Full(ResponseWithReason(BadResponse(), "A document id must be specified") )
               }
             }
@@ -1796,32 +1877,32 @@ object RestAPI {
 
         () => Full(StreamingResponse(stream, () => stream.close, stream.available, List("Content-Type" -> "application/zip"), Nil, 200))
       }
-      
+
       //Export all Annotations of a Campaign as zipped JSON files
     case Req("api" :: "campaigns" :: AsLong(campaign_id) :: "annotations" :: "JSON" :: Nil,_,GetRequest) => {
         user.is match {
           case Some(user) =>
             if (user.is_admin) {
               CadixeDB.createSession().bindToCurrentThread;
-              
+
               CadixeDB.getCampaignById(campaign_id) match {
-                case None => 
+                case None =>
                   () => Full(ResponseWithReason(BadResponse(), "No such campaign") )
-                case Some(campaign) => 
-                  
+                case Some(campaign) =>
+
                   import java.io.IOException
                   import java.io.UnsupportedEncodingException
                   import org.apache.commons.vfs.FileNotFoundException
-                  
+
                   try {
 
                     val tempDir = Utils.createTempDir()
                     val workingDirBaseName = "ExportAlvisAE"
                     val workingDir = new File(tempDir.getAbsolutePath + "/" + workingDirBaseName + "/")
                     workingDir.mkdir()
-                  
+
                     val schema = campaign.schema
-                    import CadixeDB._        
+                    import CadixeDB._
 
                     //every document associated to the campaign
                     from(documents,campaign_documents) ( (d, cd) =>
@@ -1829,31 +1910,31 @@ object RestAPI {
                     .map{ document =>
 
                       val doc_id= document.id
-                    
-                      //every Head AnnotationSet associated to the document 
+
+                      //every Head AnnotationSet associated to the document
                       val annotationSetToExport = from(annotation_sets)((as) =>
                         where(as.doc_id === doc_id and as.campaign_id === campaign_id
                               and as.head === true).select(as).orderBy(as.user_id, as.`type`, as.task_id)).distinct.toList
-                
+
                       val invalidatedNReferencedAnnSets  = getDocumentInvalidatedAnnotationSets(campaign_id, doc_id)
-                    
-                      //invalidated AnnotationSet Ids associated to the document 
+
+                      //invalidated AnnotationSet Ids associated to the document
                       val invalidatedAnnSetIds = invalidatedNReferencedAnnSets.map {
                         case (invalidated, invalidating) => invalidated.id
                       }.toSet
-                    
+
                       //non-Head AnnotationSet still referenced by invalidated AnnotationSets
                       val nonHeadReferencedAnnotationSets = invalidatedNReferencedAnnSets.map {
                         case (invalidated, invalidating) => invalidating
                       }.distinct
-                
-                      val jsonDoc = json_document(document, schema, None, annotationSetToExport ++ nonHeadReferencedAnnotationSets, List(), invalidatedAnnSetIds)  
-                
+
+                      val jsonDoc = json_document(document, schema, None, annotationSetToExport ++ nonHeadReferencedAnnotationSets, List(), invalidatedAnnSetIds)
+
                       //write json to file
                       val docfilename = "aaeDocument_c" + campaign_id + "_d" + doc_id + ".json"
                       val fos = new FileOutputStream(workingDir.getAbsolutePath() + File.separatorChar + docfilename)
                       val out = new OutputStreamWriter(fos, "utf-8")
-                    
+
                       val jsonStr = compact(render(jsonDoc))
                       out.append(jsonStr)
                       out.close()
@@ -1865,26 +1946,26 @@ object RestAPI {
                     val stream = new FileInputStream(archiveAbsoluteName)
 
                     () => Full(StreamingResponse(stream, () => stream.close, stream.available, List("Content-Type" -> "application/zip"), Nil, 200))
-                  
+
                   } catch  {
                     case ex @ (_ : UnsupportedEncodingException | _ : FileNotFoundException | _ : IOException) =>
                       ex.printStackTrace(Console.err)
                       () => Full(ResponseWithReason(InternalServerErrorResponse(), ex.getMessage()))
                   }
               }
-              
+
             } else {
-            
-              () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))            
+
+              () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))
             }
           case None =>
             () => Full(ResponseWithReason(BadResponse(), "Unkown user"))
         }
       }
-     
+
   }
-  
-  
+
+
 
   def jsonBody(req : Req) =
     req.body.map(bytes => new String(bytes, "UTF-8")) map parse
