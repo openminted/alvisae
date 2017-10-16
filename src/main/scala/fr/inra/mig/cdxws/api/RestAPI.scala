@@ -547,7 +547,7 @@ object RestAPI {
 
   // ------------- @ba adds begin----------------------------------
 
-  Object MessageLevel{
+  object MessageLevel {
 
       val debug  = "DEBUG"
       val info   = "INFO"
@@ -557,7 +557,7 @@ object RestAPI {
   }
 
 
-  Object DocumentStatus{
+  object DocumentStatus{
 
     val d_new  = "NEW"
     val a_in_progress   = "ANNOTATION-IN-PROGRESS"
@@ -567,7 +567,7 @@ object RestAPI {
 
   }
 
-  Object AnnotationStatus {
+  object AnnotationStatus {
 
     val a_new  = "NEW"
     val a_locked   = "LOCKED"
@@ -575,7 +575,6 @@ object RestAPI {
     val c_in_progress = "IN-PROGRESS"
 
   }
-
 
   def json_aero_project_List(projects: List[Campaign]) = {
     projects.map {
@@ -586,23 +585,36 @@ object RestAPI {
   }
 
 
-  def json_aero_document_list(docs : List[Document]) = {
-  docs.map { d =>
-        ("id" -> d.id) ~
-        ("name" -> d.description) ~
-        ("state" -> "state value here")
-    }
+  def stateDocument(d : Document) = {
+   def s =from(CadixeDB.annotation_sets)((a) => where(a.doc_id===d.id) select(a)).size
+   var state = DocumentStatus.d_new
+   if(s >= 1) {
+     DocumentStatus.d_new
+      state= DocumentStatus.a_in_progress
+   }
+
+    state
   }
 
 
-
-  def json_aero_annotation_list(docs : List[Document]) = {
-    docs.map { d =>
-      ("user" -> d.user_id) ~
-      ("state" -> d.type) ~
-      ("timestamp" -> "timestamp value")
+  def json_aero_document_list(docs : Option[Document]) = {
+    docs map {
+      case d =>
+      ("id" -> d.id) ~
+      ("name" -> d.description) ~
+      ("state" -> stateDocument(d))
     }
   }
+
+//  def json_aero_annotation_list(docs : List[JObject]) = {
+//      docs.map { d  =>
+//        ("user" -> d.owner) ~
+//        ("state" -> StateDocument(a)) ~
+//        ("timestamp" -> "N")
+//      }
+//  }
+
+
 
 
   def json_aero_curation_list(docs : List[Document]) = {
@@ -619,12 +631,12 @@ object RestAPI {
     }
   }
 
-  def json_aero_response(r_body : JsExp, r_msg : JsExp){
-    ("message" : m_body) ~
-    ("body": r_msg)
-  }
+//  def json_aero_response(r_body : JsExp, r_msg : JsExp){
+//    ("message" -> r_body.toString()) ~
+//    ("body" -> r_msg.toString())
+//  }
 
-  // ------------- @ba adds begin----------------------------------
+  // ------------- @ba adds end----------------------------------
 
 // ---------------------------------------------------------------------------
   object user extends RequestVar[Option[User]](None)
@@ -633,6 +645,8 @@ object RestAPI {
 
   def dispatch : LiftRules.DispatchPF = {
 
+
+    // ------------- @ba adds begin----------------------------------
 
     // list of projects
     case Req("api" :: "projects" :: Nil,_,GetRequest) => {
@@ -644,9 +658,9 @@ object RestAPI {
                 () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
               case _ =>
                 transaction {
-                  val campaigns = from(CadixeDB.campaigns)((c) =>select(c) orderBy(c.id asc))
-                  val jsonResponse = campaigns map { c => ("id" -> c.id) ~ ("name" -> c.name) }
-                  () => Full(JsonResponse(("projects" -> jsonResponse)))
+                  val campaigns = from(CadixeDB.campaigns)((c) => select(c) orderBy(c.id asc))
+                  val jsonResponse = JsonResponse(json_aero_project_List(campaigns.toList))
+                  () => Full(jsonResponse)
                 }
             }
           case None =>
@@ -664,7 +678,8 @@ object RestAPI {
 
                   campaign match {
                     case Some(campaign) =>
-                      JsonResponse(campaign_documents_json(campaign))
+                      val da = CadixeDB.getDocumentsOverAnnotations(campaign_id)
+                      JsonResponse(json_aero_document_list(da))
 
                     case None =>
                       ResponseWithReason(NotFoundResponse(), "Specified campaign no found")
