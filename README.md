@@ -15,6 +15,10 @@ cd alvisae
 mvn compile package
 ```
 
+### create and initialize the database
+[See here on how to initialize the database using the scala console](documentation/create-database.md)
+
+
 ### deploy the war
 copy the generated package to a directory accessible from the GlassFish server
 
