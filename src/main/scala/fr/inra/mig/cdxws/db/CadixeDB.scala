@@ -628,14 +628,19 @@ object CadixeDB extends org.squeryl.Schema {
   
   // ---------- @ba adds start
 
-  def getDocumentsOverAnnotations(project_id : Long) = {
+  def getDocuments(project_id : Long) = {
     from(campaign_documents, documents)((cd, d) =>
-      where(cd.campaign_id === project_id)
-        select(d)).headOption
+      where(cd.campaign_id === project_id
+      and cd.doc_id === d.id)
+        select(d))
   }
 
-  def getAnnotationsByCampaignIdAndDocumentId(campaign_id : Long, document_id : Long )  = {
-    from(annotation_sets)((as) => where(as.campaign_id === campaign_id and as.doc_id === document_id ) select(as)).headOption
+  def getAnnotationsByCampaignIdAndDocumentId(campaign_id : Long, document_id : Long) = {
+    from(annotation_sets)(as =>
+      where(as.campaign_id === campaign_id
+      and as.doc_id === document_id
+      and as.head === true)
+        select(as))
   }
 
   def removeAllAnnotations(campaign_id : Long, document_id : Long){
