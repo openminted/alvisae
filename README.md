@@ -5,6 +5,7 @@ AlvisAE is an editor that facilitates the annotation of text documents with the 
 This project is the server side of alvisae. It is a web service that implements all the operations to manage campaigns, documents, annotations, curations, tasks, workflows and users. It assures the storage of document annotations as well as linguistic processing via [AlvisNLP](https://github.com/Bibliome/alvisnlp).
 
 ## How to install
+We assume that the user is familiar with the technologies and has glassfish and postgresql already installed in the server
 
 ### get the source code and package
 
@@ -13,10 +14,6 @@ git clone https://github.com/mandiayba/alvisae
 cd alvisae
 mvn compile package
 ```
-
-### install the war on glassfish
-We assume that the user is familiar with the technologies and has glassfish and postgresql already installed in the server
-
 
 ### deploy the war
 copy the generated package to a directory accessible from the GlassFish server
