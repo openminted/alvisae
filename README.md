@@ -15,7 +15,7 @@ mvn compile package
 ```
 
 ### install the war on glassfish
-We suppose that glassfish and postgresql are already installed
+We assume that the user is familiar with the technologies and has glassfish and postgresql already installed in the server
 
 
 ### deploy the war
