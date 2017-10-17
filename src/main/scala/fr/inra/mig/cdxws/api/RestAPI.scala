@@ -576,52 +576,62 @@ object RestAPI {
 
   }
 
-  def json_aero_project_List(projects: List[Campaign]) = {
-    projects.map {
+  def json_aero_project_List(projects : List[Campaign]) = {
+     val jl = projects.map {
       ps =>
         ("id" -> ps.id) ~
         ("name" -> ps.name)
     }
+    "body" -> jl
   }
 
 
   def stateDocument(d : Document) = {
-   def s =from(CadixeDB.annotation_sets)((a) => where(a.doc_id===d.id) select(a)).size
+   def s = from(CadixeDB.annotation_sets)((a) => where(a.doc_id===d.id) select(a)).size
    var state = DocumentStatus.d_new
    if(s >= 1) {
-     DocumentStatus.d_new
       state= DocumentStatus.a_in_progress
    }
+   state
+  }
 
+
+  def json_aero_document_list(docs : List[Document]) = {
+    val jl = docs.map {
+       d =>
+        ("id" -> d.id) ~
+        ("name" -> d.description) ~
+        ("state" -> stateDocument(d))
+    }
+    "body" -> jl
+  }
+
+  def stateAnnotation(a : AnnotationSet) = {
+    var state = DocumentStatus.d_new
+    if(a.published.isEmpty) {
+      state = DocumentStatus.a_in_progress
+    }
     state
   }
 
+  def json_aero_annotation_list(docs : List[AnnotationSet]) = {
+      val jl = docs.map { a  =>
+        ("user" -> a.user_id) ~
+        ("state" -> stateAnnotation(a)) ~
+        ("timestamp" -> CadixeDB.dateToString(a.created))
+      }
+    "body" -> jl
+   }
 
-  def json_aero_document_list(docs : Option[Document]) = {
-    docs map {
-      case d =>
-      ("id" -> d.id) ~
-      ("name" -> d.description) ~
-      ("state" -> stateDocument(d))
+
+  def json_aero_curation_list(docs : List[AnnotationSet]) = {
+     val jl =  docs.map {
+       a =>
+        ("id" -> a.id) ~
+        ("state" -> stateAnnotation(a)) ~
+        ("description" -> a.description)
     }
-  }
-
-//  def json_aero_annotation_list(docs : List[JObject]) = {
-//      docs.map { d  =>
-//        ("user" -> d.owner) ~
-//        ("state" -> StateDocument(a)) ~
-//        ("timestamp" -> "N")
-//      }
-//  }
-
-
-
-
-  def json_aero_curation_list(docs : List[Document]) = {
-    docs.map { d =>
-      ("id" -> d.id) ~
-        ("description" -> d.description)
-    }
+    "body" -> jl
   }
 
   def json_aero_message_list(messages : List[ResponseWithReason]) = {
@@ -630,11 +640,6 @@ object RestAPI {
       ("level" -> "level value")
     }
   }
-
-//  def json_aero_response(r_body : JsExp, r_msg : JsExp){
-//    ("message" -> r_body.toString()) ~
-//    ("body" -> r_msg.toString())
-//  }
 
   // ------------- @ba adds end----------------------------------
 
@@ -678,8 +683,8 @@ object RestAPI {
 
                   campaign match {
                     case Some(campaign) =>
-                      val da = CadixeDB.getDocumentsOverAnnotations(campaign_id)
-                      JsonResponse(json_aero_document_list(da))
+                      val da = CadixeDB.getDocuments(campaign_id)
+                      JsonResponse(json_aero_document_list(da.toList))
 
                     case None =>
                       ResponseWithReason(NotFoundResponse(), "Specified campaign no found")
@@ -697,15 +702,13 @@ object RestAPI {
           case Some(user) if (user.is_admin) =>
             () => Full({
                 transaction {
-                  val annotations = CadixeDB.getAnnotationsByCampaignIdAndDocumentId(campaign_id, document_id)
-
-                annotations match {
-                    case _ =>
-                      JsonResponse(annotations.map(json_of_annotation_set(_, None)))
-
+                  val an = CadixeDB.getAnnotationsByCampaignIdAndDocumentId(campaign_id, document_id)
+//                annotations match {
+//                    case _ =>
+                  JsonResponse(json_aero_annotation_list(an.toList))
                     //case None =>
-                    //  ResponseWithReason(NotFoundResponse(), "Annotations no found")
-                  }
+                      //ResponseWithReason(NotFoundResponse(), "Annotations no found")
+//                  }
                 }
               })
           case _ =>
