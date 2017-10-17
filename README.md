@@ -67,7 +67,7 @@ curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/proj
 curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=baProTest&creator=ba' http://localhost:8080/alvisae/api/projects
 ```
 #### Delete Project
-```
+```sh
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1
 ```
 
