@@ -18,7 +18,7 @@ mvn compile package
 We suppose that glassfish and postgresql are already installed
 
 
-### deploy 
+### deploy the war
 copy the generated package to a directory accessible from the GlassFish server
 
 ```
