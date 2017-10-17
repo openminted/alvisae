@@ -17,6 +17,22 @@ mvn compile package
 ### install the war on glassfish
 We suppose that glassfish and postgresql are already installed
 
+
+### deploy 
+copy the generated package to a directory accessible from the GlassFish server
+
+```
+cp target/cdxws-lift-1.0-SNAPSHOT.war /tmp/
+```
+
+login as a user that is authorized to deploy packages on the Glassfish server
+
+```
+su glassfish
+cd
+glassfishv3/bin/asadmin  -p 5848 deploy --force  --contextroot <context root of the instance> --name <name of the instance> /tmp/cdxws-lift-1.0-SNAPSHOT.war
+```
+
 ### set-up database parameters
 The content of property file look like this. Save the file with name of the following format <user>.<hostname>.props
 
@@ -33,7 +49,9 @@ db.schema=aae_newinstance
 One simplest way to setup the parameters is by using these two glassfish commands :
 
 ```
-/usr/local/glassfish/current/bin/asadmin set-web-context-param --name configFilePath --value 'path/to/the/config/file' 'the_application_name'
+GLASSFISH_HOME/bin/asadmin set-web-context-param --name configFilePath --value 'path/to/the/config/file' 'the_application_name'
+
+GLASSFISH_HOME/bin/asadmin restart-domain
 ```
 
 
