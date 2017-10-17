@@ -7,7 +7,7 @@ This project is the server side of alvisae. It is a web service that implements 
 ## How to install
 We assume that the user is familiar with the technologies and has glassfish and postgresql already installed in the server
 
-### get the source code and package
+### get the source code and package the web service
 
 ```sh
 git clone https://github.com/mandiayba/alvisae
@@ -54,13 +54,42 @@ GLASSFISH_HOME/bin/asadmin set-web-context-param --name configFilePath --value '
 
 GLASSFISH_HOME/bin/asadmin restart-domain
 ```
-
-
 ## How to use
+The web service implement the [aero protocol](https://github.com/openminted/omtd-aero). Here are the calls for the moment avalaible to the users. 
 
-// todo
+### Projects
+#### List Projects
+```sh
+curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects
+```
+#### Create Project
+```sh
+curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=baProTest&creator=ba' http://localhost:8080/alvisae/api/projects
+```
+#### Delete Project
+```
+curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1
+```
 
+### Documents
+#### List Documents
+```
+```
+#### Create Document
+```
+```
+#### Delete Document
+```
+```
 
+### Annotations
+#### List Annotations
+```
+```
+#### Create Annotation
+```
+```
+#### Delete Annotation
+```
+```
 
-
-/usr/local/glassfish/current/bin/asadmin set-web-context-param --name configFilePath --value '/usr/local/glassfish/WebAppConfig/AlvisAE-demo.props' 'AlvisAE-ws-demo'
