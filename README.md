@@ -15,7 +15,7 @@ mvn compile package
 ```
 
 ### install the war on glassfish
-
+We suppose that glassfish and postgresql are already installed
 
 ### set-up database parameters
 The content of property file look like this. Save the file with name of the following format <user>.<hostname>.props
