@@ -36,7 +36,7 @@ mvn scala:console
 scala> 
 ```
 
-### connect to the database
+### Connect to the database
 There is two alternative methods to connect to the database 
 
 #### Method 1
@@ -60,7 +60,7 @@ CadixeDB.createPGSession("bddev", 5432, "annotation", schema, "annotation_admin"
 ```
 
 
-### A) Creation of the database objects within the schema
+### Creation of the database objects within the schema
 
 start the Scala console and connect to the database
 ```scala 
@@ -69,7 +69,7 @@ CadixeDB.create;
 ```
 
 
-### B) Init of application data : Users
+### Init of application data : Users
 
 start the Scala console and connect to the database
 ```scala 
