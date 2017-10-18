@@ -53,5 +53,4 @@ in this exemple :
 the WS deployed on @/alvisae/demo/@ will search in the JNDI resource named @AlvisAE_WS_Config@ the value associated to the key @alvisae.demo.filepath@ 
 (the custom resource being an instance of @java.util.Properties@).
 
-[[img-sunset]]
-image::documentation/images/AlvisAE_WSConfig_JNDIresource.png[]
+![](images/AlvisAE_WSConfig_JNDIresource.png)
