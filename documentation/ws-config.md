@@ -21,8 +21,9 @@ Currently, during thier initialization, the Web services will check in sequence 
 <pre></pre>
 
 ## Configuration of the WebService via servlet web param
-
-Note: This is the preferred solution, since it is easier to set up than the mechanism based on JNDI Custom resource described in the following section.
+<pre></pre>
+>>>*Note: This is the preferred solution, since it is easier to set up than the mechanism based on JNDI Custom resource described in the following section.
+<pre></pre>
 
 A web parameter can be associated to any already deployed servlet, hence overriding the original web.xml contained in the war package.
 So to configure itself, the latest version of the servlet will search for a web param named @configFilePath@.
@@ -52,10 +53,5 @@ in this exemple :
 the WS deployed on @/alvisae/demo/@ will search in the JNDI resource named @AlvisAE_WS_Config@ the value associated to the key @alvisae.demo.filepath@ 
 (the custom resource being an instance of @java.util.Properties@).
 
-
-image::images/AlvisAE_WSConfig_JNDIresource.png[]
-
-
-
-
-
+[[img-sunset]]
+image::documentation/images/AlvisAE_WSConfig_JNDIresource.png[]
