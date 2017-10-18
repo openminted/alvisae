@@ -62,21 +62,23 @@ The web service implement the [aero protocol](https://github.com/openminted/omtd
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects
 ```
-#### Create Project
+#### Create a project named **new project** with the creator name **ba**
 ```sh
-curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=baProTest&creator=ba' http://localhost:8080/alvisae/api/projects
+curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new project&creator=ba' http://localhost:8080/alvisae/api/projects
 ```
-#### Delete Project
+#### Delete the project having **project_id == 1 ** 
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1
 ```
 
 ### Documents
-#### List Documents
+#### List documents of a project (** project_id == 3 **)
+```sh
+curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/3/documents
 ```
-```
-#### Create Document
-```
+#### Create a document named ** new document ** into the project **1**
+```sh
+curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new document&format=text&content=some content&creator' http://localhost:8080/alvisae/api/projects/1/documents
 ```
 #### Delete Document
 ```
