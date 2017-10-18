@@ -26,9 +26,9 @@ Currently, during thier initialization, the Web services will check in sequence 
 <pre></pre>
 
 A web parameter can be associated to any already deployed servlet, hence overriding the original web.xml contained in the war package.
-So to configure itself, the latest version of the servlet will search for a web param named @configFilePath@.
+So to configure itself, the latest version of the servlet will search for a web param named **configFilePath**.
 
-The following GlassFish console command associates to the servlet named @AlvisAE-ws-demo@ the web parameter @configFilePath@ , whose value is the property file path @/usr/local/glassfish/WebAppConfig/AlvisAE-demo.props@ 
+The following GlassFish console command associates to the servlet named **AlvisAE-ws-demo** the web parameter **configFilePath** , whose value is the property file path **/usr/local/glassfish/WebAppConfig/AlvisAE-demo.props** 
 ```sh
 /usr/local/glassfish/current/bin/asadmin set-web-context-param --name configFilePath --value '/usr/local/glassfish/WebAppConfig/AlvisAE-demo.props' 'AlvisAE-ws-demo'
 ``` 
@@ -50,7 +50,7 @@ Knowing its own context root, the WS instance can easily retrieve the path of th
 ### Set-up of the resource in GlassFish
 
 in this exemple :
-the WS deployed on @/alvisae/demo/@ will search in the JNDI resource named @AlvisAE_WS_Config@ the value associated to the key @alvisae.demo.filepath@ 
-(the custom resource being an instance of @java.util.Properties@).
+the WS deployed on **/alvisae/demo/** will search in the JNDI resource named **AlvisAE_WS_Config** the value associated to the key **alvisae.demo.filepath** 
+(the custom resource being an instance of **java.util.Properties**).
 
 ![](images/AlvisAE_WSConfig_JNDIresource.png)
