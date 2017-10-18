@@ -27,6 +27,27 @@ import fr.inra.mig.cdxws.db._
 import fr.inra.mig.cdxws.db.AnnotationSetType._
 import scala.None
 import net.liftweb.http.js.JsExp
+import net.liftweb.http.StreamingResponse
+import fr.inra.mig.cdxws.db.TaskDefinition
+import fr.inra.mig.cdxws.db.CampaignAnnotator
+import fr.inra.mig.cdxws.db.Campaign
+import scala.Some
+import net.liftweb.http.BadResponse
+import fr.inra.mig.cdxws.db.DocumentAssignment
+import fr.inra.mig.cdxws.db.TextAnnotation
+import net.liftweb.http.InternalServerErrorResponse
+import net.liftweb.http.UnauthorizedResponse
+import net.liftweb.common.Full
+import fr.inra.mig.cdxws.db.Relation
+import fr.inra.mig.cdxws.db.Group
+import net.liftweb.http.ResponseWithReason
+import net.liftweb.http.OkResponse
+import fr.inra.mig.cdxws.db.User
+import fr.inra.mig.cdxws.db.Document
+import fr.inra.mig.cdxws.db.AnnotationSet
+import net.liftweb.http.InMemoryResponse
+import fr.inra.mig.cdxws.db.CadixeDB.UsersAutorizations
+import net.liftweb.json.MappingException
 
 object RestAPI {
   implicit val formats = Serialization.formats(NoTypeHints)
@@ -576,6 +597,14 @@ object RestAPI {
 
   }
 
+
+  object OutFormat  {
+
+    val CSV = "CSV"
+    val JSON = "JSON"
+
+  }
+
   def json_aero_project_List(projects : List[Campaign]) = {
      val jl = projects.map {
       ps =>
@@ -585,6 +614,13 @@ object RestAPI {
     "body" -> jl
   }
 
+
+  def json_aero_project(project : Campaign) = {
+    val jl = ("id" -> project.id) ~
+          ("name" -> project.name)
+
+    "body" -> jl
+  }
 
   def stateDocument(d : Document) = {
    def s = from(CadixeDB.annotation_sets)((a) => where(a.doc_id===d.id) select(a)).size
@@ -606,6 +642,16 @@ object RestAPI {
     "body" -> jl
   }
 
+  def json_aero_document(doc : Document) = {
+    val jl =
+        ("id" -> doc.id) ~
+          ("name" -> doc.description) ~
+          ("state" -> stateDocument(doc))
+
+    "body" -> jl
+  }
+
+
   def stateAnnotation(a : AnnotationSet) = {
     var state = DocumentStatus.d_new
     if(a.published.isEmpty) {
@@ -623,6 +669,14 @@ object RestAPI {
     "body" -> jl
    }
 
+  def json_aero_annotation(annotation : AnnotationSet) = {
+    val jl =
+      ("user" -> annotation.user_id) ~
+        ("state" -> stateAnnotation(annotation)) ~
+        ("timestamp" -> CadixeDB.dateToString(annotation.created))
+
+    "body" -> jl
+  }
 
   def json_aero_curation_list(docs : List[AnnotationSet]) = {
      val jl =  docs.map {
@@ -738,8 +792,8 @@ object RestAPI {
                           ConflictResponse("Can not create new project because the name '" + name + "' is already used")
                         case _ =>
                           val newCampaign = CadixeDB.createCampaign(name, "")
-                          val jsonResponse = ("id" -> newCampaign.id) ~ ("name" -> newCampaign.name)
-                          JsonResponse(("projects" -> jsonResponse))
+                          val jsonResponse = json_aero_project(newCampaign)
+                          JsonResponse(jsonResponse)
                       }
                     }
                   }
@@ -775,8 +829,8 @@ object RestAPI {
                         case Some(theProject) =>
                           val newDocument = CadixeDB.createDocument(user, content, description = name)
                           CadixeDB.addDocument2Campaign(newDocument, theProject)
-                          val jsonResponse = ("id" -> newDocument.id) ~ ("name" -> newDocument.description)
-                          JsonResponse(("document" -> jsonResponse))
+                          val jsonResponse = json_aero_document(newDocument)
+                          JsonResponse(jsonResponse)
                       }
                     }
                   }
@@ -785,42 +839,40 @@ object RestAPI {
             () => Full(BadResponse())
         }
       }
-
-/*    //Create an annotation /!\ problem @ba I don't yet understand what are the data to send ???? request more precision to Robert and Richard
-    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: annotations :: AsLong(annotator_id) :: Nil,_,PostRequest) => {
-      user.is match {
-        case Some(user) =>
-          user.is_admin match {
-            //deny user creation to non-admin
-            case false =>
-              () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
-            case _ =>
-              () => for(name <- S.param("name").map(_.toString) ?~ "missing name parameter" ~> 400;
-                        content <- S.param("content").map(_.toString) ?~ "missing content parameter" ~> 400;
-                        format <- S.param("format").map(_.toString) ?~ "missing format parameter" ~> 400;
-                        format <- S.param("state").map(_.toString) ?~ "missing format parameter" ~> 400)
-              yield {
-
-                // val remoteIp = S.containerRequest.map(_.remoteAddress).openOr("localhost")
-                //val is_active = S.param("is_active").map(_.toBoolean).openOr(true)
-
-                transaction {
-                  CadixeDB.getCampaignById(campaign_id) match {
-                    case None =>
-                      ResponseWithReason(NotFoundResponse(), "Specified project no found")
-                    case Some(theProject) =>
-                      CadixeDB.addUserAnnotationSet(theDocument, user, theProject, AnnotationSetType.AlvisNLPAnnotation, text_annotations, None, None, description)
-                      CadixeDB.addDocument2Campaign(newDocument, theProject)
-                      val jsonResponse = ("id" -> newDocument.id) ~ ("name" -> newDocument.description)
-                      JsonResponse(("document" -> jsonResponse))
-                  }
-                }
-              }
-          }
-        case None =>
-          () => Full(BadResponse())
-      }
-    }*/
+    //Create an annotation /!\ problem @ba I don't yet understand what are the data to send ???? request more precision to Robert and Richard
+//    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: annotations :: AsLong(annotator_id) :: Nil,_,PostRequest) => {
+//      user.is match {
+//        case Some(user) =>
+//          user.is_admin match {
+//            //deny user creation to non-admin
+//            case false =>
+//              () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+//            case _ =>
+//              () => for(content <- S.param("content").map(_.toString) ?~ "missing content parameter" ~> 400;
+//                        format <- S.param("format").map(_.toString) ?~ "missing format parameter" ~> 400;
+//                        format <- S.param("state").map(_.toString) ?~ "missing format parameter" ~> 400)
+//              yield {
+//
+//                // val remoteIp = S.containerRequest.map(_.remoteAddress).openOr("localhost")
+//                //val is_active = S.param("is_active").map(_.toBoolean).openOr(true)
+//
+//                transaction {
+//                  CadixeDB.getCampaignById(campaign_id) match {
+//                    case None =>
+//                      ResponseWithReason(NotFoundResponse(), "Specified project no found")
+//                    case Some(theProject) =>
+//                      CadixeDB.addUserAnnotationSet(theDocument, user, theProject, AnnotationSetType.AlvisNLPAnnotation, text_annotations, None, None, description)
+//                      CadixeDB.addDocument2Campaign(newDocument, theProject)
+//                      val jsonResponse = ("id" -> newDocument.id) ~ ("name" -> newDocument.description)
+//                      JsonResponse(("document" -> jsonResponse))
+//                  }
+//                }
+//              }
+//          }
+//        case None =>
+//          () => Full(BadResponse())
+//      }
+//    }
 
     // delete project
     //Remove all the AnnotationSet revision corresponding to the specified Task
@@ -882,6 +934,58 @@ object RestAPI {
 
       }
     }
+
+    //
+    case Req("api" :: "campaigns" :: AsLong(campaign_id) :: "annotations" :: "csv" :: Nil,_,GetRequest) => {
+      user.is match {
+        case Some(user) if (user.is_admin) =>
+          () => Full({
+            transaction {
+              val campaign = CadixeDB.getCampaignById(campaign_id)
+
+              campaign match {
+                case Some(campaign) =>
+                  val format = "JSON"
+                  val tempDir = Utils.createTempDir()
+                  val archiveBaseName = "aae_" + campaign.id + ".zip"
+                  val archiveAbsoluteName = tempDir.getAbsolutePath + "/" + archiveBaseName
+                  val archiveFile = new File(archiveAbsoluteName)
+
+                  if (archiveFile.exists) {
+                    Console.err.println("Output file already exists! " + archiveAbsoluteName)
+                    return null
+                  } else {
+                    val tempDir = Utils.createTempDir()
+                    val workingDirBaseName = "ExportAlvisAE"
+                    val workingDir = new File(tempDir.getAbsolutePath + "/" + workingDirBaseName + "/")
+                    workingDir.mkdir()
+                    format match {
+                      case OutFormat.CSV =>
+                        CVSFormatHandler.exportCampaignAnnotationAsCSV(workingDir.getAbsolutePath, campaign.id, true)
+                      case OutFormat.JSON =>
+                        JSONExporter.exportCampaign(workingDir.getAbsolutePath, campaign)
+                    }
+
+                    Utils.createZipFromFolder(workingDir.getAbsolutePath, archiveAbsoluteName, true)
+                  }
+                  JsonResponse("path" -> archiveAbsoluteName)
+
+                case None =>
+                  ResponseWithReason(NotFoundResponse(), "Specified campaign no found")
+              }
+            }
+          })
+        case _ =>
+          () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))
+      }
+
+//      val stream = new FileInputStream(archiveAbsoluteName)
+//
+//      () => Full(StreamingResponse(stream, () => stream.close, stream.available, List("Content-Type" -> "application/zip"), Nil, 200))/    }
+
+   // export annotations
+    }
+
 
 
     //-------------------@Ba adds end----------------------------------------------------------------------
