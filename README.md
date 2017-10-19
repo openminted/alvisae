@@ -29,9 +29,9 @@ cp target/cdxws-lift-1.0-SNAPSHOT.war /tmp/
 login as a user that is authorized to deploy packages on the Glassfish server
 
 ```
-su glassfish
-cd
-glassfishv3/bin/asadmin  -p 5848 deploy --force  --contextroot <context root of the instance> --name <name of the instance> /tmp/cdxws-lift-1.0-SNAPSHOT.war
+su glassfish \
+cd \
+glassfishv3/bin/asadmin  -p 5848 deploy --force  --contextroot <context root of the instance> --name <name of the instance> /tmp/cdxws-lift-1.0-SNAPSHOT.war \
 ```
 
 ### set-up database parameters
