@@ -10,9 +10,9 @@ We assume that the user is familiar with the technologies and has glassfish and 
 ### get the source code and package the web service
 
 ```sh
-git clone https://github.com/mandiayba/alvisae
-cd alvisae
-mvn compile package
+git clone https://github.com/mandiayba/alvisae \
+cd alvisae \
+mvn compile package 
 ```
 
 ### create and initialize the database
