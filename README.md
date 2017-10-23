@@ -72,9 +72,9 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisa
 ```
 
 ### Documents
-#### List documents of a project 3
+#### List documents of a project 4
 ```sh
-curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/3/documents
+curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/4/documents
 ```
 #### Create a document into the project 1
 ```sh
