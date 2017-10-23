@@ -76,7 +76,7 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisa
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/3/documents
 ```
-#### Create a document named into the project 1
+#### Create a document into the project 1
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new document&format=text&content=some content&creator' http://localhost:8080/alvisae/api/projects/1/documents
 ```
