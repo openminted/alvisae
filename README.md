@@ -71,6 +71,14 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new project&creator=B
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1
 ```
 
+#### JSON export
+```sh
+```
+
+#### JSON import
+```sh
+```
+
 ### Documents
 #### List documents of a project 4
 ```sh
