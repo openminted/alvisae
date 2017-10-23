@@ -82,11 +82,13 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new document&format=t
 ```
 #### Delete Document
 ```
+curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1/documents/3
 ```
 
 ### Annotations
 #### List Annotations
 ```
+curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/5/documents/1/annotations
 ```
 #### Create Annotation
 ```
