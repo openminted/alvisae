@@ -840,39 +840,49 @@ object RestAPI {
         }
       }
     //Create an annotation /!\ problem @ba I don't yet understand what are the data to send ???? request more precision to Robert and Richard
-//    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: annotations :: AsLong(annotator_id) :: Nil,_,PostRequest) => {
-//      user.is match {
-//        case Some(user) =>
-//          user.is_admin match {
-//            //deny user creation to non-admin
-//            case false =>
-//              () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
-//            case _ =>
-//              () => for(content <- S.param("content").map(_.toString) ?~ "missing content parameter" ~> 400;
-//                        format <- S.param("format").map(_.toString) ?~ "missing format parameter" ~> 400;
-//                        format <- S.param("state").map(_.toString) ?~ "missing format parameter" ~> 400)
-//              yield {
-//
-//                // val remoteIp = S.containerRequest.map(_.remoteAddress).openOr("localhost")
-//                //val is_active = S.param("is_active").map(_.toBoolean).openOr(true)
-//
-//                transaction {
-//                  CadixeDB.getCampaignById(campaign_id) match {
-//                    case None =>
-//                      ResponseWithReason(NotFoundResponse(), "Specified project no found")
-//                    case Some(theProject) =>
-//                      CadixeDB.addUserAnnotationSet(theDocument, user, theProject, AnnotationSetType.AlvisNLPAnnotation, text_annotations, None, None, description)
-//                      CadixeDB.addDocument2Campaign(newDocument, theProject)
-//                      val jsonResponse = ("id" -> newDocument.id) ~ ("name" -> newDocument.description)
-//                      JsonResponse(("document" -> jsonResponse))
-//                  }
-//                }
-//              }
-//          }
-//        case None =>
-//          () => Full(BadResponse())
-//      }
-//    }
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: annotations :: AsLong(annotator_id) :: Nil,_,PostRequest) => {
+      user.is match {
+        case Some(user) =>
+          user.is_admin match {
+            //deny user creation to non-admin
+            case false =>
+              () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+            case _ =>
+              () => for(content <- S.param("content").map(_.toString) ?~ "missing content parameter" ~> 400;
+                        format <- S.param("format").map(_.toString) ?~ "missing format parameter" ~> 400;
+                        state <- S.param("state").map(_.toString) ?~ "missing format parameter" ~> 400)
+              yield {
+
+                // val remoteIp = S.containerRequest.map(_.remoteAddress).openOr("localhost")
+                //val is_active = S.param("is_active").map(_.toBoolean).openOr(true)
+
+                transaction {
+                  CadixeDB.getCampaignById(campaign_id) match {
+                    case None =>
+                      ResponseWithReason(NotFoundResponse(), "Specified project no found")
+                    case Some(theProject) =>
+                      CadixeDB.getDocumentById(document_id) match {
+                        case None =>
+                          ResponseWithReason(NotFoundResponse(), "Specified document no found")
+                        case Some(theDocument) =>
+                          val text_annotations =  parse(content).extract[List[TextAnnotation]]
+                          CadixeDB.getTaskDefinition(campaign_id, "default-task") match {
+                            case None =>
+                              ResponseWithReason(NotFoundResponse(), "No Task Definition associated to the project")
+                            case Some(task) =>
+                                val new_annotation = CadixeDB.addUserAnnotationSet(theDocument, user, theProject, task, AnnotationSetType.AlvisNLPAnnotation, text_annotations, List(), List())
+                                val jsonResponse = json_aero_annotation(new_annotation)
+                                JsonResponse(jsonResponse)
+                          }
+                      }
+                  }
+                }
+              }
+          }
+        case None =>
+          () => Full(BadResponse())
+      }
+    }
 
     // delete project
     //Remove all the AnnotationSet revision corresponding to the specified Task
@@ -895,7 +905,7 @@ object RestAPI {
     }
 
 
-    // delete project
+    // delete document
     //Remove all the AnnotationSet revision corresponding to the specified Task
     case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: Nil, _, DeleteRequest) => {
       user.is match {
