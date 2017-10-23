@@ -10,9 +10,9 @@ We assume that the user is familiar with the technologies and has glassfish and 
 ### get the source code and package the web service
 
 ```sh
-git clone https://github.com/mandiayba/alvisae
-cd alvisae
-mvn compile package
+git clone https://github.com/mandiayba/alvisae \
+cd alvisae \
+mvn compile package 
 ```
 
 ### create and initialize the database
@@ -29,9 +29,9 @@ cp target/cdxws-lift-1.0-SNAPSHOT.war /tmp/
 login as a user that is authorized to deploy packages on the Glassfish server
 
 ```
-su glassfish
-cd
-glassfishv3/bin/asadmin  -p 5848 deploy --force  --contextroot <context root of the instance> --name <name of the instance> /tmp/cdxws-lift-1.0-SNAPSHOT.war
+su glassfish \
+cd \
+glassfishv3/bin/asadmin  -p 5848 deploy --force  --contextroot <context root of the instance> --name <name of the instance> /tmp/cdxws-lift-1.0-SNAPSHOT.war \
 ```
 
 ### set-up database parameters
@@ -62,31 +62,33 @@ The web service implement the [aero protocol](https://github.com/openminted/omtd
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects
 ```
-#### Create a project named **new project** with the creator name **ba**
+#### Create a project named with the creator named Ba
 ```sh
-curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new project&creator=ba' http://localhost:8080/alvisae/api/projects
+curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new project&creator=Ba' http://localhost:8080/alvisae/api/projects
 ```
-#### Delete the project having **project_id == 1 ** 
+#### Delete the project 1
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1
 ```
 
 ### Documents
-#### List documents of a project (** project_id == 3 **)
+#### List documents of a project 4
 ```sh
-curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/3/documents
+curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/4/documents
 ```
-#### Create a document named ** new document ** into the project **1**
+#### Create a document into the project 1
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new document&format=text&content=some content&creator' http://localhost:8080/alvisae/api/projects/1/documents
 ```
 #### Delete Document
 ```
+curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1/documents/3
 ```
 
 ### Annotations
 #### List Annotations
 ```
+curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/5/documents/1/annotations
 ```
 #### Create Annotation
 ```
