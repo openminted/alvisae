@@ -865,11 +865,11 @@ object RestAPI {
                         case None =>
                           ResponseWithReason(NotFoundResponse(), "Specified document no found")
                         case Some(theDocument) =>
-                          val text_annotations =  parse(content).extract[List[TextAnnotation]]
                           CadixeDB.getTaskDefinition(campaign_id, "default-task") match {
                             case None =>
                               ResponseWithReason(NotFoundResponse(), "No Task Definition associated to the project")
                             case Some(task) =>
+                                val text_annotations =  parse(content).extract[List[TextAnnotation]]
                                 val new_annotation = CadixeDB.addUserAnnotationSet(theDocument, user, theProject, task, AnnotationSetType.AlvisNLPAnnotation, text_annotations, List(), List())
                                 val jsonResponse = json_aero_annotation(new_annotation)
                                 JsonResponse(jsonResponse)
@@ -925,7 +925,7 @@ object RestAPI {
       }
     }
 
-    // delete project
+    // delete annotations
     //Remove all the AnnotationSet revision corresponding to the specified Task
     case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: "annotations" :: AsLong(user_id) :: Nil, _, DeleteRequest) => {
       user.is match {
