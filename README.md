@@ -105,6 +105,7 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X POST \
 http://localhost:8080/alvisae/api/projects/4/documents/4/annotations/1
 ```
 #### Delete Annotation
-```
+```shh
+curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/4/documents/4/annotations/1
 ```
 
