@@ -96,7 +96,7 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisa
 ### Annotations
 #### List Annotations
 ```
-curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/5/documents/1/annotations
+curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/4/documents/4/annotations
 ```
 #### Create Annotation
 ```
