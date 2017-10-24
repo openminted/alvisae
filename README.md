@@ -71,6 +71,14 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new project&creator=B
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1
 ```
 
+#### JSON export
+```sh
+```
+
+#### JSON import
+```sh
+```
+
 ### Documents
 #### List documents of a project 4
 ```sh
@@ -88,12 +96,16 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisa
 ### Annotations
 #### List Annotations
 ```
-curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/5/documents/1/annotations
+curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/4/documents/4/annotations
 ```
 #### Create Annotation
-```
+```shh
+curl -u aae_root:Tadmin -w "%{http_code}" -X POST \
+-d 'format=json&content=[{"id":"946b5154-6b47-4e72-86cb-9f9096e7475f","propes":{},"text":[[0,28]],"type":"","kind":0}]&state=NEW' \
+http://localhost:8080/alvisae/api/projects/4/documents/4/annotations/1
 ```
 #### Delete Annotation
-```
+```shh
+curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/4/documents/4/annotations/1
 ```
 
