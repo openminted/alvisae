@@ -946,25 +946,31 @@ object RestAPI {
     }
 
     //
-    case Req("api" :: "campaigns" :: AsLong(campaign_id) :: "annotations" :: "csv" :: Nil,_,GetRequest) => {
+    case Req("api" :: "campaigns" :: AsLong(campaign_id) :: exportFileName  :: Nil,_,GetRequest) => {
       user.is match {
-        case Some(user) if (user.is_admin) =>
-          () => Full({
-            transaction {
-              val campaign = CadixeDB.getCampaignById(campaign_id)
+        case Some(user) =>
+          user.is_admin match {
+            case false =>
+              () => Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+            case _  =>
+             transaction {
+                val campaign = CadixeDB.getCampaignById(campaign_id)
 
               campaign match {
                 case Some(campaign) =>
                   val format = "JSON"
                   val tempDir = Utils.createTempDir()
-                  val archiveBaseName = "aae_" + campaign.id + ".zip"
+                  //val archiveBaseName = "aae_" + campaign.id + ".zip"
+                  val archiveBaseName = exportFileName
                   val archiveAbsoluteName = tempDir.getAbsolutePath + "/" + archiveBaseName
                   val archiveFile = new File(archiveAbsoluteName)
 
                   if (archiveFile.exists) {
                     Console.err.println("Output file already exists! " + archiveAbsoluteName)
                     return null
-                  } else {
+                  }
+                  else
+                  {
                     val tempDir = Utils.createTempDir()
                     val workingDirBaseName = "ExportAlvisAE"
                     val workingDir = new File(tempDir.getAbsolutePath + "/" + workingDirBaseName + "/")
@@ -975,28 +981,20 @@ object RestAPI {
                       case OutFormat.JSON =>
                         JSONExporter.exportCampaign(workingDir.getAbsolutePath, campaign)
                     }
-
                     Utils.createZipFromFolder(workingDir.getAbsolutePath, archiveAbsoluteName, true)
                   }
-                  JsonResponse("path" -> archiveAbsoluteName)
+                  val stream = new FileInputStream(archiveAbsoluteName)
+                  () => Full(StreamingResponse(stream, () => stream.close, stream.available, List("Content-Type" -> "application/zip"), Nil, 200))
 
                 case None =>
-                  ResponseWithReason(NotFoundResponse(), "Specified campaign no found")
-              }
-            }
-          })
-        case _ =>
-          () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))
-      }
-
-//      val stream = new FileInputStream(archiveAbsoluteName)
-//
-//      () => Full(StreamingResponse(stream, () => stream.close, stream.available, List("Content-Type" -> "application/zip"), Nil, 200))/    }
-
-   // export annotations
-    }
-
-
+                  () => Full(ResponseWithReason(NotFoundResponse(), "Specified campaign no found"))
+                  }
+               }
+          } // close match
+        case None =>
+          () => Full(BadResponse())
+    } // close user.is
+   }//close main case
 
     //-------------------@Ba adds end----------------------------------------------------------------------
 
