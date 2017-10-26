@@ -946,7 +946,7 @@ object RestAPI {
     }
 
     //
-    case Req("api" :: "campaigns" :: AsLong(campaign_id) :: exportFileName  :: Nil,_,GetRequest) => {
+    case Req("api" :: "campaigns" :: AsLong(campaign_id) :: "export.zip"  :: Nil,_,GetRequest) => {
       user.is match {
         case Some(user) =>
           user.is_admin match {
@@ -961,7 +961,7 @@ object RestAPI {
                   val format = "JSON"
                   val tempDir = Utils.createTempDir()
                   //val archiveBaseName = "aae_" + campaign.id + ".zip"
-                  val archiveBaseName = exportFileName
+                  val archiveBaseName = "export.zip"
                   val archiveAbsoluteName = tempDir.getAbsolutePath + "/" + archiveBaseName
                   val archiveFile = new File(archiveAbsoluteName)
 
@@ -994,7 +994,28 @@ object RestAPI {
         case None =>
           () => Full(BadResponse())
     } // close user.is
-   }//close main case
+   } // close main case
+
+    //Create an annotation /!\ problem @ba I don't yet understand what are the data to send ???? request more precision to Robert and Richard
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "import" :: Nil,_,PostRequest) => {
+      user.is match {
+        case Some(user) =>
+          user.is_admin match {
+            //deny user creation to non-admin
+            case false =>
+              () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+            case _ =>
+              () => for(file <- S.param("file").map(_.toString) ?~ "missing file parameter" ~> 400)
+              yield {
+                transaction {
+
+                }
+              }
+          }
+        case None =>
+          () => Full(BadResponse())
+      }
+    }
 
     //-------------------@Ba adds end----------------------------------------------------------------------
 
