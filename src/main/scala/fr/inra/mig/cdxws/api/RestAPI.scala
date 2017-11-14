@@ -997,7 +997,7 @@ object RestAPI {
    } // close main case
 
     //Create an annotation /!\ problem @ba I don't yet understand what are the data to send ???? request more precision to Robert and Richard
-    case Req("api" :: "projects" :: AsLong(campaign_id) :: "import" :: Nil,_,PostRequest) => {
+    case req @ Req("api" :: "projects" :: AsLong(campaign_id) :: "import" :: Nil,_, PostRequest) => {
       user.is match {
         case Some(user) =>
           user.is_admin match {
@@ -1005,12 +1005,31 @@ object RestAPI {
             case false =>
               () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
             case _ =>
-              () => for(file <- S.param("file").map(_.toString) ?~ "missing file parameter" ~> 400)
-              yield {
-                transaction {
-
+              req.body match {
+                case Full(zipped) =>  {
+                  val tempDir = Utils.createTempDir()
+                  val workingDirBaseName = "ExportAlvisAE"
+                  val workingDir = new File(tempDir.getAbsolutePath + "/" + workingDirBaseName + "/")
+                  workingDir.mkdir()
+                  val myZip = new File(workingDir.getAbsolutePath + "/" + "export.zip")
+                  Utils.writeBytes(zipped, myZip)
+                  Utils.unZipIt(myZip.getAbsolutePath, workingDir.getAbsolutePath + "/" + "export")
+                  val jsonresponse = "my zip " -> myZip.getAbsolutePath
+                  //Utils.unZipIt(req, workingDir)
+                  () => Full(JsonResponse(jsonresponse))
                 }
+                case Empty =>
+                  () => Full(ResponseWithReason(BadResponse(), "No or Invalid user's Authorizations"))
               }
+//              () => for(file <- S.param("file").map(_.toString) ?~ "missing file parameter" ~> 400)
+//              yield {
+//                transaction {
+//                  // val docfile ="doc"
+//                  // val doc = JSONImporter.importDocument(docfile)
+//                  // continue...
+//                  Full(ResponseWithReason(NotFoundResponse(), "Specified campaign no found"))
+//                }
+//              }
           }
         case None =>
           () => Full(BadResponse())
@@ -2116,7 +2135,8 @@ object RestAPI {
 
   }
 
-
+  def zipBody(req : Req) =
+    req.body.map(bytes => bytes)
 
   def jsonBody(req : Req) =
     req.body.map(bytes => new String(bytes, "UTF-8")) map parse
