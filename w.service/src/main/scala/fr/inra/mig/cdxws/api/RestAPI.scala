@@ -946,7 +946,7 @@ object RestAPI {
     }
 
     //
-    case Req("api" :: "campaigns" :: AsLong(campaign_id) :: "export.zip"  :: Nil,_,GetRequest) => {
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "export.zip"  :: Nil,_,GetRequest) => {
       user.is match {
         case Some(user) =>
           user.is_admin match {
@@ -957,7 +957,7 @@ object RestAPI {
                 val campaign = CadixeDB.getCampaignById(campaign_id)
 
               campaign match {
-                case Some(campaign) =>
+                case Some(campaign) => {
                   val format = "JSON"
                   val tempDir = Utils.createTempDir()
                   //val archiveBaseName = "aae_" + campaign.id + ".zip"
@@ -971,9 +971,9 @@ object RestAPI {
                   }
                   else
                   {
-                    val tempDir = Utils.createTempDir()
+                    //val tempDir = Utils.createTempDir()
                     val workingDirBaseName = "ExportAlvisAE"
-                    val workingDir = new File(tempDir.getAbsolutePath + "/" + workingDirBaseName + "/")
+                    val workingDir = new File(archiveFile.getAbsolutePath + "/" + workingDirBaseName + "/")
                     workingDir.mkdir()
                     format match {
                       case OutFormat.CSV =>
@@ -981,11 +981,11 @@ object RestAPI {
                       case OutFormat.JSON =>
                         JSONExporter.exportCampaign(workingDir.getAbsolutePath, campaign)
                     }
-                    Utils.createZipFromFolder(workingDir.getAbsolutePath, archiveAbsoluteName, true)
+                    Utils.createZipFromFolder(workingDir.getAbsolutePath, archiveAbsoluteName, false)
                   }
                   val stream = new FileInputStream(archiveAbsoluteName)
                   () => Full(StreamingResponse(stream, () => stream.close, stream.available, List("Content-Type" -> "application/zip"), Nil, 200))
-
+                }
                 case None =>
                   () => Full(ResponseWithReason(NotFoundResponse(), "Specified campaign no found"))
                   }
