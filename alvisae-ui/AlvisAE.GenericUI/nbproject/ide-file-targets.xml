@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".." name="AlvisAE.GenericUI-IDE">
+    <!-- TODO: edit the following target according to your needs -->
+    <!-- (more info: http://www.netbeans.org/kb/articles/freeform-config.html#compilesingle) -->
+    <target name="compile-selected-files-in-src">
+        <fail unless="files">Must set property 'files'</fail>
+        <mkdir dir="war/WEB-INF/classes"/>
+        <javac destdir="war/WEB-INF/classes" includes="${files}" source="1.6" srcdir="src">
+            <classpath path="../../libs:../../../GWT2/gwt-dev.jar:../../../GWT2/gwt-user.jar:../../libs/gwt-graphics-1.0.0.jar:../../libs/gwtupload-0.6.3-compat.jar:../../libs/commons-fileupload-1.2.2.jar:../../libs/commons-io-1.3.1.jar:../../libs/log4j-1.2.16.jar:../../libs/jtidy-r938.jar:../../libs/gwt-dnd-3.1.1.jar:../../libs/aopalliance.jar:../../libs/guice-2.0.jar:../../libs/gin-1.0.jar:../../libs/junit.jar:../../libs/gwtquery-1.0.0-SNAPSHOT.jar:../../../cadixe.staneCore/dist/staneCore.jar:../../../cadixe.structterm/dist/structterm.jar"/>
+        </javac>
+    </target>
+</project>

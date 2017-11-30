@@ -1,0 +1,106 @@
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010-2011.
+ *
+ */
+-->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:Annotation="urn:import:fr.inra.mig_bibliome.alvisae.client.Annotation"
+             xmlns:Document="urn:import:fr.inra.mig_bibliome.alvisae.client.Document"
+             xmlns:Network="urn:import:fr.inra.mig_bibliome.alvisae.client.data.Retrieve" 
+>
+
+    <ui:with field='staneRes' type='fr.inra.mig_bibliome.alvisae.client.StanEditorResources'/>
+    <ui:with field='staneCoreRes' type='fr.inra.mig_bibliome.alvisae.client.StaneCoreResources'/>
+    <ui:style type='fr.inra.mig_bibliome.alvisae.client.Tester.Styles'>
+
+        .MessageBar {
+        background-color:  lightsteelblue;
+        }
+
+    </ui:style>
+
+    <g:DockLayoutPanel unit='EM' ui:field='dockPanel' height="100%">
+        <g:north size='2.3'>
+            <g:SimplePanel styleName='{style.MessageBar}' ></g:SimplePanel>
+        </g:north>
+
+        <g:center>
+            <g:SplitLayoutPanel height="100%">
+                <g:west size='250'>
+                    <g:LayoutPanel >
+                        <g:layer top='0.1EM' height='2EM' left='1.2EM' width='7EM'>
+                            <g:PushButton ui:field='exportButton' height='1.2em' width='7em' title='export Annotated text as a JSON representation'>Export
+                            </g:PushButton>
+                        </g:layer>
+                        <g:layer top='0.1EM' height='2EM' left='9EM' width='7EM'>
+                            <g:PushButton ui:field='svgButton' height='1.2em' width='7em' title=''>SVG
+                            </g:PushButton>
+                        </g:layer>
+                        <g:layer top='2.1EM' bottom='0px' left='0px' right='0px'>
+                            <g:TabLayoutPanel height='100%' barHeight="20">
+                                <g:tab>
+                                    <g:header>Annotation details</g:header>
+                                    <Annotation:AnnotationDetailsUi title='details of the selected annotation'/>
+                                </g:tab>
+                            </g:TabLayoutPanel>
+                        </g:layer>
+                    </g:LayoutPanel>
+                </g:west>
+
+                <g:center>
+                    <g:SplitLayoutPanel>
+                        <g:north size='370'>
+                            <Document:DocumentUi ui:field='documentUI' />
+                        </g:north>
+                        <g:center size='200'>
+                            <g:DockLayoutPanel unit='PX' addStyleNames='DefaultCursor'>
+                                <g:north size='2'>
+                                    <g:FlowPanel></g:FlowPanel>
+                                </g:north>
+                                <g:center>
+                                    <g:TabLayoutPanel barHeight="20">
+                                        <g:tab>
+                                            <g:header>Annotations</g:header>
+                                            <g:FlowPanel>
+                                                <Annotation:AnnotationTable height='100%'/>
+                                            </g:FlowPanel>
+                                        </g:tab>
+                                        <g:tab>
+                                            <g:header>Text selection</g:header>
+                                            <g:SplitLayoutPanel>
+                                                <g:center size='100'>
+                                                    <Annotation:RangeListUi title='list of text-ranges covered by the selected text'/>
+                                                </g:center>
+                                                <g:south size='100'>
+                                                    <Annotation:TargetListUi title='list of annotation targets covered by the selected text' />
+                                                </g:south>
+                                            </g:SplitLayoutPanel>
+                                        </g:tab>
+                                    </g:TabLayoutPanel>
+                                </g:center>
+                            </g:DockLayoutPanel>
+                        </g:center>
+                    </g:SplitLayoutPanel>
+                </g:center>
+            </g:SplitLayoutPanel>
+        </g:center>
+
+        <g:south size='2'>
+            <g:LayoutPanel >
+                <g:layer top='0.5EM' height='1EM'>
+                    <g:Label ui:field='statusLabel'>Status</g:Label>
+                </g:layer>
+                <g:layer top='0.5EM' height='1.5EM' right='0.1EM' width='5EM'>
+                    <Network:NetworkActivityDisplayer ui:field='networkActivityDisplayer' height='100%' width='100%' title='Network activity'/>
+                </g:layer>
+            </g:LayoutPanel>
+        </g:south>
+    </g:DockLayoutPanel>
+
+</ui:UiBinder>

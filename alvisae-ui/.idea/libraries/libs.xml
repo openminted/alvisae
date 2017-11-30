@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/gwtupload-0.6.3-compat.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/junit.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-io-1.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jtidy-r938.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/javax.inject.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/guice-assistedinject-snapshot.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/guice-snapshot.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/log4j-1.2.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/aopalliance.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/gin-1.5-post-gwt-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-fileupload-1.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/gquery-dnd-bundle-1.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/gwt-graphics-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/gwt-dnd-3.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

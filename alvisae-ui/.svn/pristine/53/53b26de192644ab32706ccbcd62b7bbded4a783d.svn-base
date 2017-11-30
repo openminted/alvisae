@@ -1,0 +1,342 @@
+<!--
+Uncomment this for XHTML entities
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+-->
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010.
+ *
+ */
+-->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:ct="urn:import:com.google.gwt.user.cellview.client"
+             xmlns:Network="urn:import:fr.inra.mig_bibliome.alvisae.client.data.Retrieve" 
+>
+
+    <ui:with field='res' type='fr.inra.mig_bibliome.alvisae.client.StructTermResources'/>
+
+    <ui:with field='staneCoreRes' type='fr.inra.mig_bibliome.alvisae.client.StaneCoreResources'/>
+
+    <ui:style type='fr.inra.mig_bibliome.alvisae.client.SemClass.StructTermUi.Styles'>
+        .SmallerTreeItem {
+        font-size: smaller;
+        }
+        .ToolBar {
+        background-color:  #D0E4F6;
+        }
+
+        .MessageBar {
+        margin: 2px;
+        border: lightsteelblue solid 1px ;
+        font-size: smaller;
+        overflow:hidden;
+        }
+
+        .ScrollArea {
+        background-color: transparent;
+        border: silver dotted 1px ;
+        }
+        .ScrollAreaHovered {
+        background-color: #C9C4AD;
+        opacity: 0.5;
+        }
+
+        .MessageOutdated {
+        color: grey;
+        }
+
+        .SmallerLabel {
+        font-size: smaller;
+        }
+        .TextInput {
+        width: 30px;
+        }
+        .SmallButton {
+        height: 16px;
+        width: 16px;
+        }
+        .SmallSeparator {
+        width: 6px;
+        }
+        .MediumSeparator {
+        width: 12px;
+        }
+        .LargeSeparator {
+        width: 18px;
+        }
+        .TreeBox {
+        margin: 2px;
+        border: lightsteelblue solid 1px ;
+        }
+        .URLInput {
+        width: 30EM;
+        }
+        .ClassesPanel {
+        position:absolute;
+        top:0px;
+        left:0px;
+        overflow:hidden;
+        height:100%;
+        width:100%;
+        background-color:  white;
+        }
+
+        .AuthenticationPanel {
+        position:absolute;
+        top:0px;
+        left:0px;
+        overflow:hidden;
+        height:100%;
+        width:100%;
+        background-color:  #D0E4F6;
+        }
+        .BackGroundPos {
+        z-index:-700;
+        }
+
+        .ForeGroundPos {
+        z-index: 0;
+        }
+        
+        .DialogPanel {
+        margin: 2px;
+        background-color: #E0ECF6;
+        border: #8894FF solid 1px ;
+        font-size: smaller;
+        overflow: hidden;
+        }
+
+        .TopPos {
+        z-index: 1000;
+        }
+        
+        .ExpandButton {
+        height: 6px;
+        width: 11px;
+        border: lightsteelblue solid 1px ;
+        background-color: white;
+        }
+        
+        .Veil {
+        position:absolute;
+        top:0px;
+        left:0px;
+        overflow:hidden;
+        height:100%;
+        width:100%;
+        background-color: lightsteelblue;
+        z-index: -1;
+        }
+        
+        .GlassPanel {
+        position:absolute;
+        top:0px;
+        left:0px;
+        overflow:hidden;
+        height:100%;
+        width:100%;
+        background-color: grey;
+        opacity: 0.3;
+        }
+
+        .DisabledPanel {
+        position:absolute;
+        top:0px;
+        left:0px;
+        overflow:hidden;
+        height:100%;
+        width:100%;
+        background-color: silver;
+        }
+
+        .Title {
+        color: grey;
+        font-size: smaller;
+        white-space: nowrap;
+    	overflow: hidden;
+        text-overflow: ellipsis;   
+        -o-text-overflow: ellipsis;             
+        }
+    </ui:style>
+    
+            
+    <g:FlowPanel height='100%' width="100%">
+        
+        <g:VerticalPanel ui:field='disabledPanel' horizontalAlignment='center' width='100%' height='100%' addStyleNames='{style.DisabledPanel}'>
+            <g:HorizontalPanel verticalAlignment='middle'>
+                <g:Label> (...) </g:Label>
+            </g:HorizontalPanel>
+        </g:VerticalPanel>            
+        
+        <g:LayoutPanel ui:field='globalClassesPanel' addStyleNames='{style.ClassesPanel}'>
+            <g:layer top='5px' left='2px' height='20px' right='28px'>
+                <g:Label ui:field='tydiTitle' addStyleNames='{style.Title}'></g:Label>
+            </g:layer>
+            <g:layer top='1px' height='26px' right='2px' width='26px'>
+                <g:PushButton ui:field='signOutBtn' addStyleNames= '{style.SmallButton} {style.TopPos}' title=''>
+                    <g:upFace image='{staneCoreRes.SigningOutIcon}' />
+                </g:PushButton>
+            </g:layer>
+            <g:layer top='26px' left='0px' right='2px' bottom='0px'>
+                <g:SplitLayoutPanel ui:field='globalSplitPanel' width="100%" >
+                    <g:center>
+                        <g:LayoutPanel ui:field='mainLayoutPanel' >
+                            <g:layer top='0px' height='28px' left='0px' right='0px'>
+
+                                <!-- search bar -->
+                                <g:LayoutPanel ui:field='toolBar' addStyleNames='{style.ToolBar}'>
+                                    <g:layer top='1px' height='26px' left='0px' right='28px'>
+                                        <g:HorizontalPanel verticalAlignment='middle'>
+                                            <g:SimplePanel addStyleNames='{style.MediumSeparator}' />  
+                                            <g:PushButton ui:field='refreshButton' addStyleNames='{style.SmallButton}' title='refresh the selected semantic class'>
+                                                <g:upFace image='{res.RefreshTreeIcon}' />
+                                            </g:PushButton>
+                                            <g:SimplePanel addStyleNames='{style.LargeSeparator}' />  
+                                            <g:FlowPanel addStyleNames='{style.SmallButton}'>
+                                                <g:Image ui:field='searchResult' resource='{res.SearchResult}'/>
+                                            </g:FlowPanel>
+                                            <g:TextBox ui:field='searchPattern' addStyleNames= '{style.SmallerLabel} {style.TextInput}' width="100%"/>
+                                            <g:SimplePanel addStyleNames='{style.MediumSeparator}' />  
+                                            <g:PushButton ui:field='searchButton' addStyleNames= '{style.SmallButton}' >
+                                                <g:upFace image='{res.SearchTreeIcon}' />
+                                            </g:PushButton>
+                                        </g:HorizontalPanel>
+                                    </g:layer>
+                                </g:LayoutPanel>
+                            </g:layer>
+                            <g:layer top='29px' bottom='1px' left='0px' right='0px'>
+                                
+                                <g:LayoutPanel ui:field='mainPanel'>
+                                    <g:layer top='0px' height='42px' left='0px' right='0px'>
+                                        <g:HTMLPanel addStyleNames='{style.MessageBar}' >
+                                            <table cellspacing="3" cellpadding="0" style="height: 100%; width: 100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="center" style="width:30px; vertical-align: middle;">
+                                                            <g:Image ui:field='successImage' resource='{staneCoreRes.OkMessageIcon}' visible='false'/>
+                                                            <g:Image ui:field='errorImage' resource='{staneCoreRes.ErrorMessageIcon}' visible='false'/>
+                                                        </td>
+                                                        <td align="left" style="vertical-align: middle;">
+                                                            <g:Label addStyleNames= '{style.SmallerLabel}' ui:field='infoMessage' width='98%'></g:Label>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </g:HTMLPanel>
+                                    </g:layer>
+                                    <g:layer top='7px' height='30px' right='6px' width='34px'>
+                                        <Network:NetworkActivityDisplayer ui:field='networkActivityDisplayer' height='100%' width='100%' title=''/>
+                                    </g:layer>
+                                    <g:layer top='0px' height='42px' left='0px' right='0px'>
+                                        <g:FlowPanel ui:field='dialogPanel' addStyleNames='{style.DialogPanel}' visible="false">
+                                        </g:FlowPanel>
+                                    </g:layer>
+                                    <g:layer top='32px' height='8px' left='0px' right='0px'>
+                                        <g:HTMLPanel ui:field='expandPanel' visible="true">
+                                            <table cellspacing="0" cellpadding="0" style="border-spacing: 0px; border-collapse: collapse; height: 100%; width: 100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="center" style="vertical-align: center; ">
+                                                            <g:FocusPanel ui:field='expandBtn' addStyleNames='{style.ExpandButton}'>
+                                                                <g:Image height='11px' resource='{res.EllipsisIcon}'/>
+                                                            </g:FocusPanel>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>     
+                                        </g:HTMLPanel>
+                                    </g:layer>
+                                    
+                                <!-- left margin is a safe zone to drop without performing any modification -->
+                                    <g:layer top='41px' bottom='0px' left='0px' right='0px'>
+                                        <g:LayoutPanel addStyleNames= '{style.TreeBox}'>
+                                            <g:layer top='0px' bottom='0px' left='0px' right='0px'>
+                                                <g:ScrollPanel ui:field='treePanel'>
+                                                </g:ScrollPanel>
+                                            </g:layer>
+                                        </g:LayoutPanel>
+                                    </g:layer>
+                                    
+                            <!-- scroll area while doing DnD -->
+                                    <g:layer top='41px' height='30px' width='36px' right='16px'>
+                                        <g:HTML ui:field='upScrollArea' addStyleNames='{style.ScrollArea}'/>  
+                                    </g:layer>
+                                    <g:layer bottom='0px' height='30px' width='36px' right='16px'>
+                                        <g:HTML ui:field='downScrollArea' addStyleNames='{style.ScrollArea}'/>  
+                                    </g:layer>
+                                    
+                                </g:LayoutPanel>
+                                    
+                            </g:layer>
+                            <!-- expand/collapse button for the search bar -->
+                            <g:layer top='0px' left='0px' width='9px' height='9px'>
+                                <g:Image ui:field='expandCollapseImg' resource='{staneCoreRes.MoveUpIcon}' title='expand/collapse toolbar'/>
+                            </g:layer>
+                        </g:LayoutPanel>
+                    </g:center>
+                    <g:south size='80'>
+                        <g:LayoutPanel>
+                            <g:layer top='0px' bottom='1px' left='0px' right='0px'>
+                                <g:LayoutPanel addStyleNames='{style.TreeBox}'>
+                                    <g:layer top='0px' bottom='0px' left='0px' right='0px'>
+                                        <g:HorizontalPanel ui:field='detailGlassPanel' verticalAlignment='middle' addStyleNames='{style.GlassPanel} {style.BackGroundPos}'>
+                                        </g:HorizontalPanel>
+                                    </g:layer>
+                                    <g:layer top='0px' bottom='0px' left='0px' right='0px'>
+                                        <g:LayoutPanel ui:field='detailPanel' addStyleNames='{style.ClassesPanel}'>
+                                            <g:layer top='0px' bottom='0px' left='0px' right='0px'>
+                                                <g:ScrollPanel ui:field='classPanel'>
+                                                </g:ScrollPanel>
+                                            </g:layer>
+                                        </g:LayoutPanel>
+                                    </g:layer>
+                                </g:LayoutPanel>
+                            </g:layer>
+                        </g:LayoutPanel>
+                    </g:south>
+                </g:SplitLayoutPanel>
+            </g:layer>        
+        </g:LayoutPanel>        
+        <g:HorizontalPanel ui:field='authenticationPanel' verticalAlignment='middle' width='100%' height='100%' addStyleNames='{style.AuthenticationPanel} {style.ForeGroundPos}'>
+            <g:VerticalPanel horizontalAlignment='center' width='100%'>
+                <g:Label>TyDI url:</g:Label>
+                <g:TextBox ui:field='tydiwsurl' readOnly='true' addStyleNames='{style.URLInput}'/>
+                <g:Label>Termino Project Id:</g:Label>
+                <g:TextBox ui:field='tydiProjectId' readOnly='true'/>
+                <g:Label>Name:</g:Label>
+                <g:TextBox ui:field='loginName'/>
+                <g:Label>Password:</g:Label>
+                <g:PasswordTextBox ui:field='password' />
+                <g:Button text='Authenticate' ui:field='authenticateButton'/>
+                <g:VerticalPanel horizontalAlignment='center' width='100%' height='5em'>
+                    <g:HorizontalPanel ui:field='messagePanel' verticalAlignment='middle' height='100%' width='20em'>
+                        <g:LayoutPanel height='100%'>
+                            <g:layer top='0.2EM' height='1.8EM' left='0em' width='1.5em'>
+                                <g:Image ui:field='warningImage' resource='{staneCoreRes.WarnMessageIcon}' visible='false'/>
+                            </g:layer>
+                            <g:layer top='0.2EM' height='4.8EM' left='1.5em' width='16em'>
+                                <g:Label ui:field='messageText' width='100%' height='5em'></g:Label>
+                            </g:layer>
+                        </g:LayoutPanel>
+                    </g:HorizontalPanel>
+                </g:VerticalPanel>
+            </g:VerticalPanel>            
+        </g:HorizontalPanel>
+        
+        <g:HorizontalPanel verticalAlignment='middle' width='100%' height='100%' addStyleNames='{style.Veil}'>
+            <g:VerticalPanel horizontalAlignment='center' width='100%'>
+            </g:VerticalPanel>            
+        </g:HorizontalPanel>
+
+        <g:HorizontalPanel ui:field='glassPanel' verticalAlignment='middle' width='100%' height='100%' addStyleNames='{style.GlassPanel} {style.BackGroundPos}'>
+            <g:VerticalPanel horizontalAlignment='center' width='100%'>
+            </g:VerticalPanel>            
+        </g:HorizontalPanel>
+
+    </g:FlowPanel>
+</ui:UiBinder>

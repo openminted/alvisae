@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010-2011.
+ *
+*/
+
+.DefaultCursor {
+    cursor:default;
+}
+
+.WaitCursor {
+    cursor:wait;
+}
+
+.DroppableHover {
+    background-color: #AAFFA5;
+}
+
+.UnDroppableHover {
+    background-color: #F9AEAE;
+}
+
+.TermDroppableHover {
+    background-color: #C6A0FF;
+}
+
+.FlatButton {
+    border: 1px solid #C7E9FF;
+}
+
+.FlatButton:hover
+{
+    background-color: #C7E9FF;
+    border: 1px solid #63C1FF;
+} 
+
+.DragHelper {
+    border: 1px solid #FFCB63;
+    background-color:  white;
+    padding: 4px;
+}

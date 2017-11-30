@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <!-- Do not use Project Properties customizer when editing this file manually. -->
+            <name>AlvisAE.Editor</name>
+            <properties/>
+            <folders>
+                <source-folder>
+                    <label>src</label>
+                    <type>java</type>
+                    <location>src</location>
+                </source-folder>
+                <source-folder>
+                    <label>war</label>
+                    <type>doc_root</type>
+                    <location>war</location>
+                </source-folder>
+                <source-folder>
+                    <label>WEB-INF</label>
+                    <type>web_inf</type>
+                    <location>war/WEB-INF</location>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>build</target>
+                </action>
+                <action name="clean">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>clean</target>
+                </action>
+                <action name="rebuild">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>clean</target>
+                    <target>build</target>
+                </action>
+                <action name="run">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>devmode</target>
+                </action>
+                <action name="redeploy">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>war</target>
+                </action>
+                <action name="debug">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>debug-nb</target>
+                </action>
+            </ide-actions>
+            <view>
+                <items>
+                    <source-folder style="tree">
+                        <label>Web Pages</label>
+                        <location>war</location>
+                    </source-folder>
+                    <source-folder style="tree">
+                        <label>WEB-INF Content</label>
+                        <location>war/WEB-INF</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>src</label>
+                        <location>src</location>
+                    </source-folder>
+                    <source-file>
+                        <location>build.xml</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="build"/>
+                    <ide-action name="rebuild"/>
+                    <ide-action name="clean"/>
+                    <ide-action name="run"/>
+                    <ide-action name="redeploy"/>
+                    <action>
+                        <label>Distribute</label>
+                        <target>distribute</target>
+                    </action>
+                    <action>
+                        <label>GWT DebugDEVMode</label>
+                        <target>debugdevmode</target>
+                    </action>
+                    <ide-action name="debug"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/3">
+            <compilation-unit>
+                <package-root>src</package-root>
+                <classpath mode="compile">../../GWT2/gwt-dev.jar:../../GWT2/gwt-user.jar:../../GWT2/validation-api-1.0.0.GA-sources.jar:../../GWT2/validation-api-1.0.0.GA.jar:../libs/aopalliance.jar:../libs/gin-1.5-post-gwt-2.2.jar:../libs/guice-snapshot.jar:../libs/guice-assistedinject-snapshot.jar:../libs/javax.inject.jar:../libs/gwt-dnd-3.2.0.jar:../libs/gwt-graphics-1.0.0.jar:../libs/junit.jar:../AlvisAE.shared/dist/AlvisAE.shared-1.0.jar:../AlvisAE.Core/dist/alvisaeCore.jar:../libs/gquery-dnd-bundle-1.0.6.jar</classpath>
+                <source-level>1.6</source-level>
+            </compilation-unit>
+        </java-data>
+        <web-data xmlns="http://www.netbeans.org/ns/freeform-project-web/1">
+            <web-module>
+                <doc-root>war</doc-root>
+                <classpath/>
+                <context-path/>
+                <j2ee-spec-level>1.5</j2ee-spec-level>
+            </web-module>
+        </web-data>
+    </configuration>
+</project>

@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010-2011.
+ *
+*/
+
+.DroppableHover {
+    background-color: #AAFFA5;
+}
+
+.UnDroppableHover {
+    background-color: #F9AEAE;
+}
+
+.DragHelper {
+    border: 1px solid #945FFF;
+    border-style: dotted;
+    background-color:  #FFF4D9;
+    padding: 4px;
+}
+
+.Overlay {
+    position:absolute;
+    overflow:hidden;
+    background-color: transparent;
+    z-index:1;
+}
