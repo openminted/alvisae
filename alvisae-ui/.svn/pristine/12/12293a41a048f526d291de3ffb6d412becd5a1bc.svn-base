@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module>
-  <!-- Inherit our applications main module.                      -->
-  <inherits name='fr.inra.mig_bibliome.stane.StaneUI'/>
-
-  <!-- Specify the path to any remote services.                   -->
-  <servlet path="/staneui/greet" class="fr.inra.mig_bibliome.stane.server.GreetingServiceImpl" />
-
-</module>

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="alvisaeCore">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/AlvisAE.Core/dist/alvisaeCore.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
