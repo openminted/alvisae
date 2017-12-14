@@ -14,7 +14,8 @@
     <!-- GQuery plugIn must appear first in class path -->
     <!-- "drag-and-drop support for CellTree and/or CellBrowser, the droppable plugins needs to override few gwt classes to open the API of CellTree and CellBrowser widget. So ensure that the gquery-dnd-bundle.jar are set before the gwt jar files in your compilation classpath" -->
     <!-- see http://code.google.com/p/gwtquery-plugins/wiki/DragAndDropPluginForGWTDeveloppers -->
-        <pathelement location="../libs/gquery-dnd-bundle-1.0.6.jar"/>
+        <!-- @mba replaced by the following pathelement location="../libs/gquery-dnd-bundle-1.0.6.jar"/-->
+	<pathelement location="../libs/gquery-dnd-bundle-1.0.5.jar"/>
     <!--  -->
         <pathelement location="war/WEB-INF/classes"/>
         <pathelement location="${gwt.sdk}/gwt-user.jar"/>
