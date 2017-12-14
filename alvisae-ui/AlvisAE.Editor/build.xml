@@ -13,8 +13,9 @@
     <path id="project.class.path">
     <!-- GQuery plugIn must appear first in class path -->
     <!-- "drag-and-drop support for CellTree and/or CellBrowser, the droppable plugins needs to override few gwt classes to open the API of CellTree and CellBrowser widget. So ensure that the gquery-dnd-bundle.jar are set before the gwt jar files in your compilation classpath" -->
-    <!-- see http://code.google.com/p/gwtquery-plugins/wiki/DragAndDropPluginForGWTDeveloppers -->
-        <pathelement location="../libs/gquery-dnd-bundle-1.0.6.jar"/>
+    <!-- see cd http://code.google.com/p/gwtquery-plugins/wiki/DragAndDropPluginForGWTDeveloppers -->
+        <!-- @ba commented this and replace by /libs/gquery-dnd-bundle-1.0.5.jar! pathelement location="../libs/gquery-dnd-bundle-1.0.6.jar"/-->
+	<pathelement location="../libs/gquery-dnd-bundle-1.0.5.jar"/>
     <!--  -->
         <pathelement location="war/WEB-INF/classes"/>
         <pathelement location="${gwt.sdk}/gwt-user.jar"/>
@@ -22,7 +23,8 @@
         <fileset dir="${gwt.sdk}" includes="validation-api*.jar"/>
     <!-- Add any additional non-server libs (such as JUnit) -->
         <pathelement location="../libs/gwt-graphics-1.0.0.jar"/>
-        <pathelement location="../libs/gwt-dnd-3.2.0.jar"/>
+        <!-- @mba old, see new next pathelement location="../libs/gwt-dnd-3.2.0.jar"/-->
+        <pathelement location="../libs/gwt-dnd-3.1.2.jar"/>
         <pathelement location="../libs/aopalliance.jar"/>        
         <pathelement location="../libs/javax.inject.jar"/>
         <pathelement location="../libs/guice-snapshot.jar"/>
