@@ -9,10 +9,12 @@ ENV DB_USER annotation_admin
 ENV DB_PASS annotroot;84
 
 
-COPY w.service/target/cdxws-lift-1.0-SNAPSHOT.war /
+COPY alvisae-ws/target/cdxws-lift-1.0-SNAPSHOT.war /
 COPY start.sh /
 COPY dumpdb.sql /
 COPY glassfish.localhost.props /
+
+COPY alvisae-ui/AlvisAE.GenericUI/ALvisAEGenericUI.war /
 
 RUN ["chmod", "+x", "/start.sh"]
 
