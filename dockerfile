@@ -6,19 +6,7 @@ ENV PG_VERSION 9.4
 ENV AAE_NAME alvisae-ws
 ENV DB_NAME annotation
 ENV DB_USER annotation_admin
-ENV DB_PASS annotroot;84
-
-
-COPY alvisae-ws/target/cdxws-lift-1.0-SNAPSHOT.war /
-COPY start.sh /
-COPY dumpdb.sql /
-COPY glassfish.localhost.props /
-
-COPY alvisae-ui/AlvisAE.GenericUI/ALvisAEGenericUI.war /
-
-RUN ["chmod", "+x", "/start.sh"]
-
-RUN mv /cdxws-lift-1.0-SNAPSHOT.war /$AAE_NAME.war
+ENV DB_PASS annotroot
 
 # Setup gosu for easier command execution
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
@@ -38,22 +26,27 @@ RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/$PG_VERSION/main/p
     echo "listen_addresses='*'" >> /etc/postgresql/$PG_VERSION/main/postgresql.conf
 
 
+COPY user.sql /
+COPY dumpdb.sql /
+COPY glassfish.localhost.props /
+
+
 # Sets postgres password
-RUN gosu postgres /etc/init.d/postgresql start && \
-    gosu postgres psql -c "ALTER USER postgres WITH PASSWORD 'postgres'";
 
 RUN gosu postgres /etc/init.d/postgresql start && \
-    gosu postgres psql -c "CREATE ROLE $DB_USER WITH LOGIN ENCRYPTED PASSWORD '${DB_PASS}' CREATEDB"; 
+    gosu postgres psql -v DB_NAME=${DB_NAME} -v DB_PASS=${DB_PASS} -v DB_USER=${DB_USER} -f  /user.sql && \
+    gosu postgres psql $DB_NAME < /dumpdb.sql
 
-RUN gosu postgres /etc/init.d/postgresql start && \
-    gosu postgres psql -c "CREATE DATABASE $DB_NAME WITH OWNER $DB_USER TEMPLATE template0 ENCODING 'UTF8'";
 
-RUN gosu postgres /etc/init.d/postgresql start && \
-    gosu postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER";
 
-RUN gosu postgres /etc/init.d/postgresql start && \
-    gosu postgres psql $DB_NAME < /dumpdb.sql;
 
+COPY alvisae-ws/target/cdxws-lift-1.0-SNAPSHOT.war /
+
+COPY alvisae-ui/AlvisAE.GenericUI/AlvisAEGenericUI.war /
+
+COPY start.sh /
+
+RUN ["chmod", "+x", "/start.sh"]
 
 EXPOSE 8080
 EXPOSE 4848
