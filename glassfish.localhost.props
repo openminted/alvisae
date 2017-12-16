@@ -1,0 +1,7 @@
+db.type=postgresql
+db.server=localhost
+db.port=5432
+db.dbname=annotation
+db.username=annotation_admin
+db.password=annotroot
+db.schema=aae_biotopes_quaero
