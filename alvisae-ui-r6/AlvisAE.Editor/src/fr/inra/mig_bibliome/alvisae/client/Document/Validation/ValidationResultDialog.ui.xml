@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2014.
+ *
+ */
+-->
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+  xmlns:g='urn:import:com.google.gwt.user.client.ui'
+  >
+
+    <g:DockLayoutPanel unit='EM'>
+        <g:south size='2'>
+            <g:Button text='Close' ui:field='closeButton' />
+        </g:south>
+        <g:center>
+            <g:HTML width='98%' height='95%' ui:field='htmlPanel'/>
+        </g:center>
+    </g:DockLayoutPanel>
+</ui:UiBinder>

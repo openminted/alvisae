@@ -1,0 +1,70 @@
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010.
+ *
+ */
+-->
+
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+  xmlns:g='urn:import:com.google.gwt.user.client.ui'
+  >
+
+    <ui:style>
+  .panel {
+    padding: 10px;
+ 	}
+
+  .aboutText {
+    text-align: center;
+  }
+
+  .othersText {
+    text-align: center;
+    font-size: smaller;
+  }
+
+
+  .buttons {
+    text-align: right;
+  }
+    </ui:style>
+
+    <g:HTMLPanel width='24em' styleName='{style.panel}'>
+        <div class='{style.aboutText}'>
+ This work was partly achieved as part of the <g:Anchor href="http://www.quaero.org/" target="_blank">Quaero</g:Anchor> Programme, funded by <g:Anchor href="http://www.oseo.fr/" target="_blank">OSEO</g:Anchor>, French State agency for innovation.
+ <br/>
+ <g:Anchor href="http://www.international.inra.fr/" target="_blank">
+ <b>I</b>nstitut <b>N</b>ational de la <b>R</b>echerche <b>A</b>gronomique</g:Anchor> &copy;2010-2014.
+ 
+<br/><br/>
+    This application has been developed using
+            <g:Anchor href="http://code.google.com/webtoolkit/terms.html" target="_blank">Google Web Toolkit (GWT)</g:Anchor> and the 
+            <g:Anchor href="http://netbeans.org/about/legal/license.html" target="_blank">NetBeans IDE</g:Anchor>
+        </div>
+        <div class='{style.aboutText}'>
+            <br/>
+            <br/>
+    Some Icons are Copyright &copy;<br/>
+        </div>
+        <div class='{style.othersText}'>
+            <g:Anchor href="http://p.yusukekamiyamane.com/" target="_blank">Yusuke Kamiyamane</g:Anchor>
+            All rights reserved. Licensed under a
+            <g:Anchor href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons Attribution 3.0 license</g:Anchor>.
+            <br/>
+            <g:Anchor href="http://www.famfamfam.com/lab/icons/silk/" target="_blank">FamFamFam.com</g:Anchor>
+            All rights reserved. Licensed under a
+            <g:Anchor href="http://creativecommons.org/licenses/by/2.5/" target="_blank">Creative Commons Attribution 2.5 license</g:Anchor>.
+            <br/>
+            
+        </div>
+
+        <div class='{style.buttons}'>
+            <g:Button text='Close' ui:field='closeButton' />
+        </div>
+    </g:HTMLPanel>
+</ui:UiBinder>

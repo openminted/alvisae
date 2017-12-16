@@ -1,0 +1,177 @@
+@CHARSET "UTF-8";
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010-2011.
+ *
+*/
+
+.DroppableHover {
+    background-color: #AAFFA5;
+}
+
+.UnDroppableHover {
+    background-color: #F9AEAE;
+}
+
+.DragHelper {
+    border: 1px solid #945FFF;
+    border-style: dotted;
+    background-color:  #FFF4D9;
+    padding: 4px;
+}
+
+.Overlay {
+    position:absolute;
+    overflow:hidden;
+    background-color: transparent;
+    z-index:1;
+}
+
+.cwId {
+    outline: thin solid silver;
+    font-family: monospace;
+    font-size: smaller;
+    padding: 1px;
+}
+
+.cwOutdatedId {
+    outline: thin solid red;
+    color: red;
+    font-family: monospace;
+    font-size: smaller;
+    padding: 1px;
+}
+
+.cwOutdatedRefId {
+    outline: thin dotted red;
+    color: #454545;
+    font-style: italic;
+    font-family: monospace;
+    font-size: smaller;
+    padding: 1px;
+}
+
+.cwRow {
+    background-color: white;
+}
+
+.cwRow:hover {
+    background-color: #e5e5e5;
+}
+
+@sprite .csResolved {
+    gwt-image: "ConsoStatusSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 0;
+}
+
+@sprite .csRejected {
+    gwt-image: "ConsoStatusSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 -16px;
+}
+
+@sprite .csSplit {
+    gwt-image: "ConsoStatusSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 -32px;
+}
+
+@sprite .csPostponed {
+    gwt-image: "ConsoStatusSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 -48px;
+
+}
+
+@sprite .btnDocPanelSelect {
+    gwt-image: "DocPanelSelect";
+    height: 16px;
+    width: 16px;
+    background-position: 0 0;
+}
+
+
+@sprite .termGenerNotLinked {
+    gwt-image: "TermGeneratorSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 0;
+}
+
+@sprite .termGenerLinked {
+    gwt-image: "TermGeneratorSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 -16px;
+}
+
+@sprite .termGenerObsolete {
+    gwt-image: "TermGeneratorSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 -32px;
+}
+
+
+@sprite .termLinkerNotLinked {
+    gwt-image: "TermLinkerSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 0;
+}
+
+@sprite .termLinkerLinked {
+    gwt-image: "TermLinkerSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 -16px;
+}
+
+@sprite .termLinkerObsolete {
+    gwt-image: "TermLinkerSprite";
+    height: 16px;
+    width: 16px;
+    background-position: 0 -32px;
+}
+
+@sprite .kdText {
+    gwt-image: "TextAnnotationIcon";
+    height: 16px;
+    width: 16px;
+    background-position: 0 0;
+}
+
+@sprite .kdGroup {
+    gwt-image: "GroupAnnotationIcon";
+    height: 16px;
+    width: 16px;
+    background-position: 0 0;
+}
+
+@sprite .kdRelation {
+    gwt-image: "RelationAnnotationIcon";
+    height: 16px;
+    width: 16px;
+    background-position: 0 0;
+}
+
+@sprite .warnIcon {
+    gwt-image: "ExclamationIcon";
+    height: 16px;
+    width: 16px;
+    background-position: 0 0;
+}
+
+@sprite .unknownIcon {
+    gwt-image: "UnknownIcon";
+    height: 16px;
+    width: 16px;
+    background-position: 0 0;
+}

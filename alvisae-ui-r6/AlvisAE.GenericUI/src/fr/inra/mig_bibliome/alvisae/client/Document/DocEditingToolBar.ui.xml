@@ -1,0 +1,86 @@
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2012.
+ *
+ */
+-->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+>
+
+    <ui:with field='staneCoreRes' type='fr.inra.mig_bibliome.alvisae.client.StaneCoreResources'/>
+    <ui:with field='staneEditorRes' type='fr.inra.mig_bibliome.alvisae.client.StanEditorResources'/>
+    <ui:with field='staneRes' type='fr.inra.mig_bibliome.alvisae.client.StaneResources'/>
+
+    <ui:style type='fr.inra.mig_bibliome.alvisae.client.Document.DocEditingToolBar.Styles'>
+
+        .MessageBar {
+        background-color:  lightsteelblue;
+        }
+
+
+        .StatusBar {
+        background-color: lightsteelblue;
+        }
+
+
+        .BackGroundPos {
+        z-index: -700;
+        }
+        
+        .ForeGroundPos {
+        z-index: 700;
+        }
+
+        .GlassPanel {
+        position:absolute;
+        top:0px;
+        left:0px;
+        overflow:hidden;
+        background-color: grey;
+        opacity: 0.3;
+        }        
+    </ui:style>
+
+    <g:LayoutPanel styleName='{style.MessageBar}' ui:field='messageBar' width='100%'>
+        <g:layer top='0' height='2EM' left='4.2EM' width='14.9EM'>
+            <g:SimplePanel ui:field='glassPanel' width='1600px' height='2EM' addStyleNames='{style.GlassPanel}'>
+            </g:SimplePanel>
+        </g:layer>
+        <g:layer top='0.1EM' height='2EM' left='1.3EM' width='2EM'>
+            <g:PushButton ui:field='gotoDocListButton' height='1.2em' width='1em' title='Goto Campaigns and Tasks list'>
+                <g:upFace image='{staneRes.GoToDocListIcon}' />
+            </g:PushButton>
+        </g:layer>
+        <g:layer top='0.1EM' height='2EM' left='4.4EM' width='3EM'>
+            <g:PushButton ui:field='prevDocButton' height='1.2em' width='1.4em' enabled='false' title='Annotate previous document'>
+                <g:upFace image='{staneRes.PrevDocumentIcon}' />
+            </g:PushButton>
+        </g:layer>
+        <g:layer top='0.1EM' height='2EM' left='7EM' width='3EM'>
+            <g:PushButton ui:field='nextDocButton' height='1.2em' width='1.4em' enabled='false' title='Annotate next document'>
+                <g:upFace image='{staneRes.NextDocumentIcon}' />
+            </g:PushButton>
+        </g:layer>
+        <g:layer top='0.1EM' height='2EM' left='9.6EM' width='2EM'>
+            <g:PushButton ui:field='promptDocLink' height='1.2em' width='1.4em' title='get a shareable link to the current document &amp; task'>
+                <g:upFace image='{staneRes.UrlLinkIcon}' />
+            </g:PushButton>
+        </g:layer>
+
+        <g:layer top='0.1EM' height='2EM' left='12.9EM' width='3EM'>
+            <g:PushButton ui:field='saveAnnotationsButton' height='1.2em' enabled='false' width='1.4em' title='Save modifications'>
+                <g:upFace image='{staneEditorRes.SaveAnnotationsIcon}' />
+            </g:PushButton>
+        </g:layer>
+        <g:layer top='0.1EM' height='2EM' left='16.9EM' width='2EM'>
+            <g:PushButton ui:field='finalizeDocButton' height='1.2em' width='1em' title='save modifications and publish current state of annotation'>
+                <g:upFace image='{staneEditorRes.EndDocAnnotationIcon}' />
+            </g:PushButton>
+        </g:layer>
+    </g:LayoutPanel>
+</ui:UiBinder>

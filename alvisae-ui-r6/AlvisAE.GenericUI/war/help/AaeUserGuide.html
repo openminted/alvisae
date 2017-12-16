@@ -1,0 +1,879 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0076)https://migale.jouy.inra.fr/redmine/projects/stane/wiki/Aae_UserGuide_latest -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>AlvisAE_UI - User Guide - v0.6</title>
+<meta name="description" content="AlvisAE_UI - User Guide">
+
+<link href="./AaeUserGuide_files/application.css" media="all" rel="stylesheet" type="text/css">
+  
+      <style type="text/css">
+    #sample_tag {
+color: #ff0000;
+font-weight: bold;
+text-decoration: blink;
+}
+    </style>
+  
+
+
+</head>
+<body class="controller-wiki action-show">
+
+
+<div id="header">
+    
+    
+</div>
+
+<div class="" id="main">
+    
+    <div id="content">
+
+
+<div class="wiki wiki-page">
+  <p style="text-align:center;"><strong>AlvisAE: Annotation Editor of the Alvis Suite</strong></p>
+
+
+	<p></p><div id="sample_tag"> <br>work in progress
+</div><p></p>
+
+
+	<ul class="toc"><li><a href="#AlvisAE-User-Guide-v06">AlvisAE User Guide (v0.6)</a><ul><li><a href="#Introduction">Introduction</a></li><li><a href="#Brief-description">Brief description</a><ul><li><a href="#Quick-start-creating-a-Text-Annotation">Quick start: creating a Text Annotation</a></li><li><a href="#Annotations-come-in-3-differents-Kinds">Annotations come in 3 differents Kinds</a></li><li><a href="#Creating-secondary-annotations">Creating secondary annotations</a></li></ul>
+</li><li><a href="#Tour-of-AlvisAE">Tour of AlvisAE</a><ul><li><a href="#start-using-AlvisAE">start using AlvisAE</a></li><li><a href="#Authentication">Authentication</a></li><li><a href="#Campaign-and-Task-selection">Campaign and Task selection</a></li><li><a href="#Editing-view">Editing view</a></li></ul>
+</li><li><a href="#Editor-panel">Editor panel</a><ul><li><a href="#Title-Bar">Title Bar</a></li><li><a href="#ToolBar">ToolBar</a></li><li><a href="#Document-panel">Document panel</a><ul><li><a href="#Text-Annotations">Text Annotations</a></li><li><a href="#Relations">Relations</a></li><li><a href="#Groups">Groups</a></li></ul>
+</li><li><a href="#Occurrence-bar">Occurrence bar</a></li><li><a href="#Property-Sheet">Property Sheet</a></li></ul>
+</li><li><a href="#Annotation-Table">Annotation Table</a></li><li><a href="#Task-and-Workflow">Task and Workflow</a><ul><li><a href="#Task-grid">Task grid</a></li><li><a href="#Workflow-grid">Workflow grid</a></li></ul>
+</li><li><a href="#Annotations-Consolidation-Review">Annotations Consolidation - Review</a><ul><li><a href="#Consolidation-view">Consolidation view</a><ul><li><a href="#Presentation-of-the-process-Consolidation-Blocks">Presentation of the process - Consolidation Blocks</a></li><li><a href="#Modus-operandi">Modus operandi</a></li><li><a href="#Adjudication-toolbar">Adjudication toolbar</a></li></ul>
+</li></ul>
+</li><li><a href="#Termino-Ontology-Extension">Termino-Ontology Extension</a><ul><li><a href="#Extension-Activation">Extension Activation</a></li><li><a href="#Authentication-2">Authentication</a></li><li><a href="#Browsing-the-TerminologyOntology">Browsing the Terminology/Ontology</a></li><li><a href="#Searching-within-the-TerminologyOntology">Searching within the Terminology/Ontology</a></li><li><a href="#Viewing-changes-in-the-TerminologyOntology">Viewing changes in the Terminology/Ontology</a></li><li><a href="#Changing-Classes-hierarchy">Changing Classes hierarchy</a></li><li><a href="#Enriching-the-TerminologyOntology">Enriching the Terminology/Ontology</a></li></ul>
+</li><li><a href="#Miscellaneous">Miscellaneous</a><ul><li><a href="#Password-change">Password change</a></li><li><a href="#Users-Management">Users Management</a></li><li><a href="#Assignements">Assignements</a></li></ul>
+</li><li><a href="#Glossary">Glossary</a></li></ul></li></ul>
+
+
+	<a name="AlvisAE-User-Guide-v06"></a>
+<h1>AlvisAE User Guide (<em>v0.6</em>)<a href="#AlvisAE-User-Guide-v06" class="wiki-anchor">¶</a></h1>
+
+
+	<a name="Introduction"></a>
+<h2>Introduction<a href="#Introduction" class="wiki-anchor">¶</a></h2>
+
+
+	<p>AlvisAE is a tool designed to seamlessly perform the annotation of textual documents.<br>Because it is a Web Application, no installation is needed to start using AlvisAE : Indeed, AlvisAE runs on any platform providing a modern web browser (such as Firefox, Safari, Chrome).</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/843" alt=""></p>
+
+
+	<a name="Brief-description"></a>
+<h2>Brief description<a href="#Brief-description" class="wiki-anchor">¶</a></h2>
+
+
+	<p>AlvisAE has been designed to facilitates the annotation of textual documents, with the goal of extracting knowledge. To do so, AlvisAE displays the text of the document, that can optionally includes some simple formatting; <br>Annotations are superimposed to the text, in a way that do not impair the readability. <br>Each Annotations belongs to a <em>Type</em>, and is displayed according to this <em>Type</em> (the list of <em>Types</em> and their associated colors are specified in the <em>Annotation Schema</em>).</p>
+
+
+	<a name="Quick-start-creating-a-Text-Annotation"></a>
+<h3><img src="./AaeUserGuide_files/844" alt=""> Quick start: creating a <em>Text Annotation</em><a href="#Quick-start-creating-a-Text-Annotation" class="wiki-anchor">¶</a></h3>
+
+
+	<p>Creating an <em>Text Annotation</em> is fairly intuitive : simply select the words of interest with the mouse pointer, choose the desired annotation <em>Type</em> in the toolbar and click the “Create Text Annotation” button [ <img src="./AaeUserGuide_files/836" alt=""> ].</p>
+
+
+<a name="Annotations-come-in-3-differents-Kinds"></a>
+<h3>Annotations come in 3 differents <em>Kinds</em><a href="#Annotations-come-in-3-differents-Kinds" class="wiki-anchor">¶</a></h3>
+
+
+	<ul>
+	<li>1- <img src="./AaeUserGuide_files/837" alt=""> <em>Text Annotations</em>, also called primary annotation because they are bound to a part of the text</li>
+	</ul>
+
+
+Besides Text Annotations, AlvisAE allows to edit 2 kinds of secondary annotation, which are not bound to text but are referencing other annotations:
+	<ul>
+	<li>2- <img src="./AaeUserGuide_files/839" alt=""> <em>Relation</em> -  which contains a fixed number of arguments, each argument being associated to a named role.</li>
+		<li>3- <img src="./AaeUserGuide_files/838" alt=""> <em>Group</em> - simple set of reference to other annotations (called components)</li>
+	</ul>
+
+
+<a name="Creating-secondary-annotations"></a>
+<h3><img src="./AaeUserGuide_files/844" alt=""> Creating secondary annotations<a href="#Creating-secondary-annotations" class="wiki-anchor">¶</a></h3>
+
+
+Creating secondary annotations is rather simple :
+	<ul>
+	<li>A Relation between 2 Text Annotations is created by dragging the first annotation and dropping it onto the other one (drag the icon that appears at the top left corner of the annotation <img src="./AaeUserGuide_files/834" alt=""> ); </li>
+		<li>For more complex Relations (i.e. concerning more than 2 primary annotations, or some secondary annotation), you will need to select the arguments to be included in the relation from the Annotation Table, then clicking the "Create Relation" button [ <img src="./AaeUserGuide_files/840" alt=""> ].</li>
+		<li>Creating Groups is also performed by selecting the components in the Annotation Table, then clicking the "Create Group" button [ <img src="./AaeUserGuide_files/842" alt=""> ].</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Tour-of-AlvisAE"></a>
+<h2>Tour of AlvisAE<a href="#Tour-of-AlvisAE" class="wiki-anchor">¶</a></h2>
+
+
+<a name="start-using-AlvisAE"></a>
+<h3>start using AlvisAE<a href="#start-using-AlvisAE" class="wiki-anchor">¶</a></h3>
+
+
+	<p>you can experiment AlvisAE with the online demo at <a class="external" href="https://bibliome.jouy.inra.fr/alvisae/demo/AlvisAE/">https://bibliome.jouy.inra.fr/alvisae/demo/AlvisAE/</a></p>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Authentication"></a>
+<h3>Authentication<a href="#Authentication" class="wiki-anchor">¶</a></h3>
+
+
+	<p>since each user can edit its own annotation, you will need to authenticate before doing any modification.<br><img src="./AaeUserGuide_files/826" alt=""> If you are trying the online demo, login name and password are both : <code>foo</code></p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/828" alt=""></p>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> AlvisAE will remember your login name for next time!</p>
+
+
+<a name="Campaign-and-Task-selection"></a>
+<h3>Campaign and Task selection<a href="#Campaign-and-Task-selection" class="wiki-anchor">¶</a></h3>
+
+
+	<p>Once authenticated, AlvisAE will display the list of the available Annotation projects which are called "Campaign".</p>
+
+
+	<p>Each campaign contains a set of documents that can be annotated according to the Annotation schema specific to the campaign.<br>A campaign is usually divided into smaller Tasks that may be carried out by different annotators, and that AlvisAE will help you to schedule.</p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p>The top left list shows campaigns available to the current user; On the right, another table displays, for the selected campaign, the <a href="#Task-grid" class="wiki-page">list of the user's tasks</a>, and actions that can be performed on them. <br>The bottom table contains the summary of the <a href="#Workflow-grid" class="wiki-page">workflow</a> of the selected campaign.</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/1329" alt=""></p>
+
+
+	<p>&nbsp;</p>
+
+
+	<p>For the purpose of this brief introduction, just choose any <code>pending</code> <img src="./AaeUserGuide_files/1332" alt=""> or <code>todo</code> <img src="./AaeUserGuide_files/1333" alt=""> Task and click the "Annotate" button [ <img src="./AaeUserGuide_files/850" alt=""> ] in the grid to start annotating the corresponding document.</p>
+
+
+<a name="Editing-view"></a>
+<h3>Editing view<a href="#Editing-view" class="wiki-anchor">¶</a></h3>
+
+
+	<p>The selected document is displayed in the editing view :</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/1342" alt=""></p>
+
+
+The editing view can be divided in the following parts:  
+	<ol>
+	<li><strong>Global toolbar</strong>, providing commands to: 
+	<ul>
+	<li>browse documents [ <img src="./AaeUserGuide_files/829" alt=""> / <img src="./AaeUserGuide_files/818" alt=""> ], </li>
+		<li>return to campaigns &amp; documents list [ <img src="./AaeUserGuide_files/835" alt=""> ],</li>
+		<li>save the edited annotations [ <img src="./AaeUserGuide_files/827" alt=""> ],</li>
+		<li>end the annotation of the current document [ <img src="./AaeUserGuide_files/832" alt=""> ],</li>
+		<li>menu to perform <a href="#Miscellaneous" class="wiki-page">miscellaneous actions</a>, including to signing-out, and links to online help and About dialog. </li>
+	</ul>
+	</li>
+		<li><a href="#Editor-panel" class="wiki-page">Editor panel</a>, which display the document itself and commands to annotate it</li>
+		<li>resizeable <strong>Panel-Boundaries</strong>, to organize the space within the browser window </li>
+		<li><a href="#Annotation-Table" class="wiki-page">Annotation table</a>, displaying annotation in a tabular format</li>
+		<li><a href="#Property-Sheet" class="wiki-page">Property Sheet</a> on the left side panel, used to display and edit Annotation properties</li>
+		<li><strong>Status bar</strong>, displaying system messages and network activity</li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Editor-panel"></a>
+<h2>Editor panel<a href="#Editor-panel" class="wiki-anchor">¶</a></h2>
+
+
+<a name="Title-Bar"></a>
+<h3>Title Bar<a href="#Title-Bar" class="wiki-anchor">¶</a></h3>
+
+
+	<p>It displays the name of the current task and the title of the document.</p>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> double-clicking on the title bar will maximize the document panel (double-click on it again to restore normal view)</p>
+
+
+	<p><img src="./AaeUserGuide_files/826" alt=""> when the title of the document is underlined, it contains an hyperlink to the source of the document (typically the PDF version of the document)</p>
+
+
+<a name="ToolBar"></a>
+<h3>ToolBar<a href="#ToolBar" class="wiki-anchor">¶</a></h3>
+
+
+the toolbar contains all the commands used to edit annotations: 
+	<ul>
+	<li><img src="./AaeUserGuide_files/824" alt=""> increase text interline size,</li>
+		<li><img src="./AaeUserGuide_files/819" alt=""> decrease interline size,</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/831" alt=""> undo last edit (shortcut [ <code>Ctrl &amp; Z</code> ]),</li>
+		<li><img src="./AaeUserGuide_files/816" alt=""> redo last undo-ed edit (shortcut [ <code>Ctrl &amp; Y</code> ]),</li>
+	</ul>
+
+
+	<ul>
+	<li>choose text annotation <em>Type</em> from the drop-down list (only the Types editable within the current Task are displayed),</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/836" alt=""> create a new Text Annotation with the currently selected text portion (shortcut [ <code>A</code> ]),</li>
+		<li><img src="./AaeUserGuide_files/817" alt=""> remove the currently selected Text Annotation (shortcut [ <code>Del</code> ]),</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/821" alt=""> enlarge the selected Text Annotation span by adding the currently selected text,</li>
+		<li><img src="./AaeUserGuide_files/820" alt=""> shrink the selected Text Annotation span by remove the currently selected text,</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/1339" alt=""> replicate the selected Text Annotation (search for other occurrences of its text within the document, and create new Annotation of the same type for any match)</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/842" alt=""> create a Group with the selected annotations,</li>
+		<li><img src="./AaeUserGuide_files/825" alt=""> remove the selected Group,</li>
+		<li><img src="./AaeUserGuide_files/823" alt=""> edit the selected Group (add/remove components),</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/840" alt=""> create a Relation with the selected annotations,</li>
+		<li><img src="./AaeUserGuide_files/822" alt=""> remove the selected Relation,</li>
+		<li><img src="./AaeUserGuide_files/812" alt=""> edit the selected Relation (change type and/or arguments),</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/808" alt=""> / <img src="./AaeUserGuide_files/806" alt=""> switch between Text selection and secondary annotation selection mode (shortcut [ <code>V</code> ]),</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/807" alt=""> display the campaign Annotation Schema,</li>
+		<li><img src="./AaeUserGuide_files/809" alt=""> validate the current document against the Annotation Schema,</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/1450" alt=""> Refresh all references to TyDI resources (see <a href="#Extension-Activation" class="wiki-page">Termino-Ontology Extension</a>)</li>
+	</ul>
+
+
+	<ul>
+	<li><img src="./AaeUserGuide_files/851" alt=""> select the displayed Annotation Sets</li>
+	</ul>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> The toolbar can be collapsed by clicking on the small triangular icon on the top left side [ <img src="./AaeUserGuide_files/815" alt=""> ]</p>
+
+
+<a name="Document-panel"></a>
+<h3>Document panel<a href="#Document-panel" class="wiki-anchor">¶</a></h3>
+
+
+	<p>This is the central panel of AlvisAE, which displays the text of the document, enriched with specific graphical elements to represent the different kind of Annotations.</p>
+
+
+	<p><img src="./AaeUserGuide_files/826" alt=""> When a document is loaded, Relations are hidden by default to preserve a good text readability (Text Annotation which are involved in a hidden Relation are indicated by a triangle glyph on its top right border).<br><img src="./AaeUserGuide_files/841" alt=""> when the mouse pointer fly over a Text Annotation, all Relations involving the hovered Text Annotation are temporarily revealed (The visibility status of each annotation can be individually set from the <a href="#Annotation-Table" class="wiki-page">Annotation table</a> or the <a href="#Property-Sheet" class="wiki-page">Property Sheet</a>)</p>
+
+
+<a name="Text-Annotations"></a>
+<h4>Text Annotations<a href="#Text-Annotations" class="wiki-anchor">¶</a></h4>
+
+
+	<p><ins>Graphical representation</ins></p>
+
+
+Text Annotation are displayed as colored boxes, whose background color is set according to the Annotation Type.<br>The border color has also some specific meaning:
+	<ul>
+	<li>red : default color of unselected annotation,</li>
+		<li>yellow : currently hovered, unselected annotation,</li>
+		<li>cyan : color of selected annotation(s),</li>
+		<li>dark green : currently hovered, selected annotation,</li>
+		<li>lime green : currently hovered annotation during a drag and drop operation</li>
+	</ul>
+
+
+	<p>The border is always displayed, even if an annotation is hidden because it includes another annotation. So, the thickness of the border is a good indication of the number of included annotations.</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/810" alt=""></p>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> Pressing the <code>Shift</code> key while moving the mouse pointer over included annotations will popup the exploded list of annotations present at the mouse position, which is useful to select the right annotation (this list is automatically opened when dropping during a drag and drop operation intended to create a Relation).</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/811" alt=""></p>
+
+
+	<p><ins>Edition</ins></p>
+
+
+	<ul>
+	<li>Click and drag to select a fragment of text, then click the “Create Text Annotation” button [ <img src="./AaeUserGuide_files/836" alt=""> ] or use the keyboard shortcut <code>A</code><br><img src="./AaeUserGuide_files/841" alt=""> It is possible to create discontinuous annotation by selecting several distinct fragments of text with the <code>Ctrl</code> key pressed (your web browser must support discontinuous text selection)</li>
+	</ul>
+
+
+	<ul>
+	<li>margin : warning icons....</li>
+	</ul>
+
+
+<blockquote><blockquote><blockquote><blockquote><blockquote>
+
+	<p><strong>TODO : add details here</strong></p>
+
+
+</blockquote></blockquote></blockquote></blockquote></blockquote>
+
+<a name="Relations"></a>
+<h4>Relations<a href="#Relations" class="wiki-anchor">¶</a></h4>
+
+
+	<p><ins>Graphical representation</ins></p>
+
+
+	<p>Relations are figured by horizontal and vertical line segments linking each arguments to a polygonal kernel, whose background color is set according to the Annotation Type.<br><img src="./AaeUserGuide_files/826" alt=""> In the case of binary Relations, the kernel is a an arrow-head pointing from the first argument to the second one (in their order of declaration in the Annotation schema). For Relations of higher arity, the kernel is a simple diamond shape.</p>
+
+
+<a name="Groups"></a>
+<h4>Groups<a href="#Groups" class="wiki-anchor">¶</a></h4>
+
+
+	<p><ins>Graphical representation</ins></p>
+
+
+	<p>Groups are figured by diagonal line segments linking each component to a circled kernel, whose background color is set according to the Annotation Type.</p>
+
+
+<a name="Occurrence-bar"></a>
+<h3>Occurrence bar<a href="#Occurrence-bar" class="wiki-anchor">¶</a></h3>
+
+
+This is a vertical bar (located on right side of the document panel) where each Text Annotation is figured by a little horizontal line marker :
+	<ul>
+	<li>the vertical position of the marker on the bar is proportional to the annotation location inside the document,</li>
+		<li>the marker's color correspond to its Annotation Type.</li>
+	</ul>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> double-clicking on a marker will scroll the document to view the corresponding text annotation.</p>
+
+
+	<p><img src="./AaeUserGuide_files/826" alt=""> The occurrence bar presents a global summary of all Text Annotations of the current document, in terms of localization, density, and is especially useful for areas of the document currently not scrolled into view.</p>
+
+
+<a name="Property-Sheet"></a>
+<h3>Property Sheet<a href="#Property-Sheet" class="wiki-anchor">¶</a></h3>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/1361" alt=""> <img src="./AaeUserGuide_files/1359" alt=""> <img src="./AaeUserGuide_files/1360" alt=""></p>
+
+
+	<p>this view display details of the currently selected annotation, from top to bottom :</p>
+
+
+	<ul>
+	<li>a topbar, with a button to toggle the visibility of the annotation in the corresponding Document panel.</li>
+		<li>a header, spreading on 1 or 2 lines:
+	<ul>
+	<li>Kind, identifier, type indicator <br><img src="./AaeUserGuide_files/841" alt=""> In editing mode, the type of the current Annoation can be changed by clicking on the type indicator. It will open a popup list allowing to choose the new type from all the available types</li>
+		<li>covered text for Text Annotation</li>
+	</ul>
+	</li>
+		<li>for Relations, a sub-panel displaying argument for each roles<br><img src="./AaeUserGuide_files/841" alt=""> In editing mode :
+	<ul>
+	<li>any argument can be changed by clicking on the corresponding Kind indicator. It will open a popup list allowing to choose a new argument for that role.</li>
+		<li>any argument can be removed by clicking on the red minus sign located at the left of the argument row. Even if it is possible to save incomplete Relations, it may not validate against the schema.</li>
+	</ul></li>
+	</ul>
+
+
+	<ul>
+	<li>for Groups, a sub-panel displaying list of the components<br><img src="./AaeUserGuide_files/841" alt=""> In editing mode :
+	<ul>
+	<li>any component can be removed by clicking on the red minus sign located at the left of the component row. Even if it is possible to save empty Groups, it may not validate against the schema.</li>
+		<li>new components can be added to the Group by clicking on green plus sign located above the component rows.</li>
+	</ul></li>
+	</ul>
+
+
+	<ul>
+	<li>a Property sub-panel displaying every property and its values. <br><img src="./AaeUserGuide_files/841" alt=""> In editing mode :
+	<ul>
+	<li>new property value can be added by clicking on the green plus sign</li>
+		<li>any existing value can be removed by clicking on the red minus sign</li>
+	</ul></li>
+	</ul>
+
+
+	<ul>
+	<li>for derived Annotations (=produced during a review), a Source sub-panel displaying every Annotations used to produce the current Annotation.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+<img src="./AaeUserGuide_files/826" alt=""> Annotation identifier widget color is set according to the obsolescence status of the corresponding Annotation:
+	<ul>
+	<li>red when the Annotation itself is outdated,</li>
+		<li>dotted outline when referenced Annotations are outdated.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Annotation-Table"></a>
+<h2>Annotation Table<a href="#Annotation-Table" class="wiki-anchor">¶</a></h2>
+
+
+	<p>This table presents in a tabular format all annotations of the current document.</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/802" alt=""></p>
+
+
+	<p>Each annotation is displayed as a single line in the table which contains the following columns:</p>
+
+
+	<ul>
+	<li>unique <strong>identifier</strong> of the annotation<br><img src="./AaeUserGuide_files/841" alt=""> double-clicking on an id will scroll the document to view the corresponding annotation.</li>
+		<li><strong>Annotation Set</strong> to which the annotation belongs (named after the user name, or the software agent, who produced it).</li>
+		<li><a href="#Annotations-come-in-3-differents-Kinds" class="wiki-page"> <strong>Kind</strong> </a> of the annotation ( <img src="./AaeUserGuide_files/837" alt=""> / <img src="./AaeUserGuide_files/839" alt=""> / <img src="./AaeUserGuide_files/838" alt=""> )</li>
+		<li><strong>Type</strong>, figured by its color and name (depending of the Annotation Schema of the current campaign)</li>
+		<li><strong>Details</strong> : the fragment(s) of text covered for Text Annotation, or a specific flat representation for Relation and Group.<br><img src="./AaeUserGuide_files/841" alt=""> in the flat representation for Relation and Group: double-clicking on the grayed part representing a referenced annotation will change the selection to this specific annotation.</li>
+		<li>optional <strong>Term handle</strong> [ <img src="./AaeUserGuide_files/805" alt=""> ], used for enriching an external Terminology/Ontology resource (see <a href="#Termino-Ontology-Extension" class="wiki-page">Terminology/Ontology extension</a>)</li>
+		<li><strong>Visibility</strong> status, allowing to toggle (by a simple click on the icon) the visibility of the corresponding annotation in the document panel<br><img src="./AaeUserGuide_files/841" alt=""> if several lines are selected in the table, the visibility will be changed for all of them.<br><img src="./AaeUserGuide_files/826" alt=""> when loading a document, Relations are hidden by default, hence maintaining a good text readability.</li>
+	</ul>
+
+
+	<p>The content of the table can be reordered by clicking on the column header (first click for ascending order, second click for descending order).<br><img src="./AaeUserGuide_files/826" alt=""> when ordering by Kind, the Text Annotation are presented in the order of the text flow.</p>
+
+
+	<p>There is a toolbar (collapsed by default) above the table header that can by expanded by clicking on the small triangular icon on the top left side [ <img src="./AaeUserGuide_files/813" alt=""> ] : it contains a menu allowing to select which Annotation Set(s) is displayed in the table.</p>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Task-and-Workflow"></a>
+<h2>Task and Workflow<a href="#Task-and-Workflow" class="wiki-anchor">¶</a></h2>
+
+
+	<p>A Task is a unit step in the annotation process. For instance, different tasks may be used to edit different types of Annotations. <br>Since the same task can be performed on the same document by different users, in that case a subsequent task (called "review") will be necessary to consolidate the concurent annotations created by the different users.<br>When a campaign is created, a workflow is defined to specify how every tasks link together.</p>
+
+
+<a name="Task-grid"></a>
+<h3>Task grid<a href="#Task-grid" class="wiki-anchor">¶</a></h3>
+
+
+	<p>This table display, for the selected campaign, the list of annotation task instances available to the current user.<br>Thus, it contains a row for each task applied to every document assigned to the user.</p>
+
+
+This grid display the following details about task instances (columns) : 
+	<ul>
+	<li>Document identifier,</li>
+		<li>Task name,</li>
+		<li>A icon to indicates the task instance status :
+	<ul>
+	<li><img src="./AaeUserGuide_files/1333" alt=""> <code>todo</code>, before the user has started working on the corresponding annotation task,</li>
+		<li><img src="./AaeUserGuide_files/1332" alt=""> <code>pending</code>, when the user has started working the annotation task, </li>
+		<li><img src="./AaeUserGuide_files/1331" alt=""> <code>done</code>, once the user considers the task finished, hence he published it.</li>
+	</ul>
+	</li>
+		<li>A set of buttons to :
+	<ul>
+	<li><img src="./AaeUserGuide_files/1334" alt=""> start editing, </li>
+		<li><img src="./AaeUserGuide_files/1335" alt=""> discard the current work on the task,<br><img src="./AaeUserGuide_files/warning.png" alt="(!)"> Beware discarded annotations can <strong>not</strong> be restored <img src="./AaeUserGuide_files/warning.png" alt="(!)"> </li>
+		<li><img src="./AaeUserGuide_files/1336" alt=""> or publish it. </li>
+	</ul>
+	</li>
+		<li>the date of publication of the task (if applicable)</li>
+	</ul>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> <ins>Note</ins> : you may change the sorting order of the task instances by clicking on the table headers.</p>
+
+
+<img src="./AaeUserGuide_files/826" alt=""> <strong>Performance tip</strong> : Depending on the number of documents and the complexity of the workflow associated to the campaign, displaying every task instances at once would take some time. Hence, the task list is paginated, and the table header contains buttons to incrementally display the task instances :
+	<ul>
+	<li><img src="./AaeUserGuide_files/1439" alt=""> to display one more page of task instances list</li>
+		<li><img src="./AaeUserGuide_files/1440" alt=""> to display all remaining pages</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Workflow-grid"></a>
+<h3>Workflow grid<a href="#Workflow-grid" class="wiki-anchor">¶</a></h3>
+
+
+	<p>This table display the list of tasks defined for the selected campaign.<br>(one row for each task, sorted according to the Tasks order of precedence in the workflow).</p>
+
+
+	<p>This grid display the following details about task (columns) :</p>
+
+
+	<ul>
+	<li>the name of the Task described in the row,</li>
+		<li>the name of the reviewed Task, if the current Task is a Review of a preceding Task,  </li>
+		<li>the cardinality of the Task (required number of concurrent annotations for each document)</li>
+		<li>the list of the Annotation types allowed to be edited within the Task</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Annotations-Consolidation-Review"></a>
+<h2>Annotations Consolidation - Review<a href="#Annotations-Consolidation-Review" class="wiki-anchor">¶</a></h2>
+
+
+	<p>During a standard Annotation Task, Annotations are created <em>de novo</em> by a user.<br>During a Review, the reviewer has to produce a consolidated view of the annotations already created by one or more other persons.</p>
+
+
+	<p>In that case, the standard Editing view described above would not suffice, so AlvisAE offers a more complex specific UI dedicated to the Reviewing process.</p>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Consolidation-view"></a>
+<h3>Consolidation view<a href="#Consolidation-view" class="wiki-anchor">¶</a></h3>
+
+
+This view provides a way :
+	<ul>
+	<li>to show and compare several instances of the same Task performed on the same document by one or more users (currently, limited to 2).</li>
+		<li>to exhaustively asses every Annotations of the reviewed sources, and decide whether they will appear, or not, in the final set of Annotation of the review.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/1344" alt=""></p>
+
+
+The Consolidation view can be divided, from top to bottom, in the following parts:  
+	<ol>
+	<li>first <strong>Document</strong> panel, and its associated <a href="#Property-Sheet" class="wiki-page">Property Sheet</a>, which displays the first reviewed Annotation Set (read-only) </li>
+		<li>second <strong>Document</strong> panel, and its associated <a href="#Property-Sheet" class="wiki-page">Property Sheet</a>, which displays the second reviewed Annotation Set (read-only)</li>
+		<li>a central Consolidation toolbar, holding the commands used to adjudicate the reviewed Annotations</li>
+		<li>the review <strong>Editor</strong> panel, and its associated <a href="#Property-Sheet" class="wiki-page">Property Sheet</a>. which allows editing the Review Annotation Set.</li>
+		<li><a href="#Annotation-Table" class="wiki-page">Annotation table</a>, displaying in a tabular format all the annotations of any of the above document panels (switching from a panel to another is done va the menu on the left side).</li>
+	</ol>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Presentation-of-the-process-Consolidation-Blocks"></a>
+<h4>Presentation of the process - Consolidation Blocks<a href="#Presentation-of-the-process-Consolidation-Blocks" class="wiki-anchor">¶</a></h4>
+
+
+	<p>In order to facilitate the reviewing process, the system will split up the work so the reviewer has to focus on the adjudication of a limited number of annotations at a time. <br>Indeed, AlvisAE will screen all annotations originating from the different reviewed sources to compute groups of annotations that may possibly correspond, in the end, to the same single Annotation object or to a set of intricated Annotations.<br>These groups are called "Consolidation groups", and are presented independently to the reviewer; Then the reviewer shall decide the fate of each of these Annotations (i.e. adjudicate the Annotations) to produce from them a new Annotation for the review.</p>
+
+
+	<p>A block can be processed in several step, hence yielding several derived annotations; Once every annotations of the group have been adjudicated, the group is considered as solved and will not be presented again to the reviewer. The review can be assumed as completed once every Consolidation blocks are resolved.</p>
+
+
+	<p><img src="./AaeUserGuide_files/826" alt="">  Derived Annotations contain references to the adjudicated Annotation they derive from; So whenever a derived Annotation is removed from the review, the corresponding Consolidation block will reappear as unresolved.</p>
+
+
+<a name="Modus-operandi"></a>
+<h4>Modus operandi<a href="#Modus-operandi" class="wiki-anchor">¶</a></h4>
+
+
+the reviewer has to :
+	<ul>
+	<li>choose a block to resolve; Every source Annotations of the block are highlighted thanks to pin shaped widgets [ <img src="./AaeUserGuide_files/1354" alt=""> ] which are displayed at the top left border of the source Annotations,</li>
+	</ul>
+
+
+	<ul>
+	<li>individually adjudicate the source Annotations : Clicking on the pin shaped widget opens a pop-up menu allowing to set the annotation consolidation status :
+	<ul>
+	<li><img src="./AaeUserGuide_files/1357" alt=""> <code>Accept</code> : this source annotation will be used as a template for the newly created annotation, and will not be proposed again if this block needs a subsequent adjudication operation.</li>
+		<li><img src="./AaeUserGuide_files/1356" alt=""> <code>Reject</code> : this source annotation will not be used as a template, and will not be proposed again if this block needs a subsequent adjudication operation.</li>
+		<li><img src="./AaeUserGuide_files/1355" alt=""> <code>Split</code> : this source annotation will be used as a template for the newly created annotation, and will be proposed again in the subsequent adjudication operation.</li>
+		<li><img src="./AaeUserGuide_files/1354" alt=""> <code>Postpone</code> : this annotation is not used as a template, but will be proposed again.</li>
+	</ul></li>
+	</ul>
+
+
+	<ul>
+	<li>click on the Merge button [ <img src="./AaeUserGuide_files/1345" alt=""> ] to trigger the creation of a derived Annotation according to the previously set consolidation statuses.</li>
+	</ul>
+
+
+	<p><img src="./AaeUserGuide_files/826" alt=""> Secondary Annotations (Groups &amp; Relations) can only be adjudicated once their components/arguments are themselves adjudicated. So it may happen that after a block is being resolved, the total number remaining blocks may actually increase!</p>
+
+
+<a name="Adjudication-toolbar"></a>
+<h4>Adjudication toolbar<a href="#Adjudication-toolbar" class="wiki-anchor">¶</a></h4>
+
+
+this toolbar contains, form left to right, the following commands and info to process the blocks : 
+	<ul>
+	<li><img src="./AaeUserGuide_files/1351" alt=""> to navigate to the previous consolidation block,</li>
+		<li><img src="./AaeUserGuide_files/1352" alt=""> to navigate to the next consolidation block,</li>
+		<li>index of the current consolidation block / total number of remaining (=unresolved) blocks,</li>
+		<li><img src="./AaeUserGuide_files/1345" alt=""> create, in the Review editor, a new Annotation deriving from the adjudicated Annotations,</li>
+		<li><img src="./AaeUserGuide_files/1346" alt=""> create derived Annotations for every the blocks without conflict, </li>
+		<li><img src="./AaeUserGuide_files/1349" alt=""> Recover all Annotations that were rejected via the next button : all corresponding consolidation blocks will reappear as unresolved,  </li>
+		<li><img src="./AaeUserGuide_files/1350" alt=""> Reject all remaining reviewed non-adjudicated annotation : all remaining consolidation blocks will be resolved and no derived Annotation will be create created. </li>
+		<li><img src="./AaeUserGuide_files/1348" alt=""> Toggle the synchronization of the vertical scrolling of the review with the other document panels.</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Termino-Ontology-Extension"></a>
+<h2>Termino-Ontology Extension<a href="#Termino-Ontology-Extension" class="wiki-anchor">¶</a></h2>
+
+
+	<p>This extension can display an external Termino/Ontology resource stored in TyDI system.<br>The Classes hierarchy can be modified, and the resource can be enriched with terms or classes occurring in the document currently annotated.</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/795" alt=""></p>
+
+
+<a name="Extension-Activation"></a>
+<h3>Extension Activation<a href="#Extension-Activation" class="wiki-anchor">¶</a></h3>
+
+
+	<p>Text Annotations of a certain Types can be linked to external Termino/Ontology resource stored in TyDI system.<br>This option is specified within the Annotation schema; when it is enabled, the Termino-Ontology Extension will be displayed in the left side panel.</p>
+
+
+	<p>AlvisAE can enforce the synchronization between Annotations and the Termino/Ontology in both direction :</p>
+
+
+	<ul>
+	<li>When selecting an Annotation linked to a resource of the Termino/Ontology, the Termino/Ontology will be automatically scrolled so the corresponding resource will be displayed (synchronization Annotation -&gt; Termino/Ontology) </li>
+		<li>Optionally, The content of the Annotation table can be restricted to Annotations linked to the selected Termino/Ontology resource (synchronization Termino/Ontology -&gt; Annotation)
+	<ul>
+	<li>This behaviour is enabled by checking to the <img src="./AaeUserGuide_files/1347" alt=""> checkbox located in the collapsible toolbar of the <a href="#Annotation-Table" class="wiki-page">Annotation table</a>.</li>
+	</ul></li>
+	</ul>
+
+
+<a name="Authentication-2"></a>
+<h3>Authentication<a href="#Authentication-2" class="wiki-anchor">¶</a></h3>
+
+
+	<p>Since the data displayed by this extension are managed by a system distinct from the Annotation system, you will be requested to authenticate to access the  Termino/Ontology resource.<br>The extension will remember your credentials, and will automatically submit it next time you'll need to access the Termino/Ontology resource.</p>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> It is still possible to change the credentials used to access the Termino/Ontology resource by clicking to the logout button [ <img src="./AaeUserGuide_files/847" alt=""> ].</p>
+
+
+<a name="Browsing-the-TerminologyOntology"></a>
+<h3>Browsing the Terminology/Ontology<a href="#Browsing-the-TerminologyOntology" class="wiki-anchor">¶</a></h3>
+
+
+	<ul>
+	<li>The middle panel displays the Terminology/Ontology as a tree which is loaded on demand when levels are expanded.</li>
+		<li>The bottom panel of the extension presents the Terms belonging to the currently selected class.</li>
+	</ul>
+
+
+<a name="Searching-within-the-TerminologyOntology"></a>
+<h3>Searching within the Terminology/Ontology<a href="#Searching-within-the-TerminologyOntology" class="wiki-anchor">¶</a></h3>
+
+
+	<p><img src="./AaeUserGuide_files/844" alt=""> The top toolbar of the extension can be used to search Classes within the Terminology/Ontology:</p>
+
+
+	<ol>
+	<li>enter a string pattern in the text field provided : <img src="./AaeUserGuide_files/803" alt=""><br><img src="./AaeUserGuide_files/826" alt=""> the wild card character <code>%</code> matches any string (0 or more characters)</li>
+		<li>click the search button [ <img src="./AaeUserGuide_files/796" alt=""> ],</li>
+		<li>The matching classes are presented in a popup list :
+	<ul>
+	<li>selecting a result line will trigger the opening of the tree for the path from the root node to the selected class.</li>
+	</ul></li>
+	</ol>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> the search result list is kept until next search, and it can be displayed again by clicking on the button on the left side of the pattern field [ <img src="./AaeUserGuide_files/797" alt=""> ]</p>
+
+
+	<a name="Viewing-changes-in-the-TerminologyOntology"></a>
+<h3>Viewing changes in the Terminology/Ontology<a href="#Viewing-changes-in-the-TerminologyOntology" class="wiki-anchor">¶</a></h3>
+
+
+	<p>Since the Terminology/Ontology is versioned in TyDI, it is possible to see changes that have happened in the Terminology/Ontology by clicking on the button located in the top-toolbar of the extension [ <img src="./AaeUserGuide_files/1442" alt=""> ].<br><img src="./AaeUserGuide_files/826" alt=""> if a Semantic class is selected in the tree, then only changes related to this selected class will be shown.</p>
+
+
+<a name="Changing-Classes-hierarchy"></a>
+<h3>Changing Classes hierarchy<a href="#Changing-Classes-hierarchy" class="wiki-anchor">¶</a></h3>
+
+
+	<p><img src="./AaeUserGuide_files/844" alt=""> The tree structure can be easily amended by simple drag and drag operations:</p>
+
+
+	<ul>
+	<li>To change the parent of a given class, simply drag the icon of that class and drop it on the class chosen as new parent.</li>
+		<li>Instead of replacing the current parent class, it is possible to add a new parent by holding the Shift key when dropping the class.</li>
+		<li>Finally, the link to a parent is cut by drop the class to the root of the tree.</li>
+	</ul>
+
+
+	<p><img src="./AaeUserGuide_files/826" alt=""> Of course, the system ensure that no cycle appear in the DAG of the Terminology/Ontology as a result of these structure modifications.<br>A warning message will appear in the message notification area below the toolbar</p>
+
+
+<a name="Enriching-the-TerminologyOntology"></a>
+<h3>Enriching the Terminology/Ontology<a href="#Enriching-the-TerminologyOntology" class="wiki-anchor">¶</a></h3>
+
+
+	<p>Terms or concepts occurring in the document currently annotated can be used to enrich the Terminology/Ontology, once again by simple drag and drop operations initiated from the <a href="#Annotation-Table" class="wiki-page">Annotation table</a>.</p>
+
+
+Indeed, any Annotation can be dragged by its corresponding circled T symbol [ <img src="./AaeUserGuide_files/805" alt=""> ] that appear in the table if the corresponding Type has been enabled to reference a Term or Class resource, and dropped on the Terminology/Ontology tree.<br><img src="./AaeUserGuide_files/844" alt=""> The actual modification of Terminology/Ontology will depend of the target class where the Annotated term is dropped:
+	<ul>
+	<li>dropping onto an existing class will add the term as a synonym of the target class,</li>
+		<li>dropping onto the root of the tree will create a new class with the term as canonical representative.<br>In both case, a new term will be created beforehand if it does not already exists in TyDI's database.</li>
+	</ul>
+
+
+	<p><img src="./AaeUserGuide_files/826" alt=""> When the modification is confirmed, the source Annotation is automatically supplied with a property containing the Term or Class resource identifier.</p>
+
+
+	<p><img src="./AaeUserGuide_files/826" alt=""> Depending on the case, a drag and drop operation could lead to different possible modifications (adding Terms and/or Classes, merging Classes, etc.), and the final decision of which one to achieve belongs to the user.<br>After that a drop operation occurs, AlvisAE extension performs multiple checks and will possibly propose alternative ulterior actions along with some information which may not be obvious.</p>
+
+
+	<p>A list of message will popup in the message notification area below the toolbar <img src="./AaeUserGuide_files/804" alt=""><br><img src="./AaeUserGuide_files/841" alt=""> You can choose one action from all the alternative operations proposed, or even cancel the modification.</p>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Miscellaneous"></a>
+<h2>Miscellaneous<a href="#Miscellaneous" class="wiki-anchor">¶</a></h2>
+
+
+On the top right side of the main screen, the name of the current user is displayed. Actually it is the title of a menu which provides the following commands :
+	<ul>
+	<li>sign-out [ <img src="./AaeUserGuide_files/847" alt=""> ],</li>
+		<li><a href="#Password-change" class="wiki-page">change password</a> [ <img src="./AaeUserGuide_files/858" alt=""> ] ,</li>
+		<li><a href="#Users-Management" class="wiki-page">manage users</a> [ <img src="./AaeUserGuide_files/801" alt=""> ],</li>
+		<li>change users assignment to campaigns and documents [ <img src="./AaeUserGuide_files/857" alt=""> ],</li>
+	</ul>
+
+
+	<p>&nbsp;</p>
+
+
+<a name="Password-change"></a>
+<h3>Password change<a href="#Password-change" class="wiki-anchor">¶</a></h3>
+
+
+	<p>Use the sub-menu "Change password" [ <img src="./AaeUserGuide_files/858" alt=""> ] in the global toolbar of the <a href="#Campaign-and-Document-selection" class="wiki-page">Campaign and Document selection view</a>.</p>
+
+
+	<p>A dialog box will appear allowing to type the new password. It must be entered a second time for verification purposes.</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/799" alt=""></p>
+
+
+	<p><img src="./AaeUserGuide_files/826" alt=""> The change button is enabled when the two entered passwords are consistent.</p>
+
+
+<a name="Users-Management"></a>
+<h3>Users Management<a href="#Users-Management" class="wiki-anchor">¶</a></h3>
+
+
+	<p>To access Users Management screen, use the sub-menu "Manage users" [ <img src="./AaeUserGuide_files/801" alt=""> ] in the global toolbar of the <a href="#Campaign-and-Document-selection" class="wiki-page">Campaign and Document selection view</a>.</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/1362" alt=""></p>
+
+
+	<ul>
+	<li>The table in the top part of the screen lists all users existing in the current AlvisAE instance,
+	<ul>
+	<li>create a new user by clicking on the button showing a green plus sign at the top left of the table,</li>
+		<li>remove the selected user by clicking on the button showing a red minus sign</li>
+	</ul></li>
+	</ul>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> All changes performed in the tables are directly applied.<br><img src="./AaeUserGuide_files/826" alt=""> Managing user is a feature restricted to users with the Admin status enabled</p>
+
+
+	<a name="Assignements"></a>
+<h3>Assignements<a href="#Assignements" class="wiki-anchor">¶</a></h3>
+
+
+	<p>To access Users Management screen, use the sub-menu "Assignements" [ <img src="./AaeUserGuide_files/857" alt=""> ] in the global toolbar of the <a href="#Campaign-and-Document-selection" class="wiki-page">Campaign and Document selection view</a>.</p>
+
+
+	<p>Assignements is a configuration that determine which documents can be annotated by the users participating in the campaign. This view allow to set the coverage of the campaign over the documents, and the number of concurrent annotations required for each one of those.</p>
+
+
+	<p style="text-align:center;"><img src="./AaeUserGuide_files/1363" alt=""></p>
+
+
+
+	<ul>
+	<li>The table in the top part of the screen is the matrix of users (columns) by campaigns (rows) that display a checkbox when a user is participating to a campaign.</li>
+		<li>The table in the bottom part of the screen display, for the campaign selected above, which documents is assigned to which users (one column for each user of the campaign)</li>
+	</ul>
+
+
+	<p><img src="./AaeUserGuide_files/841" alt=""> All changes performed in the tables are directly applied.<br><img src="./AaeUserGuide_files/826" alt=""> Assignements is a feature restricted to users with the Admin status enabled</p>
+
+
+	<p>&nbsp;<br>&nbsp;</p>
+
+
+	<p>&nbsp;</p>
+
+
+
+
+	<p></p>
+</div>
+
+
+        <div style="clear:both;"></div>
+    </div>
+</div>
+
+
+<div id="footer">
+  <div class="bgl"><div class="bgr">
+    Produced with <a href="http://www.redmine.org/">Redmine</a> © 2006-2012 Jean-Philippe Lang
+  </div></div>
+</div>
+</div>
+</div>
+
+
+</body></html>
