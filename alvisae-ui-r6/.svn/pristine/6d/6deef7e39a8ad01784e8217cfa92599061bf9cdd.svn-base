@@ -1,0 +1,30 @@
+<!--
+Uncomment this for XHTML entities
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+-->
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010.
+ *
+ */
+-->
+
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:Annotation="urn:import:fr.inra.mig_bibliome.alvisae.client.Annotation"
+             xmlns:AD="urn:import:fr.inra.mig_bibliome.alvisae.client.Annotation.Metadata" >
+
+    <ui:with field='staneRes' type='fr.inra.mig_bibliome.alvisae.client.StanEditorResources'/>
+    <ui:style>
+        .SpaceAround {
+        margin: 2px;
+        }  
+    </ui:style>
+
+    <g:FlowPanel>
+        <AD:AnnotationPropertySheet addStyleNames= '{style.SpaceAround}' ui:field='annotPropSheet' ></AD:AnnotationPropertySheet>
+    </g:FlowPanel>
+</ui:UiBinder>

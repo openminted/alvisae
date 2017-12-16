@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2010.
+ *
+ */
+-->
+<module rename-to='alvisaeGenericUI'>
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+    <inherits name='com.google.gwt.user.User'/>
+
+  <!-- Inherit the default GWT style sheet.  You can change       -->
+  <!-- the theme of your GWT application by uncommenting          -->
+  <!-- any one of the following lines.                            -->
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+  <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+  <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+  <!-- Other module inherits                                      -->
+    <inherits name="com.google.gwt.resources.Resources" />
+    <inherits name="com.google.gwt.i18n.I18N"/>
+
+    <inherits name='com.google.gwt.activity.Activity' />
+    <inherits name='com.google.gwt.place.Place' />
+    <inherits name='com.google.web.bindery.requestfactory.RequestFactory' /> 
+
+  <!-- SVG/Canvas graphics                                        -->
+    <inherits name='org.vaadin.gwtgraphics.GWTGraphics' />
+
+  <!-- gwt-dnd support                                            -->
+    <inherits name='com.allen_sauer.gwt.dnd.gwt-dnd'/>
+
+  <!-- GIN                                                        -->
+    <inherits name="com.google.gwt.inject.Inject"/>
+
+  <!-- Logging                                                    -->
+    <inherits name="com.google.gwt.logging.Logging"/>
+  <!-- gwtquery Dnd plugin                                          -->
+    <inherits name='gwtquery.plugins.droppable.Droppable'/>
+
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <inherits name='fr.inra.mig_bibliome.alvisae.alvisaeCore'/>
+    <inherits name='fr.inra.mig_bibliome.alvisae.alvisaeEditor'/>
+    <inherits name='fr.inra.mig_bibliome.alvisae.alvisaeTyDIExt'/>
+    
+  <!-- Specify the app entry point class.                         -->
+    <entry-point class='fr.inra.mig_bibliome.alvisae.client.AlvisaeGenericUI'/>
+
+  <!-- Specify the paths for translatable code                    -->
+    <source path='client'/>
+    <source path='shared'/>
+    <public path="public"/>
+       
+  <!-- FPa 2010-10-27 : only for DEV                    
+   <set-property name="user.agent" value="ie8"/>
+   <set-property name="user.agent" value="gecko,gecko1_8"/>
+  <set-property name="user.agent" value="ie6,ie8,gecko,gecko1_8,safari,opera"/>.
+    -->
+    
+    <set-configuration-property name="UiBinder.useSafeHtmlTemplates" value="true" />
+    
+    <set-property name="gwt.logging.enabled" value="FALSE"/>
+    <set-property name="gwt.logging.logLevel" value="SEVERE"/>
+    <set-property name="gwt.logging.consoleHandler" value="DISABLED" />
+    <set-property name="gwt.logging.developmentModeHandler" value="DISABLED" />
+    <set-property name="gwt.logging.firebugHandler" value="DISABLED" />
+    <set-property name="gwt.logging.hasWidgetsHandler" value="DISABLED" />
+    <set-property name="gwt.logging.popupHandler" value="DISABLED" />
+    <set-property name="gwt.logging.systemHandler" value="DISABLED" />
+    <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" />
+
+    <!-- Use ClientFactoryImpl by default -->
+    <replace-with class="fr.inra.mig_bibliome.alvisae.client.ClientFactoryImpl">
+        <when-type-is class="fr.inra.mig_bibliome.alvisae.client.ClientFactory"/>
+    </replace-with>
+
+</module>

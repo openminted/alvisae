@@ -1,0 +1,225 @@
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2012.
+ *
+ */
+-->
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:Network="urn:import:fr.inra.mig_bibliome.alvisae.client.data.Retrieve" 
+             xmlns:Annotation="urn:import:fr.inra.mig_bibliome.alvisae.client.Annotation"
+             xmlns:Document="urn:import:fr.inra.mig_bibliome.alvisae.client.Document">
+    <ui:with field='staneCoreRes' type='fr.inra.mig_bibliome.alvisae.client.StaneCoreResources'/>
+    <ui:with field='staneRes' type='fr.inra.mig_bibliome.alvisae.client.StanEditorResources'/>
+
+    <ui:style>
+        .SmallerLabel {
+        font-size: smaller;
+        }
+        
+        .DocBorder {
+        border: 1px solid silver;
+        }
+
+        .SmallButton {
+        height: 16px;
+        width: 18px;
+        }         
+
+        .LargeButton {
+        height: 16px;
+        width: 42px;
+        }         
+
+        .ToolBar {
+        background-color:  #C4DBF6;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        }
+        
+        .BlockNum {
+        font-family:monospace;
+        font-size: smal;
+        }
+                
+    </ui:style>
+    <g:DockLayoutPanel unit='EM' height="100%">
+        <g:north size='0'>
+            <g:SimplePanel/>
+        </g:north>
+        <g:center>
+            <g:SplitLayoutPanel ui:field='mainHorizontalSplitPanel' >
+                <g:center>
+                    <g:SplitLayoutPanel ui:field='mainVerticalSplitPanel' >
+                        <g:west size="250"> 
+            
+                            <g:SplitLayoutPanel ui:field='propsSplitPanel' >
+                                <g:north size='300'>
+
+                                    <g:LayoutPanel ui:field='propsLayoutPanel'  height='100%'>
+                                        <g:layer>
+                                            <Document:RequiresResizeSpy ui:field='propsResizeSpy' />
+                                        </g:layer>
+                                        <g:layer top='0%' width='100%' height='50%'>
+                                            <g:LayoutPanel ui:field='prop1LayoutPanel' addStyleNames='{style.DocBorder}' height='100%'>
+                                                <g:layer top='0px' left='0px' height='100%' width='100%'>
+                                                    <g:ScrollPanel height='100%'>
+                                                        <Annotation:AnnotationDetailsUi ui:field='detailsUI1' height='100%'/>
+                                                    </g:ScrollPanel>
+                                                </g:layer>
+                                            </g:LayoutPanel>
+                                        </g:layer>
+                                        <g:layer top='50%' width='100%' height='50%'>
+                                            <g:LayoutPanel ui:field='prop2LayoutPanel' addStyleNames='{style.DocBorder}' height='100%'>
+                                                <g:layer top='0px' left='0px' height='100%' width='100%'>
+                                                    <g:ScrollPanel height='100%'>
+                                                        <Annotation:AnnotationDetailsUi ui:field='detailsUI2' height='100%'/>
+                                                    </g:ScrollPanel>
+                                                </g:layer>
+                                            </g:LayoutPanel>
+                                        </g:layer>
+                                    </g:LayoutPanel>
+                                </g:north>
+                                <g:center>
+                                    <g:LayoutPanel height='100%'>
+                                        <g:layer top='0%' width='100%' height='2.4EM'>
+                                            <g:SimplePanel addStyleNames='{style.ToolBar}'></g:SimplePanel>
+                                        </g:layer>
+                                        <g:layer top='2.4EM' bottom='0px' width='100%'>
+                                            <g:ScrollPanel height='100%'>
+                                                <Annotation:AnnotationDetailsUi ui:field='detailsUIconso' height='100%'/>
+                                            </g:ScrollPanel>
+                                        </g:layer>
+                                    </g:LayoutPanel>
+                                </g:center>
+                            </g:SplitLayoutPanel>
+                        </g:west>
+                        <g:center>
+                            <g:SplitLayoutPanel ui:field='docsSplitPanel'>
+                                <g:north size='300'>
+                                    <g:LayoutPanel ui:field='docsLayoutPanel' height='100%'>
+                                        <g:layer>
+                                            <Document:RequiresResizeSpy ui:field='docsResizeSpy' />
+                                        </g:layer>                        
+                                        <g:layer top='0%' width='100%' height='50%'>
+                                            <g:LayoutPanel ui:field='doc1LayoutPanel' addStyleNames='{style.DocBorder}' height='100%'>
+                                                <g:layer top='0px' left='0px' height='100%' width='100%'>
+                                                    <Document:DocumentUi ui:field='docUI1' /> 
+                                                </g:layer>
+                                            </g:LayoutPanel>
+                                        </g:layer>
+                                        <g:layer top='50%' width='100%' height='50%'>
+                                            <g:LayoutPanel ui:field='doc2LayoutPanel' addStyleNames='{style.DocBorder}' height='100%'>
+                                                <g:layer top='0px' left='0px' height='100%' width='100%'>
+                                                    <Document:DocumentUi ui:field='docUI2' />
+                                                </g:layer>
+                                            </g:LayoutPanel>
+                                        </g:layer>
+                                    </g:LayoutPanel>
+                                </g:north>
+                                <g:center>
+                                    <g:LayoutPanel height='100%'>
+                                        <g:layer top='0px' width='100%' height='2.4EM'>
+                                            <g:LayoutPanel addStyleNames='{style.ToolBar}'>
+                                        
+                                                <g:layer top='2px' height='100%' left='2px' width='32px'>
+                                                    <g:PushButton tabIndex='-1' ui:field='locateBlock' enabled='false' addStyleNames='{style.SmallButton}' title='display consolidation block containing the selected Annotation'>
+                                                        <g:upFace image='{staneRes.LocateBlockIcon}' />
+                                                    </g:PushButton>
+                                                </g:layer>
+                                            
+                                                <g:layer top='2px' height='100%' left='34px' width='32px'>
+                                                    <g:PushButton tabIndex='-1' ui:field='prevBlock' enabled='false' addStyleNames='{style.SmallButton}' title='display previous consolidation block'>
+                                                        <g:upFace image='{staneRes.PrevBlockIcon}' />
+                                                    </g:PushButton>
+                                                </g:layer>
+                                                <g:layer top='2px' height='100%' left='68px' width='32px'>
+                                                    <g:PushButton tabIndex='-1' ui:field='nextBlock' enabled='false' addStyleNames='{style.SmallButton}' title='display next consolidation block'>
+                                                        <g:upFace image='{staneRes.NextBlockIcon}' />
+                                                    </g:PushButton>
+                                                </g:layer>
+                                        
+                                                <g:layer top='2px' height='100%' left='106px' width='65px'>
+                                                    <g:VerticalPanel height='100%' width='100%' verticalAlignment='ALIGN_MIDDLE' horizontalAlignment='ALIGN_LEFT'>
+                                                        <g:Label  height='100%' width='100%' ui:field='blockNum' addStyleNames='{style.BlockNum}' horizontalAlignment='ALIGN_LEFT' title='current block/remaining block(s)'></g:Label>
+                                                    </g:VerticalPanel>
+                                                </g:layer>
+                                                <g:layer top='2px' height='100%' left='177px' width='32px'>
+                                                    <g:PushButton tabIndex='-1' ui:field='merge' addStyleNames='{style.SmallButton}' title='Process the adjudicated Annotations of the current block (shortcut [C])'>
+                                                        <g:upFace image='{staneRes.AnnotationMergeIcon}'/>
+                                                    </g:PushButton>
+                                                </g:layer>
+                                                <g:layer top='2px' height='100%' left='210px' width='32px'>
+                                                    <g:PushButton tabIndex='-1' ui:field='autoMerge' addStyleNames='{style.SmallButton}' title='Process all blocks containing non-conflicting Annotations'>
+                                                        <g:upFace image='{staneRes.AutoMergeAnnotationsIcon}'/>
+                                                    </g:PushButton>
+                                                </g:layer>
+
+                                                <g:layer top='2px' height='100%' left='257px' width='32px'>
+                                                    <g:PushButton tabIndex='-1' ui:field='clearUnmatched' addStyleNames='{style.SmallButton}' title='Recover all individually rejected Annotations for further adjudications'>
+                                                        <g:upFace image='{staneRes.ConsolidationClearUnmatchedIcon}'/>
+                                                    </g:PushButton>
+                                                </g:layer>
+                                                <g:layer top='2px' height='100%' left='290px' width='32px'>
+                                                    <g:PushButton tabIndex='-1' ui:field='setUnmatched' addStyleNames='{style.SmallButton}' title='Reject all remaining Annotations'>
+                                                        <g:upFace image='{staneRes.ConsolidationSetUnmatchedIcon}'/>
+                                                    </g:PushButton>
+                                                </g:layer>
+                                        
+                                                <g:layer top='2px' height='100%' left='337px' width='32px'>
+                                                    <g:PushButton tabIndex='-1' ui:field='save' addStyleNames='{style.SmallButton}' title='save current state of the review'>
+                                                        <g:upFace image='{staneRes.SaveAnnotationsIcon}' />
+                                                    </g:PushButton>
+                                                </g:layer>
+
+                                                <g:layer top='2px' height='100%' left='370px' width='32px'>
+                                                    <g:PushButton tabIndex='-1' ui:field='publish' addStyleNames='{style.SmallButton}' title='save modifications and publish review'>
+                                                        <g:upFace image='{staneRes.EndDocAnnotationIcon}' />
+                                                    </g:PushButton>
+                                                </g:layer>
+                                        
+                                                <g:layer top='2px' height='100%' right='10px' width='32px'>
+                                                    <g:ToggleButton tabIndex='-1' ui:field='syncScroll' addStyleNames='{style.SmallButton}' title="synchronize review's scrolling with reviewed Annotation Sets">
+                                                        <g:upFace image='{staneRes.ScrollSync2Panels}' />
+                                                        <g:downFace image='{staneRes.ScrollSync3Panels}' />
+                                                    </g:ToggleButton>
+                                                </g:layer>
+                                            </g:LayoutPanel>
+                                        </g:layer>
+                                        <g:layer top='2.4EM' bottom='0px' width='100%'>
+                                            <Document:DocumentUi ui:field='docUIconso' />
+                                        </g:layer>
+                                    </g:LayoutPanel>
+                                </g:center>
+                            </g:SplitLayoutPanel>
+                        </g:center>
+                    </g:SplitLayoutPanel>  
+                </g:center>
+                <g:south size="200">
+                    <g:LayoutPanel ui:field='annotTableLayoutPanel'  height='100%'>
+                        <g:layer top='0' left='0' bottom='0' width='42px'>
+                            <g:FlowPanel addStyleNames='{style.ToolBar}'  height='100%'>
+                                <g:MenuBar>
+                                    <g:MenuItem ui:field="annSetMenuItem">
+                                        <div class="{staneRes.css.btnDocPanelSelect}"/> 
+                                    </g:MenuItem>      
+                                </g:MenuBar>
+                            </g:FlowPanel>
+                        </g:layer>
+                        <g:layer top='0' left='44px' bottom='0' right='0'>
+                            <Annotation:AnnotationTable  ui:field='annotationTable' height='100%' width='100%'/>
+                        </g:layer>                                                
+                    </g:LayoutPanel>               
+                </g:south> 
+            </g:SplitLayoutPanel>         
+        </g:center>  
+        <g:south size='0'>  
+            <g:SimplePanel/>
+        </g:south>
+    </g:DockLayoutPanel>
+</ui:UiBinder>
+
+

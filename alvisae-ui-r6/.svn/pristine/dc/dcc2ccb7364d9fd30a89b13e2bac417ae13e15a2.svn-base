@@ -1,0 +1,113 @@
+<!--
+/*
+ *
+ *      This software is a result of Quaero project and its use must respect the rules of the Quaero Project Consortium Agreement.
+ *
+ *      Copyright Institut National de la Recherche Agronomique, 2012.
+ *
+ */
+-->
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:c='urn:import:com.google.gwt.user.cellview.client'
+             xmlns:AD="urn:import:fr.inra.mig_bibliome.alvisae.client.Annotation.Metadata"             
+>
+    <ui:with field='staneRes' type='fr.inra.mig_bibliome.alvisae.client.StanEditorResources'/>
+    
+    
+    <ui:style type='fr.inra.mig_bibliome.alvisae.client.Annotation.Metadata.AnnotationPropertySheet.Styles'>
+            
+        .containerLabel {
+        margin-left: 2px;
+        margin-right: 2px;
+        margin-top: 2px;
+        padding-bottom: 1px;
+        font-style:italic;
+        background-color:#EFEFEF;
+        border-top: 1px solid lightsteelblue;
+        border-bottom: 1px solid silver;
+        }
+
+        .itemContainer {
+        }
+
+        .containerPanel {
+        margin-top: 2px;
+        padding: 1px 1px 2px;
+        }
+        
+        .buttonBar {
+        background-color: #D0E4F6;
+        margin-bottom: 2px; 
+        }
+        
+        .SmallSeparator {
+        width: 6px;
+        }
+
+        .SmallButton {
+        width: 16px;
+        height: 16px;
+        }
+        
+        .ForefrontNVisible {
+        display : block;
+        }
+        .BackgroundNHidden {
+        z-index : -10;
+        display : none;
+        }
+
+    </ui:style>
+
+    <g:FlowPanel height="100%">
+        <g:VerticalPanel ui:field='globalPanel' width="100%" visible='false'>
+            <g:LayoutPanel width="100%" height='28px' addStyleNames='{style.buttonBar}'>
+                <g:layer top='5px' right='2px' width='16px' height='26px'>
+                    <g:Image ui:field='veiledIcon' resource='{staneRes.VeiledAnnotationIcon}'/>
+                </g:layer>
+                <g:layer top='5px' right='2px' width='16px' height='26px'>
+                    <g:Image ui:field='unveiledIcon' resource='{staneRes.UnVeiledAnnotationIcon}'/>
+                </g:layer>
+            </g:LayoutPanel>
+ 
+            <g:LayoutPanel width="100%" height='2.8EM'>
+                <g:layer top='0px' left='0px' right='0px' bottom='0px'>
+                    <c:CellList ui:field='idWidget' width="100%"></c:CellList>
+                </g:layer>
+            </g:LayoutPanel>
+        
+            <g:FlowPanel addStyleNames='{style.containerPanel}' ui:field='compargPanel' width="100%" visible='false'>
+                <g:Label ui:field='compargLabel' addStyleNames= '{style.containerLabel}'>Components/arguments</g:Label>
+                <g:Image ui:field='addComponent' resource='{staneRes.AddSmallIcon}' title='add component'/>
+                <g:VerticalPanel ui:field='componentsPanel' addStyleNames= '{style.itemContainer}' width="100%">
+                    <g:ResizeLayoutPanel ui:field='componentsContainer'>
+                        <c:DataGrid ui:field='componentsGrid'></c:DataGrid>
+                    </g:ResizeLayoutPanel>
+                </g:VerticalPanel>
+                <g:VerticalPanel ui:field='argumentsPanel' addStyleNames= '{style.itemContainer}' width="100%">
+                    <g:ResizeLayoutPanel ui:field='argumentsContainer'>
+                        <c:DataGrid ui:field='argumentsGrid' ></c:DataGrid>
+                    </g:ResizeLayoutPanel>
+                </g:VerticalPanel>
+            </g:FlowPanel>
+            
+            <g:FlowPanel addStyleNames='{style.containerPanel}' ui:field='propsPanel' width="100%" visible='false'>
+                <g:Label addStyleNames= '{style.containerLabel}'>Properties</g:Label>
+                <g:ScrollPanel addStyleNames= '{style.itemContainer}'>
+                    <AD:PropertiesTree ui:field='propsCellTree' />
+                </g:ScrollPanel>
+            </g:FlowPanel>
+            
+            <g:FlowPanel addStyleNames='{style.containerPanel}' ui:field='sourcePanel' width="100%" visible='true'>
+                <g:Label ui:field='sourceLabel' addStyleNames= '{style.containerLabel}'>Sources</g:Label>
+                <g:VerticalPanel addStyleNames= '{style.itemContainer}' width="100%">
+                    <g:ResizeLayoutPanel ui:field='sourceContainer'>
+                        <c:DataGrid ui:field='sourceGrid'></c:DataGrid>
+                    </g:ResizeLayoutPanel>
+                </g:VerticalPanel>
+            </g:FlowPanel>
+            
+        </g:VerticalPanel>
+    </g:FlowPanel>
+</ui:UiBinder>
