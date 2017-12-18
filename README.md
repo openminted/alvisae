@@ -7,5 +7,6 @@ This project containsAlvisAE two main components: an Annotation Editor (alvisae-
 ## Try it...
 
 ```
-
+sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/alvisae:1.0.0
 ``` 
+Go to [http://localhost:8080/alvisae/alvisae-ws/AlvisAE/](http://192.168.56.101:8080/alvisae/alvisae-ws/AlvisAE)
