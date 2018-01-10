@@ -6,6 +6,8 @@ This project containsAlvisAE two main components: an Annotation Editor (alvisae-
 
 ## Try it...
 
+> Note that, you must have docker installed on your computer
+
 ```
 sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/alvisae:1.0.0
 ``` 
