@@ -1,0 +1,137 @@
+{
+  "sourceId": "LeTexteSource",
+  "campaignId": "camp001",
+  "owner": "rbossy",
+  "version": 1,
+  "versionDate": "2011-01-25",
+  "comment": "",
+  "id": "LeTexteExample",
+
+
+"contents":"Abstractn-Dodecane and fatty acids were good inducers of cytochrome P450 (CYP) and the ω-hydroxylase of lauric acid, which is a marker for ω-hydroxylation of n-alkanes, in Trichoderma harzianum. A cDNA, containing an ORF of 1520 bp, encoding a CYP52 of 520 amino acids, was isolated by RACE. Another n-alkane-inducible CYP was identified by LLC-MS/MS analysis of a microsomal protein band induced by n-dodecane in a library of T. harzianum. This suggests that T. harzianum has a CYP-dependent conversion of alkanes to fatty acids allowing their incorporation into lipids.",
+"annotations":[
+    {"id":"3","kind":0,"type":"html.div","text":[[0,571]],"properties":{"class":["abstract_text"]},"owner":"fpa","version":0},
+    {"id":"2","kind":0,"type":"html.p","text":[[8,571]],"properties":{},"owner":"fpa","version":0},
+    {"id":"1","kind":0,"type":"html.h3","text":[[0,8]],"properties":{"class":["abstract_label"]},"owner":"fpa","version":0}
+],
+
+  "schema": {
+    "taxon": {
+      "kind": 0,
+      "type": "taxon",
+      "color": "#7FFF00",
+      "propDef":{
+        "taxid": {
+          "key": "taxid",
+          "mandatory" : true,
+          "minVal" : 1,
+          "maxVal" : 1,
+          "valType" : null
+        }
+      },
+      "txtBindingDef": {
+        "minFrag" : 1,
+        "maxFrag" : 1,
+        "boundRef" : null
+      }
+    },
+    "protein": {
+      "kind": 0,
+      "type": "protein",
+      "color": "#FF69B4 ",
+      "propDef":{
+      },
+      "txtBindingDef": {
+        "minFrag" : 1,
+        "maxFrag" : 1,
+        "boundRef" : null
+      }
+    },
+    "gene": {
+      "kind": 0,
+      "type": "gene",
+      "color": "#87CEFA",
+      "propDef":{
+      },
+      "txtBindingDef": {
+        "minFrag" : 1,
+        "maxFrag" : 1,
+        "boundRef" : null
+      }
+    },
+    "taxon_coreference": {
+      "kind": 1,
+      "type": "taxon_coreference",
+      "color": "green",
+      "propDef":{
+        "taxid": {
+          "key": "taxid",
+          "mandatory" : true,
+          "minVal" : 1,
+          "maxVal" : 1,
+          "valType" : null
+        }
+      },
+      "groupDef": {
+          "minComp" : 1,
+          "maxComp" : 9999999,
+          "compType" : ["taxon"],
+          "homogeneous" : true
+        }
+    },
+    "gene_protein": {
+      "kind": 1,
+      "type": "gene_protein",
+      "color": "orange",
+      "propDef":{
+      },
+      "groupDef": {
+          "minComp" : 1,
+          "maxComp" : 9999999,
+          "compType" : ["gene", "protein"],
+          "homogeneous" : true
+        }
+    },
+    "lives_in": {
+      "kind": 2,
+      "type": "lives_in",
+      "color": "#DC143C",
+      "propDef": {
+      },
+      "relationDef": {
+          "bacteria": ["taxon", "taxon_coreference"],
+          "host": ["taxon", "taxon_coreference"]
+      }
+    },
+    "expressed_in": {
+      "kind": 2,
+      "type": "expressed_in",
+      "color": "cyan",
+      "propDef": {
+      },
+      "relationDef": {
+          "product": ["protein", "gene"],
+          "species": ["taxon"]
+      }
+    },
+    "ternary": {
+      "kind": 2,
+      "type": "ternary",
+      "color": "#B8860B",
+      "propDef": {
+        "some_property": {
+          "key": "some_property",
+          "mandatory" : false,
+          "minVal" : 1,
+          "maxVal" : 1,
+          "valType" : {  "closedDomain" : true, "domain" : ["true", "false"], "defaultVal" : "true"}
+        }
+      },
+      "relationDef": {
+          "member1": ["taxon"],
+          "member2": ["taxon"],
+          "member3": ["taxon"]
+      }
+    }
+  }
+}
