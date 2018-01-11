@@ -81,7 +81,7 @@ curl -u aae_root:Tadmin -w "\n%{http_code}\n" http://localhost:8080/alvisae/api/
 ```
 
 ### Documents
-#### List documents of a project 4
+#### List documents of project 4
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/4/documents
 ```
