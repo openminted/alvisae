@@ -19,7 +19,7 @@ sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/al
 
 ### Using REST calls
 
-The web service implement the [aero protocol](https://github.com/openminted/omtd-aero). Here are the calls for the moment avalaible to the users. 
+The web service implement the [aero protocol](https://github.com/openminted/omtd-aero). Here are the calls avalaible to the users. 
 
 #### Projects
 ##### List Projects
