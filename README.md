@@ -14,16 +14,16 @@ sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/al
 ``` 
 
 2. Test Using Web Interface
-* Go to [http://localhost:8080/alvisae/alvisae-ws/AlvisAE/](http://192.168.56.101:8080/alvisae/alvisae-ws/AlvisAE)
-* Sing-In with login *annotator1* and password *annotator1*
+  * Go to [http://localhost:8080/alvisae/alvisae-ws/AlvisAE/](http://192.168.56.101:8080/alvisae/alvisae-ws/AlvisAE)
+  * Sing-In with login *annotator1* and password *annotator1*
 
 
 3. Test Using REST calls
 
-The web service implement the [aero protocol](https://github.com/openminted/omtd-aero). Here are the calls avalaible to the users. 
+  The web service implement the [aero protocol](https://github.com/openminted/omtd-aero). Here are the calls avalaible to the users. 
 
-#### Projects
-##### List Projects
+  #### Projects
+  ##### List Projects
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae-ws/api/projects
 ```
