@@ -1,0 +1,14 @@
+documentassignment
+databasemodelversion
+usercampaignauthorization
+userauthorization
+taskprecedency
+campaigndocument
+campaignannotator
+annotationsetdependency
+annotationset
+taskdefinition
+document
+authorization
+user
+campaign

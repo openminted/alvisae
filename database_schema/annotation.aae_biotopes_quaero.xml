@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="annotation" schema="aae_biotopes_quaero" type="PostgreSQL - 9.4.15">
+   <tables>
+      <table name="annotationset" numRows="9557" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="description" nullable="false" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="head" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="6" id="2" name="published" nullable="true" remarks="" size="29" type="timestamp"/>
+         <column autoUpdated="false" digits="0" id="3" name="unmatched" nullable="true" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="4" name="doc_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="annotationsetFK16" implied="false" onDeleteCascade="false" table="document"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="5" name="groups" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="6" name="user_id" nullable="false" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="7" name="revision" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="8" name="id" nullable="false" remarks="" size="19" type="int8">
+            <child column="referent_id" foreignKey="annotationsetdependencyFK14" implied="false" onDeleteCascade="false" table="annotationsetdependency"/>
+            <child column="referred_id" foreignKey="annotationsetdependencyFK15" implied="false" onDeleteCascade="false" table="annotationsetdependency"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="9" name="text_annotations" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="10" name="relations" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="11" name="task_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="annotationsetFK13" implied="false" onDeleteCascade="false" table="taskdefinition"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="12" name="type" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="13" name="campaign_id" nullable="false" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="6" id="14" name="created" nullable="false" remarks="" size="29" type="timestamp"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="annotationset_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="annotationsetdependency" numRows="4" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="referent_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="annotationsetdependencyFK14" implied="false" onDeleteCascade="false" table="annotationset"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="referred_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="annotationsetdependencyFK15" implied="false" onDeleteCascade="false" table="annotationset"/>
+         </column>
+         <primaryKey column="referent_id" sequenceNumberInPK="1"/>
+         <primaryKey column="referred_id" sequenceNumberInPK="2"/>
+         <index name="annotationsetdependency_pkey" unique="true">
+            <column ascending="true" name="referent_id"/>
+            <column ascending="true" name="referred_id"/>
+         </index>
+      </table>
+      <table name="authorization" numRows="16" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="description" nullable="false" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="scope" nullable="false" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="id" nullable="false" remarks="" size="19" type="int8">
+            <child column="auth_id" foreignKey="userauthorizationFK2" implied="false" onDeleteCascade="false" table="userauthorization"/>
+            <child column="auth_id" foreignKey="usercampaignauthorizationFK5" implied="false" onDeleteCascade="false" table="usercampaignauthorization"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="campaignrelated" nullable="false" remarks="" size="1" type="bool"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="authorization_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="campaign" numRows="9" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="name" nullable="false" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="guidelinesUrl" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="id" nullable="false" remarks="" size="19" type="int8">
+            <child column="campaign_id" foreignKey="campaignannotatorFK6" implied="false" onDeleteCascade="false" table="campaignannotator"/>
+            <child column="campaign_id" foreignKey="campaigndocumentFK8" implied="false" onDeleteCascade="false" table="campaigndocument"/>
+            <child column="campaign_id" foreignKey="taskdefinitionFK10" implied="false" onDeleteCascade="false" table="taskdefinition"/>
+            <child column="campaign_id" foreignKey="usercampaignauthorizationFK4" implied="false" onDeleteCascade="false" table="usercampaignauthorization"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="schema" nullable="false" remarks="" size="2147483647" type="text"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="campaign_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="idx23c0050f" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="campaignannotator" numRows="4" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="user_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="campaignannotatorFK7" implied="false" onDeleteCascade="false" table="user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="campaign_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="campaignannotatorFK6" implied="false" onDeleteCascade="false" table="campaign"/>
+         </column>
+         <primaryKey column="campaign_id" sequenceNumberInPK="1"/>
+         <primaryKey column="user_id" sequenceNumberInPK="2"/>
+         <index name="campaignannotator_pkey" unique="true">
+            <column ascending="true" name="campaign_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="campaigndocument" numRows="4710" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="doc_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="campaigndocumentFK9" implied="false" onDeleteCascade="false" table="document"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="alvisnlp_id" nullable="true" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="campaign_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="campaigndocumentFK8" implied="false" onDeleteCascade="false" table="campaign"/>
+         </column>
+         <primaryKey column="campaign_id" sequenceNumberInPK="1"/>
+         <primaryKey column="doc_id" sequenceNumberInPK="2"/>
+         <index name="campaigndocument_pkey" unique="true">
+            <column ascending="true" name="campaign_id"/>
+            <column ascending="true" name="doc_id"/>
+         </index>
+         <index name="campaigndocumentIDX1" unique="true">
+            <column ascending="true" name="alvisnlp_id"/>
+         </index>
+      </table>
+      <table name="databasemodelversion" numRows="0" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="v2_2" nullable="false" remarks="" size="128" type="varchar"/>
+      </table>
+      <table name="document" numRows="4712" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="description" nullable="false" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="contents" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="2" name="id" nullable="false" remarks="" size="19" type="int8">
+            <child column="doc_id" foreignKey="annotationsetFK16" implied="false" onDeleteCascade="false" table="annotationset"/>
+            <child column="doc_id" foreignKey="campaigndocumentFK9" implied="false" onDeleteCascade="false" table="campaigndocument"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="comment" nullable="false" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="owner" nullable="false" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="5" name="props" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="6" name="html_annset" nullable="true" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="7" name="external_id" nullable="true" remarks="" size="128" type="varchar"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="document_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="documentIDX1" unique="true">
+            <column ascending="true" name="external_id"/>
+         </index>
+      </table>
+      <table name="documentassignment" numRows="315" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="doc_id" nullable="false" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="2" name="campaign_id" nullable="false" remarks="" size="19" type="int8"/>
+         <primaryKey column="campaign_id" sequenceNumberInPK="1"/>
+         <primaryKey column="user_id" sequenceNumberInPK="2"/>
+         <primaryKey column="doc_id" sequenceNumberInPK="3"/>
+         <index name="documentassignment_pkey" unique="true">
+            <column ascending="true" name="campaign_id"/>
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="doc_id"/>
+         </index>
+      </table>
+      <table name="taskdefinition" numRows="27" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="name" nullable="false" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="precedencelevel" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="cardinality" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="id" nullable="false" remarks="" size="19" type="int8">
+            <child column="task_id" foreignKey="annotationsetFK13" implied="false" onDeleteCascade="false" table="annotationset"/>
+            <child column="predecessor_id" foreignKey="taskprecedencyFK12" implied="false" onDeleteCascade="false" table="taskprecedency"/>
+            <child column="successor_id" foreignKey="taskprecedencyFK11" implied="false" onDeleteCascade="false" table="taskprecedency"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="4" name="annotationtypes" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="5" name="visibility" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="campaign_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="taskdefinitionFK10" implied="false" onDeleteCascade="false" table="campaign"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="taskdefinition_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="idxc8180c44" unique="true">
+            <column ascending="true" name="campaign_id"/>
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="taskprecedency" numRows="27" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="direct" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="1" name="predecessor_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="taskprecedencyFK12" implied="false" onDeleteCascade="false" table="taskdefinition"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="successor_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="taskprecedencyFK11" implied="false" onDeleteCascade="false" table="taskdefinition"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="reviewing_dep" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="4" name="typereferencing_dep" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="5" name="succeeding_dep" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="6" name="campaign_id" nullable="false" remarks="" size="19" type="int8"/>
+         <primaryKey column="successor_id" sequenceNumberInPK="1"/>
+         <primaryKey column="predecessor_id" sequenceNumberInPK="2"/>
+         <index name="taskprecedency_pkey" unique="true">
+            <column ascending="true" name="successor_id"/>
+            <column ascending="true" name="predecessor_id"/>
+         </index>
+      </table>
+      <table name="user" numRows="4" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="is_active" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="1" name="is_admin" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="2" name="id" nullable="false" remarks="" size="19" type="int8">
+            <child column="user_id" foreignKey="campaignannotatorFK7" implied="false" onDeleteCascade="false" table="campaignannotator"/>
+            <child column="user_id" foreignKey="userauthorizationFK1" implied="false" onDeleteCascade="false" table="userauthorization"/>
+            <child column="user_id" foreignKey="usercampaignauthorizationFK3" implied="false" onDeleteCascade="false" table="usercampaignauthorization"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="3" name="login" nullable="false" remarks="" size="128" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="props" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="5" name="password" nullable="false" remarks="" size="128" type="varchar"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="user_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="idx16480406" unique="true">
+            <column ascending="true" name="login"/>
+         </index>
+      </table>
+      <table name="userauthorization" numRows="1" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="auth_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="userauthorizationFK2" implied="false" onDeleteCascade="false" table="authorization"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="userauthorizationFK1" implied="false" onDeleteCascade="false" table="user"/>
+         </column>
+         <primaryKey column="user_id" sequenceNumberInPK="1"/>
+         <primaryKey column="auth_id" sequenceNumberInPK="2"/>
+         <index name="userauthorization_pkey" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="auth_id"/>
+         </index>
+      </table>
+      <table name="usercampaignauthorization" numRows="0" remarks="" schema="aae_biotopes_quaero" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="auth_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="usercampaignauthorizationFK5" implied="false" onDeleteCascade="false" table="authorization"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="usercampaignauthorizationFK3" implied="false" onDeleteCascade="false" table="user"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="campaign_id" nullable="false" remarks="" size="19" type="int8">
+            <parent column="id" foreignKey="usercampaignauthorizationFK4" implied="false" onDeleteCascade="false" table="campaign"/>
+         </column>
+         <primaryKey column="user_id" sequenceNumberInPK="1"/>
+         <primaryKey column="campaign_id" sequenceNumberInPK="2"/>
+         <primaryKey column="auth_id" sequenceNumberInPK="3"/>
+         <index name="usercampaignauthorization_pkey" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="campaign_id"/>
+            <column ascending="true" name="auth_id"/>
+         </index>
+      </table>
+   </tables>
+</database>
