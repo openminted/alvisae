@@ -22,7 +22,7 @@ sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/al
 
 The web service implement the [aero protocol](https://github.com/openminted/omtd-aero). Here are the calls avalaible to the users. 
 
-#### Projects
+
 ##### List Projects
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae-ws/api/projects
@@ -45,7 +45,6 @@ curl -u aae_root:Tadmin -w "\n%{http_code}\n" http://localhost:8080/alvisae-ws/a
 ```sh
 ```
 
-#### Documents
 ##### List documents of project 4
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae-ws/api/projects/4/documents
@@ -59,7 +58,6 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new document&format=t
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae-ws/api/projects/1/documents/3
 ```
 
-#### Annotations
 ##### List Annotations
 ```
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae-ws/api/projects/4/documents/4/annotations
