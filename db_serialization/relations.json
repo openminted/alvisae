@@ -1,0 +1,688 @@
+[
+  {
+    "id": "b2ac9b6b-a988-4709-a6cf-0fe06cc9828c",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "47adec91-28b2-494c-935e-6f1a302c1748"
+      },
+      "Localization": {
+        "ann_id": "6e8d4c95-beb2-43e3-bbcb-cfdbdfd42be7"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "f60ab725-bef7-4ef9-a35a-80eb952257fd",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "cfb93985-6936-4ab7-a6a5-63aabceb951d"
+      },
+      "Localization": {
+        "ann_id": "6e8d4c95-beb2-43e3-bbcb-cfdbdfd42be7"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "2d6adcaf-10bc-45ae-92e7-cf82dbe9a7ea",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "cfb93985-6936-4ab7-a6a5-63aabceb951d"
+      },
+      "Localization": {
+        "ann_id": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "7c9247dc-99c4-4002-b12f-0aa985f1627f",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "cfb93985-6936-4ab7-a6a5-63aabceb951d"
+      },
+      "Localization": {
+        "ann_id": "83d65f56-6cdf-4395-ba76-a59fd1abdf18"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "ad134534-76bc-498f-a3d6-d88d55c1b7ed",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "47adec91-28b2-494c-935e-6f1a302c1748"
+      },
+      "Localization": {
+        "ann_id": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "330a8ca1-adfd-44ef-8552-7e0252b1d909",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "cfb93985-6936-4ab7-a6a5-63aabceb951d"
+      },
+      "Localization": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "27affbad-ee45-4682-ae5c-dbe59214b335",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "47adec91-28b2-494c-935e-6f1a302c1748"
+      },
+      "Localization": {
+        "ann_id": "83d65f56-6cdf-4395-ba76-a59fd1abdf18"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "a6d3f05e-f2cf-48c4-98ea-d972f3d85e75",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "cfb93985-6936-4ab7-a6a5-63aabceb951d"
+      },
+      "Localization": {
+        "ann_id": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "773b5692-853a-42d1-912b-a51536b89d23",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "47adec91-28b2-494c-935e-6f1a302c1748"
+      },
+      "Localization": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "41a5a24a-29d7-40c5-b6ac-2d35ef5bf74b",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "cfb93985-6936-4ab7-a6a5-63aabceb951d"
+      },
+      "Localization": {
+        "ann_id": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "4941bfa5-c4c2-4b1f-b8fd-ce6fbc55bed7",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "47adec91-28b2-494c-935e-6f1a302c1748"
+      },
+      "Localization": {
+        "ann_id": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "d7cba336-8343-4cef-886e-6e90aa646194",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "fcf94499-a94d-46b3-8544-f8f41484000c"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "bb42fbf5-1636-4e7c-8958-12ed41f45d5e",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "47adec91-28b2-494c-935e-6f1a302c1748"
+      },
+      "Localization": {
+        "ann_id": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "da565954-f336-416f-9171-08eaa5e0eb90",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e"
+      },
+      "Localization": {
+        "ann_id": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "c27be998-4ae9-4c61-84c9-5638d18ec0c8",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "eb9dadfe-b041-4f67-8914-cd2f677a89db",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e"
+      },
+      "Localization": {
+        "ann_id": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "33d250d0-bfd9-41e1-a099-2bd6ebca6e80",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "60b93cad-dd33-4342-bf59-3a6dc980b60f",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "6f83f6aa-1766-4b62-a6fc-8e5d6aafb3b0"
+      },
+      "Localization": {
+        "ann_id": "c2266599-9bfa-467a-bad2-81a9478daf61"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "bc4f02e5-2da0-49c5-bcc5-65226cdc1973",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "b32b7207-d8ac-42f5-bdfd-3b4d682c5a9b"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "0f733825-901c-4283-a015-a725cf5e8010",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "6e8d4c95-beb2-43e3-bbcb-cfdbdfd42be7"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "77909494-2c0a-44f8-9607-38dca37cfd31",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "d6729109-0613-49d7-9783-3774905f2da6"
+      },
+      "Localization": {
+        "ann_id": "9fe60c59-81af-46d3-87c4-cace36ecd296"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "77e53d9e-f330-44e3-aad4-ca890c696815",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "b424af64-02c6-47fc-b67e-69ab6d929030"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "a1a7d117-a57e-4dd1-abe9-63fa4692b4ab",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "83d65f56-6cdf-4395-ba76-a59fd1abdf18"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "be468daa-3308-44d6-8557-fdfc22978f15",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "e06182fc-fabe-4d10-8c7e-630d90879d4d",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e"
+      },
+      "Localization": {
+        "ann_id": "6e8d4c95-beb2-43e3-bbcb-cfdbdfd42be7"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "e2927d75-ccdc-48db-afe7-a13143927b9b",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e"
+      },
+      "Localization": {
+        "ann_id": "83d65f56-6cdf-4395-ba76-a59fd1abdf18"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "12765fa0-8b12-4bb3-9a07-103a922915ec",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e"
+      },
+      "Localization": {
+        "ann_id": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "03a81d4e-8946-42c9-a90c-33ae6478e822",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e"
+      },
+      "Localization": {
+        "ann_id": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "8e437cc8-7b5d-477f-aa6e-68d7902d61db",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e"
+      },
+      "Localization": {
+        "ann_id": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "26f59422-01d5-4976-991d-d0783beb6302",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e"
+      },
+      "Localization": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "c33e3b15-5d34-49cd-a8b8-d2178ce17f7d",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "b2c91b58-269c-4cde-abf9-0b3bbc3dc00d",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "d296ad1e-5374-4c78-8e19-70da28714314",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "b80677b4-8561-435b-a246-1a94be4c36b0"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "5b0e1f94-4fa1-40c8-9cea-cbf68adc8204",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "e2b7e8dc-387b-4fda-a346-0e75581e41e8",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "cfb93985-6936-4ab7-a6a5-63aabceb951d"
+      },
+      "Localization": {
+        "ann_id": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "4e11cb4e-4010-4f35-81f4-d97ce7e078a1",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "cfb93985-6936-4ab7-a6a5-63aabceb951d"
+      },
+      "Localization": {
+        "ann_id": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "f448fb5e-d216-44f4-9406-76d1c8248581",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "47adec91-28b2-494c-935e-6f1a302c1748"
+      },
+      "Localization": {
+        "ann_id": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "399d19c2-73f4-4e05-9095-76c3d1592170",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "47adec91-28b2-494c-935e-6f1a302c1748"
+      },
+      "Localization": {
+        "ann_id": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "e1117ef0-221c-4aad-a591-76398b6420bf",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "47adec91-28b2-494c-935e-6f1a302c1748"
+      },
+      "Localization": {
+        "ann_id": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "ccc9aad0-132f-40a4-8a84-884a66e177cc",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "8982742b-6802-466b-9247-9581d2148ebb"
+      },
+      "Localization": {
+        "ann_id": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "a06ae51a-8b4b-462d-a164-da7ed3873d0e",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "cfb93985-6936-4ab7-a6a5-63aabceb951d"
+      },
+      "Localization": {
+        "ann_id": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "ecdf1741-3e53-4630-aaed-8521d3ff1507",
+    "properties": {},
+    "type": "Localization",
+    "relation": {
+      "Bacterium": {
+        "ann_id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e"
+      },
+      "Localization": {
+        "ann_id": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "80d215f9-abd3-46d0-88cc-7450d6e63a7f",
+    "properties": {},
+    "type": "PartOf",
+    "relation": {
+      "Host": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      "Part": {
+        "ann_id": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "28ef2934-c81d-46a1-b167-e7f9a7a986d6",
+    "properties": {},
+    "type": "PartOf",
+    "relation": {
+      "Host": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      "Part": {
+        "ann_id": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "e915b016-ef35-4e07-986c-6224b2ef3ead",
+    "properties": {},
+    "type": "PartOf",
+    "relation": {
+      "Host": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      "Part": {
+        "ann_id": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "1bc08080-dad0-4f43-baef-58b14200d76f",
+    "properties": {},
+    "type": "PartOf",
+    "relation": {
+      "Host": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      "Part": {
+        "ann_id": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "23bd4a60-f381-4662-b72d-ad4c10b415c3",
+    "properties": {},
+    "type": "PartOf",
+    "relation": {
+      "Host": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      "Part": {
+        "ann_id": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "9700365f-d3b8-40cc-bd7b-973944c566e3",
+    "properties": {},
+    "type": "PartOf",
+    "relation": {
+      "Host": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      "Part": {
+        "ann_id": "c2266599-9bfa-467a-bad2-81a9478daf61"
+      }
+    },
+    "kind": 2
+  },
+  {
+    "id": "239d5fa4-6ad3-48f0-8055-4b6e79a60159",
+    "properties": {},
+    "type": "PartOf",
+    "relation": {
+      "Host": {
+        "ann_id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      "Part": {
+        "ann_id": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      }
+    },
+    "kind": 2
+  }
+]

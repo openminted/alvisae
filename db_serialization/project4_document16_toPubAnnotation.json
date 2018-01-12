@@ -1,0 +1,596 @@
+{
+  "text": "Brucella abortus S19\nDescription\nBrucella. There are 7 Brucella spp., of which four are pathogenic in humans (Brucella melitensis, Brucella abortus, Brucella canis and Brucella suis). They are highly infectious, and can be spread through contact with infected animal products or through the air, making them a potential bioterrorism agent. Once the organism has entered the body, it can become intracellular, and enter the blood and lymphatic regions, multiplying inside phagocytes before eventually causing bacteremia (spread of bacteria through the blood). Virulence may depend on a type IV secretion system which may promote intracellular growth by secreting important effector molecules.\nDescription\nBrucella abortus. This organism was first noticed on the island of Malta by Dr. David Bruce during an epidemic among British soldiers. It is the primary cause of bovine brucellosis, which results in enormous (billions of dollars) economic losses due primarily to reproductive failure and food losses. In man, it causes undulant fever, a long debilitating disease that is treated by protracted administration of antibiotics. Brucella abortus is listed as a civilian, military, and agricultural bioterrism agent.\nDescription\nBrucella abortus S19. This is a spontaneously attenuated strain discovered by Dr. John Buck in 1923. However, the underlying molecular or physiological mechanisms causing the loss of virulence is not well understood. Since early 1930s, this strain has been used worldwide as an effective vaccine to prevent brucellosis in cattle until it was replaced by strain RB51 during the 1990s. The main objective of this project is to identify genes associated with the virulence or lack there of, through comparison of S19 genome with that of the virulent counterparts.\n",
+  "denotations": [
+    [
+      {
+        "id": "bba543f9-3918-458e-af92-2cdbf8c7c24a",
+        "span": {
+          "begin": 0,
+          "end": 21
+        },
+        "obj": ""
+      },
+      {
+        "id": "101ea104-7253-4096-8fcb-8c8434a350ec",
+        "span": {
+          "begin": 21,
+          "end": 33
+        },
+        "obj": ""
+      },
+      {
+        "id": "0f908b50-2397-42c3-9ad8-52d42eb48a97",
+        "span": {
+          "begin": 33,
+          "end": 692
+        },
+        "obj": ""
+      },
+      {
+        "id": "8d960a51-4825-40a7-92fe-725506fd0c68",
+        "span": {
+          "begin": 692,
+          "end": 704
+        },
+        "obj": ""
+      },
+      {
+        "id": "b8847243-e8c9-49aa-b0cc-1cd116fe1ee1",
+        "span": {
+          "begin": 704,
+          "end": 1215
+        },
+        "obj": ""
+      },
+      {
+        "id": "d2e0697b-55a0-442e-acec-87fbafe56dc3",
+        "span": {
+          "begin": 1215,
+          "end": 1227
+        },
+        "obj": ""
+      },
+      {
+        "id": "f2c3bae3-7ecb-43bb-a040-75d4eee64e12",
+        "span": {
+          "begin": 1227,
+          "end": 1788
+        },
+        "obj": ""
+      }
+    ],
+    [
+      {
+        "id": "d6729109-0613-49d7-9783-3774905f2da6",
+        "span": {
+          "begin": 0,
+          "end": 20
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "span": {
+          "begin": 110,
+          "end": 129
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "8982742b-6802-466b-9247-9581d2148ebb",
+        "span": {
+          "begin": 131,
+          "end": 147
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "span": {
+          "begin": 149,
+          "end": 163
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "span": {
+          "begin": 168,
+          "end": 181
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "6f83f6aa-1766-4b62-a6fc-8e5d6aafb3b0",
+        "span": {
+          "begin": 530,
+          "end": 538
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "9b677cba-6fdc-4dc9-832a-79b5764fea9f",
+        "span": {
+          "begin": 704,
+          "end": 720
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "dbb307f5-47f0-4ebe-86e5-cdb0cb455a4e",
+        "span": {
+          "begin": 1227,
+          "end": 1247
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "45422442-b0c1-4161-b8e3-85f5e0c6fda2",
+        "span": {
+          "begin": 102,
+          "end": 108
+        },
+        "obj": "Host"
+      },
+      {
+        "id": "6e8d4c95-beb2-43e3-bbcb-cfdbdfd42be7",
+        "span": {
+          "begin": 260,
+          "end": 275
+        },
+        "obj": "Food"
+      },
+      {
+        "id": "83d65f56-6cdf-4395-ba76-a59fd1abdf18",
+        "span": {
+          "begin": 291,
+          "end": 294
+        },
+        "obj": "Environment"
+      },
+      {
+        "id": "33d4b37b-2ad4-4476-8b89-9451a74968d8",
+        "span": {
+          "begin": 374,
+          "end": 378
+        },
+        "obj": "HostPart"
+      },
+      {
+        "id": "bf5fe088-7d2e-4638-ba8e-092c26749176",
+        "span": {
+          "begin": 394,
+          "end": 407
+        },
+        "obj": "HostPart"
+      },
+      {
+        "id": "05bc5037-4afc-410b-9cf7-32b5f77b85b3",
+        "span": {
+          "begin": 423,
+          "end": 428
+        },
+        "obj": "HostPart"
+      },
+      {
+        "id": "70fc20c8-0f95-4b8a-99d5-0059158e4445",
+        "span": {
+          "begin": 433,
+          "end": 442
+        },
+        "obj": "HostPart"
+      },
+      {
+        "id": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58",
+        "span": {
+          "begin": 471,
+          "end": 481
+        },
+        "obj": "HostPart"
+      },
+      {
+        "id": "c2266599-9bfa-467a-bad2-81a9478daf61",
+        "span": {
+          "begin": 551,
+          "end": 556
+        },
+        "obj": "HostPart"
+      },
+      {
+        "id": "523ce1d7-13ea-4c91-a093-f23f4e5f4248",
+        "span": {
+          "begin": 628,
+          "end": 641
+        },
+        "obj": "HostPart"
+      },
+      {
+        "id": "b80677b4-8561-435b-a246-1a94be4c36b0",
+        "span": {
+          "begin": 761,
+          "end": 776
+        },
+        "obj": "Geographical"
+      },
+      {
+        "id": "fcf94499-a94d-46b3-8544-f8f41484000c",
+        "span": {
+          "begin": 821,
+          "end": 837
+        },
+        "obj": "Host"
+      },
+      {
+        "id": "b32b7207-d8ac-42f5-bdfd-3b4d682c5a9b",
+        "span": {
+          "begin": 866,
+          "end": 872
+        },
+        "obj": "Host"
+      },
+      {
+        "id": "b424af64-02c6-47fc-b67e-69ab6d929030",
+        "span": {
+          "begin": 1008,
+          "end": 1011
+        },
+        "obj": "Host"
+      },
+      {
+        "id": "9fe60c59-81af-46d3-87c4-cace36ecd296",
+        "span": {
+          "begin": 1549,
+          "end": 1555
+        },
+        "obj": "Host"
+      },
+      {
+        "id": "b9a73ecd-dc06-4dbd-8982-649f504ee459",
+        "span": {
+          "begin": 55,
+          "end": 68
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "2f8fc646-2397-46a5-9126-85e8d2d30fdb",
+        "span": {
+          "begin": 33,
+          "end": 41
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "82b0476b-6764-458a-b9eb-cc9d4f9d6eb7",
+        "span": {
+          "begin": 992,
+          "end": 996
+        },
+        "obj": "Food"
+      },
+      {
+        "id": "0a9f11fc-3229-4dcb-87ef-b4e9e07c46a9",
+        "span": {
+          "begin": 1128,
+          "end": 1144
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "4c87ffb8-28d4-492b-beb5-12c23cc05904",
+        "span": {
+          "begin": 1588,
+          "end": 1592
+        },
+        "obj": "Bacteria"
+      },
+      {
+        "id": "b3f2eb18-26db-4893-ab91-6393412be3ce",
+        "span": {
+          "begin": 1737,
+          "end": 1740
+        },
+        "obj": "Bacteria"
+      }
+    ]
+  ],
+  "relations": [
+    [],
+    [
+      {
+        "id": "b2ac9b6b-a988-4709-a6cf-0fe06cc9828c",
+        "subj": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "pred": "Localization",
+        "obj": "6e8d4c95-beb2-43e3-bbcb-cfdbdfd42be7"
+      },
+      {
+        "id": "f60ab725-bef7-4ef9-a35a-80eb952257fd",
+        "subj": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "pred": "Localization",
+        "obj": "6e8d4c95-beb2-43e3-bbcb-cfdbdfd42be7"
+      },
+      {
+        "id": "2d6adcaf-10bc-45ae-92e7-cf82dbe9a7ea",
+        "subj": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "pred": "Localization",
+        "obj": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      },
+      {
+        "id": "7c9247dc-99c4-4002-b12f-0aa985f1627f",
+        "subj": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "pred": "Localization",
+        "obj": "83d65f56-6cdf-4395-ba76-a59fd1abdf18"
+      },
+      {
+        "id": "ad134534-76bc-498f-a3d6-d88d55c1b7ed",
+        "subj": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "pred": "Localization",
+        "obj": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      },
+      {
+        "id": "330a8ca1-adfd-44ef-8552-7e0252b1d909",
+        "subj": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "pred": "Localization",
+        "obj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      {
+        "id": "27affbad-ee45-4682-ae5c-dbe59214b335",
+        "subj": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "pred": "Localization",
+        "obj": "83d65f56-6cdf-4395-ba76-a59fd1abdf18"
+      },
+      {
+        "id": "a6d3f05e-f2cf-48c4-98ea-d972f3d85e75",
+        "subj": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "pred": "Localization",
+        "obj": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      },
+      {
+        "id": "773b5692-853a-42d1-912b-a51536b89d23",
+        "subj": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "pred": "Localization",
+        "obj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      {
+        "id": "41a5a24a-29d7-40c5-b6ac-2d35ef5bf74b",
+        "subj": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "pred": "Localization",
+        "obj": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      },
+      {
+        "id": "4941bfa5-c4c2-4b1f-b8fd-ce6fbc55bed7",
+        "subj": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "pred": "Localization",
+        "obj": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      },
+      {
+        "id": "d7cba336-8343-4cef-886e-6e90aa646194",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "fcf94499-a94d-46b3-8544-f8f41484000c"
+      },
+      {
+        "id": "bb42fbf5-1636-4e7c-8958-12ed41f45d5e",
+        "subj": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "pred": "Localization",
+        "obj": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      },
+      {
+        "id": "da565954-f336-416f-9171-08eaa5e0eb90",
+        "subj": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "pred": "Localization",
+        "obj": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      },
+      {
+        "id": "c27be998-4ae9-4c61-84c9-5638d18ec0c8",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      },
+      {
+        "id": "eb9dadfe-b041-4f67-8914-cd2f677a89db",
+        "subj": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "pred": "Localization",
+        "obj": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      },
+      {
+        "id": "33d250d0-bfd9-41e1-a099-2bd6ebca6e80",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      },
+      {
+        "id": "60b93cad-dd33-4342-bf59-3a6dc980b60f",
+        "subj": "6f83f6aa-1766-4b62-a6fc-8e5d6aafb3b0",
+        "pred": "Localization",
+        "obj": "c2266599-9bfa-467a-bad2-81a9478daf61"
+      },
+      {
+        "id": "bc4f02e5-2da0-49c5-bcc5-65226cdc1973",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "b32b7207-d8ac-42f5-bdfd-3b4d682c5a9b"
+      },
+      {
+        "id": "0f733825-901c-4283-a015-a725cf5e8010",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "6e8d4c95-beb2-43e3-bbcb-cfdbdfd42be7"
+      },
+      {
+        "id": "77909494-2c0a-44f8-9607-38dca37cfd31",
+        "subj": "d6729109-0613-49d7-9783-3774905f2da6",
+        "pred": "Localization",
+        "obj": "9fe60c59-81af-46d3-87c4-cace36ecd296"
+      },
+      {
+        "id": "77e53d9e-f330-44e3-aad4-ca890c696815",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "b424af64-02c6-47fc-b67e-69ab6d929030"
+      },
+      {
+        "id": "a1a7d117-a57e-4dd1-abe9-63fa4692b4ab",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "83d65f56-6cdf-4395-ba76-a59fd1abdf18"
+      },
+      {
+        "id": "be468daa-3308-44d6-8557-fdfc22978f15",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      },
+      {
+        "id": "e06182fc-fabe-4d10-8c7e-630d90879d4d",
+        "subj": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "pred": "Localization",
+        "obj": "6e8d4c95-beb2-43e3-bbcb-cfdbdfd42be7"
+      },
+      {
+        "id": "e2927d75-ccdc-48db-afe7-a13143927b9b",
+        "subj": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "pred": "Localization",
+        "obj": "83d65f56-6cdf-4395-ba76-a59fd1abdf18"
+      },
+      {
+        "id": "12765fa0-8b12-4bb3-9a07-103a922915ec",
+        "subj": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "pred": "Localization",
+        "obj": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      },
+      {
+        "id": "03a81d4e-8946-42c9-a90c-33ae6478e822",
+        "subj": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "pred": "Localization",
+        "obj": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      },
+      {
+        "id": "8e437cc8-7b5d-477f-aa6e-68d7902d61db",
+        "subj": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "pred": "Localization",
+        "obj": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      },
+      {
+        "id": "26f59422-01d5-4976-991d-d0783beb6302",
+        "subj": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "pred": "Localization",
+        "obj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      {
+        "id": "c33e3b15-5d34-49cd-a8b8-d2178ce17f7d",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      },
+      {
+        "id": "b2c91b58-269c-4cde-abf9-0b3bbc3dc00d",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2"
+      },
+      {
+        "id": "d296ad1e-5374-4c78-8e19-70da28714314",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "b80677b4-8561-435b-a246-1a94be4c36b0"
+      },
+      {
+        "id": "5b0e1f94-4fa1-40c8-9cea-cbf68adc8204",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      },
+      {
+        "id": "e2b7e8dc-387b-4fda-a346-0e75581e41e8",
+        "subj": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "pred": "Localization",
+        "obj": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      },
+      {
+        "id": "4e11cb4e-4010-4f35-81f4-d97ce7e078a1",
+        "subj": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "pred": "Localization",
+        "obj": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      },
+      {
+        "id": "f448fb5e-d216-44f4-9406-76d1c8248581",
+        "subj": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "pred": "Localization",
+        "obj": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      },
+      {
+        "id": "399d19c2-73f4-4e05-9095-76c3d1592170",
+        "subj": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "pred": "Localization",
+        "obj": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      },
+      {
+        "id": "e1117ef0-221c-4aad-a591-76398b6420bf",
+        "subj": "47adec91-28b2-494c-935e-6f1a302c1748",
+        "pred": "Localization",
+        "obj": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      },
+      {
+        "id": "ccc9aad0-132f-40a4-8a84-884a66e177cc",
+        "subj": "8982742b-6802-466b-9247-9581d2148ebb",
+        "pred": "Localization",
+        "obj": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      },
+      {
+        "id": "a06ae51a-8b4b-462d-a164-da7ed3873d0e",
+        "subj": "cfb93985-6936-4ab7-a6a5-63aabceb951d",
+        "pred": "Localization",
+        "obj": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      },
+      {
+        "id": "ecdf1741-3e53-4630-aaed-8521d3ff1507",
+        "subj": "dc3c80fd-b7de-4482-9b3a-3e5f674d672e",
+        "pred": "Localization",
+        "obj": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      },
+      {
+        "id": "80d215f9-abd3-46d0-88cc-7450d6e63a7f",
+        "subj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2",
+        "pred": "PartOf",
+        "obj": "f6a336ae-f75f-41fb-a52f-ebedd1ca2e58"
+      },
+      {
+        "id": "28ef2934-c81d-46a1-b167-e7f9a7a986d6",
+        "subj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2",
+        "pred": "PartOf",
+        "obj": "33d4b37b-2ad4-4476-8b89-9451a74968d8"
+      },
+      {
+        "id": "e915b016-ef35-4e07-986c-6224b2ef3ead",
+        "subj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2",
+        "pred": "PartOf",
+        "obj": "70fc20c8-0f95-4b8a-99d5-0059158e4445"
+      },
+      {
+        "id": "1bc08080-dad0-4f43-baef-58b14200d76f",
+        "subj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2",
+        "pred": "PartOf",
+        "obj": "bf5fe088-7d2e-4638-ba8e-092c26749176"
+      },
+      {
+        "id": "23bd4a60-f381-4662-b72d-ad4c10b415c3",
+        "subj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2",
+        "pred": "PartOf",
+        "obj": "05bc5037-4afc-410b-9cf7-32b5f77b85b3"
+      },
+      {
+        "id": "9700365f-d3b8-40cc-bd7b-973944c566e3",
+        "subj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2",
+        "pred": "PartOf",
+        "obj": "c2266599-9bfa-467a-bad2-81a9478daf61"
+      },
+      {
+        "id": "239d5fa4-6ad3-48f0-8055-4b6e79a60159",
+        "subj": "45422442-b0c1-4161-b8e3-85f5e0c6fda2",
+        "pred": "PartOf",
+        "obj": "523ce1d7-13ea-4c91-a093-f23f4e5f4248"
+      }
+    ]
+  ]
+}
