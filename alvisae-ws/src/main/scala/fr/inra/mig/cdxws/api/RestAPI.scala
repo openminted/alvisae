@@ -48,6 +48,7 @@ import fr.inra.mig.cdxws.db.AnnotationSet
 import net.liftweb.http.InMemoryResponse
 import fr.inra.mig.cdxws.db.CadixeDB.UsersAutorizations
 import net.liftweb.json.MappingException
+import fr.inra.mig.cdxws.db.CadixeDB.PubAnnotationDoc
 
 object RestAPI {
   implicit val formats = Serialization.formats(NoTypeHints)
@@ -605,6 +606,9 @@ object RestAPI {
 
   }
 
+
+
+
   def json_aero_project_List(projects : List[Campaign]) = {
      val jl = projects.map {
       ps =>
@@ -668,6 +672,43 @@ object RestAPI {
       }
     "body" -> jl
    }
+
+
+  // pubannotation
+  def doSpan(spans : List[Int]) = {
+
+      (("begin" -> spans.head) ~
+        ("end" -> spans.last))
+
+  }
+
+  // pubAnnotation
+  def json_pubannotation_annotation_list(text : String, docs : List[AnnotationSet]) = {
+
+    implicit val formats = Serialization.formats(NoTypeHints)
+
+    ( "text" -> text)~
+    ("denotations" -> (docs.map { a =>
+
+        parse(a.text_annotations).extract[List[TextAnnotation]].map { e =>
+          ("id" -> e.id) ~
+            ("span" -> doSpan(e.text.head)) ~
+            ("obj" -> e.`type`)
+        }
+    }.flatten)
+      ) ~
+    ("relations" -> (docs.map { a  =>
+
+        parse(a.relations).extract[List[Relation]].map{ e =>
+         ("id" -> e.id) ~
+           ("subj" -> (if(e.relation.values.nonEmpty) (e.relation.values.head.ann_id) else "")) ~
+           ("pred" -> e.`type`) ~
+           ("obj" -> (if(e.relation.values.nonEmpty) (e.relation.values.last.ann_id) else ""))
+     }
+    }.flatten)
+      )
+
+  }
 
   def json_aero_annotation(annotation : AnnotationSet) = {
     val jl =
@@ -749,6 +790,82 @@ object RestAPI {
             () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))
         }
       }
+
+
+    /**
+      *
+      * PubAnnotation specific  document exporter
+      *
+      *
+      * curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/alvisae-ws/api/projects/4/documents/16
+      *
+      * */
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: Nil,_,GetRequest) => {
+      user.is match {
+        case Some(user) if (user.is_admin) =>
+          () => Full({
+            transaction {
+
+              CadixeDB.getDocumentById(document_id) match {
+                case None => ResponseWithReason(NotFoundResponse(), "Specified document no found")
+                case Some(theDocument) =>
+
+              val dr = CadixeDB.getADocumentRecord(campaign_id, document_id)
+              JsonResponse(json_pubannotation_annotation_list(theDocument.contents , dr.toList))
+
+              }
+            }
+          })
+        case _ =>
+          () => Full(ResponseWithReason(ForbiddenResponse(), "Only admin can perform this operation!"))
+      }
+    }
+
+
+    //Reset Authorizations info of an user
+    case req @ Req("api" :: "user" :: AsLong(user_id) ::  "projects" :: AsLong(project_id) :: "documents" :: Nil,_,PutRequest) => {
+      user.is match {
+        case Some(user) =>
+          user.is_admin match {
+            //deny updating user's Authorizations to non-admin
+            case false =>
+              () =>  Full(ResponseWithReason(ForbiddenResponse(), "Only an admin can perform this operation!"))
+            case _ =>
+              () => transaction {
+                CadixeDB.users.where(u => u.id === user_id).headOption  match {
+                  case None =>
+                    Full(ResponseWithReason(NotFoundResponse(), "No User identified by id " + user_id+ " could be found"))
+                  case Some(user) =>
+
+                    jsonBody(req) match {
+                      case Full(json) =>
+
+                        CadixeDB.getCampaignById(project_id) match {
+                          case None =>
+                            Full(ResponseWithReason(NotFoundResponse(), "Specified project no found"))
+                          case Some(theProject) =>
+                            val pubAnnotationDoc = json.extract[PubAnnotationDoc]
+                            val newDocument = CadixeDB.createDocument(user, pubAnnotationDoc.text, description = pubAnnotationDoc.section)
+                            CadixeDB.addDocument2Campaign(newDocument, theProject)
+                            val jsonResponse = json_aero_document(newDocument)
+                            Full(JsonResponse(jsonResponse))
+                        }
+
+                      case _ =>
+                        Full(ResponseWithReason(BadResponse(), "No or Invalid user's Authorizations"))
+                    }
+                }
+              }
+          }
+        case None =>
+          () => Full(BadResponse())
+      }
+    }
+
+
+    /**
+      * pubANnotation end
+      */
 
       // list annotations related to a document
      case Req("api" :: "projects" :: AsLong(campaign_id) :: "documents" :: AsLong(document_id) :: "annotations" :: Nil,_,GetRequest) => {
