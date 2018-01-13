@@ -628,6 +628,17 @@ object CadixeDB extends org.squeryl.Schema {
   
   // ---------- @ba adds start
 
+  // for PubANnotation begin
+  case class PubAnnotationDoc(
+                               val text : String,
+                               val sourcedb : String,
+                               val sourceid : String,
+                               val divid : Int,
+                               val section : String,
+                               val source_url : String)
+
+  // for pubannotation end
+
   def getDocuments(project_id : Long) = {
     from(campaign_documents, documents)((cd, d) =>
       where(cd.campaign_id === project_id
@@ -641,6 +652,16 @@ object CadixeDB extends org.squeryl.Schema {
       and as.doc_id === document_id
       and as.head === true)
         select(as))
+  }
+
+  def getADocumentRecord(campaign_id : Long, document_id : Long) = {
+    from(campaign_documents, documents, annotation_sets)((cd, d, as) =>
+      where(as.campaign_id === campaign_id
+        and d.id === document_id
+        and cd.doc_id === d.id
+        and d.id === as.doc_id
+        and as.head === true)
+          select(as))
   }
 
   def removeAllAnnotations(campaign_id : Long, document_id : Long){
