@@ -71,10 +71,10 @@ The editing view can be divided in the following parts:
 	* return to campaigns & documents list [ ![](images/inbox--arrow.png) ],
 	* save the edited annotations [ ![](images/disk-black.png) ],
 	* end the annotation of the current document [ ![](images/receipt-share.png) ],
-	* menu to sign-out or [change password](#Password-change)...? [[Aae_UserGuide#Password-change|change password]] [ ![](images/user-silhouette.png) ]
+	* menu to sign-out or [[Aae_UserGuide#Password-change|change password](#Password-change)] [ ![](images/user-silhouette.png) ]
 2. [[Aae_UserGuide#Editor-panel|Editor panel]], which display the document itself and commands to annotate it
 3. resizeable **Panel-Boundaries**, to organize the space within the browser window 
-4. [[Aae_UserGuide#Annotation-Table|Annotation table]], displaying annotation in a tabular format
+4. [[Aae_UserGuide#Annotation-Table|Annotation table](#Annotation-Table)], displaying annotation in a tabular format
 5. **Side panel**, used to display and edit Annotation properties
 6. **Status bar**, displaying system messages and network activity
 
@@ -132,7 +132,7 @@ This is the central panel of AlvisAE, which displays the text of the document, e
 
 #### Text Annotations
 
-+Graphical representation+
+_Graphical representation_
 
 Text Annotation are displayed as colored boxes, whose background color is set according to the Annotation Type.
 The border color has also some specific meaning:
@@ -149,7 +149,7 @@ The border is always displayed, even if an annotation is hidden because it inclu
 ![](images/aae_includedAnnotationsExploded.png)
 
 
-+Edition+
+_Edition_
 
 * Click and drag to select a fragment of text, then click the “Create Text Annotation” button [ ![](images/TextAnnotation_Add.png) ] or use the keyboard shortcut @A@
 ![](images/lightning.png) It is possible to create discontinuous annotation by selecting several distinct fragments of text with the @Ctrl@ key pressed (your web browser must support discontinuous text selection)
@@ -161,13 +161,13 @@ The border is always displayed, even if an annotation is hidden because it inclu
 
 #### Relations
 
-+Graphical representation+
+_Graphical representation_
 
 Relation are figured by horizontal and vertical line segments linking each argument to a lozenge kernel, whose background color is set according to the Annotation Type.
 
 #### Groups
 
-+Graphical representation+
+_Graphical representation_
 
 Groups are figured by diagonal line segments linking each component to a circled kernel, whose background color is set according to the Annotation Type.
 
