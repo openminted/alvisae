@@ -121,9 +121,204 @@ the toolbar contains all the commands used to edit annotations:
 
 ![](images/lightning.png) The toolbar can be collapsed by clicking on the small triangular icon on the top left side [ ![](images/expandCollapseHandle.png) ]
 
-## Annotation Tool
+
+### Document panel
+
+This is the central panel of AlvisAE, which displays the text of the document, enriched with specific graphical elements to represent the different kind of Annotations.
+
+![](images/information-balloon.png) When a document is loaded, Relations are hidden by default to preserve a good text readability.
+![](images/lightning.png) when the mouse pointer fly over a Text Annotation, all Relations involving the hovered Text Annotation are temporarily revealed.
+(The visibility status of each annotation can be individually set from the [[Aae_UserGuide#Annotation-Table|Annotation table]]).
+
+#### Text Annotations
+
++Graphical representation+
+
+Text Annotation are displayed as colored boxes, whose background color is set according to the Annotation Type.
+The border color has also some specific meaning:
+* red : default color of unselected annotation,
+* yellow : currently hovered, unselected annotation,
+* cyan : color of selected annotation(s),
+* dark green : currently hovered, selected annotation,
+* lime green : currently hovered annotation during a drag and drop operation
+
+The border is always displayed, even if an annotation is hidden because it includes another annotation. So, the thickness of the border is a good indication of the number of included annotations.
+![](images/aae_includedAnnotations.png)
+
+![](images/lightning.png) Pressing the @Shift@ key while moving the mouse pointer over included annotations will popup the exploded list of annotations present at the mouse position, which is useful to select the right annotation (this list is automatically opened when dropping during a drag and drop operation intended to create a Relation).
+![](images/aae_includedAnnotationsExploded.png)
+
+
++Edition+
+
+* Click and drag to select a fragment of text, then click the “Create Text Annotation” button [ ![](images/TextAnnotation_Add.png) ] or use the keyboard shortcut @A@
+![](images/lightning.png) It is possible to create discontinuous annotation by selecting several distinct fragments of text with the @Ctrl@ key pressed (your web browser must support discontinuous text selection)
+
+
+* margin : warning icons....
+
+>>>>>*TODO : add details here*
+
+#### Relations
+
++Graphical representation+
+
+Relation are figured by horizontal and vertical line segments linking each argument to a lozenge kernel, whose background color is set according to the Annotation Type.
+
+#### Groups
+
++Graphical representation+
+
+Groups are figured by diagonal line segments linking each component to a circled kernel, whose background color is set according to the Annotation Type.
+
+
+
+h3. Occurrence bar
+
+This is a vertical bar (located on right side of the document panel) where each Text Annotation is figured by a little horizontal line marker :
+* the vertical position of the marker on the bar is proportional to the annotation location inside the document,
+* the marker's color correspond to its Annotation Type.
+
+![](images/lightning.png) double-clicking on a marker will scroll the document to view the corresponding text annotation.
+
+![](images/information-balloon.png) The occurrence bar presents a global summary of all Text Annotations of the current document, in terms of localization, density, and is especially useful for areas of the document currently not scrolled into view.
+
+
+### keyboard shortcuts
+
+>>>>>*TODO : add details here*
+
+<pre>
+
+</pre>
+
+## Annotation Table
+
+This table presents in a tabular format all annotations of the current document.
+
+![](images/aae_AnnotationTable.png)
+
+Each annotation is displayed as a single line in the table which contains the following columns:
+
+* unique **identifier** of the annotation
+![](images/lightning.png) double-clicking on an id will scroll the document to view the corresponding annotation.
+* **Annotation Set** to which the annotation belongs (named after the user name, or the software agent, who produced it).
+* **Kind** of the annotation ( ![](images/TextAnnotation_icon.png) / ![](images/Relation_icon.png) / ![](images/Group_icon.png) )
+* **Type**, figured by its color and name (depending of the Annotation Schema of the current document)
+* **Details** : the fragment(s) of text covered for Text Annotation, or a specific flat representation for Relation and Group.
+![](images/lightning.png) in the flat representation for Relation and Group: double-clicking on the grayed part representing a referenced annotation will change the selection to this specific annotation.
+* optional **Term handle** [ ![](images/term-white.png) ], used for enriching an external Terminology/Ontology resource (see [[Aae_UserGuide#Termino-Ontology-Extension|Terminology/Ontology extension]])
+* **Visibility** status, allowing to toggle (by a simple click on the icon) the visibility of the corresponding annotation in the document panel
+![](images/lightning.png) if several lines are selected in the table, the visibility will be changed for all of them.
+![](images/information-balloon.png) when loading a document, Relations are hidden by default, hence maintaining a good text readability.
+
+
+The content of the table can be reordered by clicking on the column header (first click for ascending order, second click for descending order).
+![](images/lightning.png) when ordering by Kind, the Text Annotation are presented in the order of the text flow.
+
+There is a toolbar (collapsed by default) above the table header that can by expanded by clicking on the small triangular icon on the top left side [ ![](images/collapseExpandHandle.png) ] : it contains a menu allowing to select which Annotation Set(s) is displayed in the table.
+
+<pre>
+
+</pre>
 
 ## Termino-Ontology Extension
 
+This extension can display an external Termino/Ontology resource stored in TyDI system.
+The Classes hierarchy can be modified, and the resource can be enriched with terms or classes occurring in the document currently annotated.
+
+![](images/aae_TdyExtension.png)
+
+### Extension Activation
+
+Text Annotations of a certain Type can be linked to external Termino/Ontology resource stored in TyDI system.
+This option is specified within the Annotation schema; when it is enabled, the Termino-Ontology Extension will display in the left side panel.
+
+### Authentication
+
+Since the data displayed by this extension are managed by a system distinct from the Annotation system, you will be requested to authenticate to access the  Termino/Ontology resource.
+The extension will remember your credentials, and will automatically submit it next time you'll need to access the Termino/Ontology resource.
+
+![](images/lightning.png) It is still possible to change the credentials used to access the Termino/Ontology resource by clicking to the logout button [ ![](images/signOut.png) ].
+
+### Browsing the Terminology/Ontology
+
+* The middle panel displays the Terminology/Ontology as a tree which is loaded on demand when levels are expanded.
+* The bottom panel of the extension presents the Terms belonging to the currently selected class.
+
+### Searching within the Terminology/Ontology
+
+![](images/doIt.png) The top toolbar of the extension can be used to search Classes within the Terminology/Ontology:
+
+* enter a string pattern in the text field provided : ![](images/aae_TdyExtension_search.png)
+![](images/information-balloon.png) the wild card character @%@ matches any string (0 or more characters)
+* click the search button [ ![](images/go-down.png) ],
+* The matching classes are presented in a popup list :
+	* selecting a result line will trigger the opening of the tree for the path from the root node to the selected class.
+
+![](images/lightning.png) the search result list is kept until next search, and it can be displayed again by clicking on the button on the left side of the pattern field [ ![](images/ui-accordion.png) ]
+
+### Changing Classes hierarchy
+
+![](images/doIt.png) The tree structure can be easily amended by simple drag and drag operations:
+
+* To change the parent of a given class, simply drag the icon of that class and drop it on the class chosen as new parent.
+* Instead of replacing the current parent class, it is possible to add a new parent by holding the Shift key when dropping the class.
+* Finally, the link to a parent is cut by drop the class to the root of the tree.
+
+![](images/information-balloon.png) Of course, the system ensure that no cycle appear in the DAG of the Terminology/Ontology as a result of these structure modifications.
+A warning message will appear in the message notification area below the toolbar
+
+
+### Enriching the Terminology/Ontology
+
+Terms or concepts occurring in the document currently annotated can be used to enrich the Terminology/Ontology, once again by simple drag and drop operations initiated from the [[Aae_UserGuide#Annotation-Table|Annotation table]].
+
+Indeed, any Annotation can be dragged by its corresponding circled T symbol [ ![](images/term-white.png) ] that appear in the table if the corresponding Type has been enabled to reference a Term or Class resource, and dropped on the Terminology/Ontology tree.
+![](images/doIt.png) The actual modification of Terminology/Ontology will depend of the target class where the Annotated term is dropped:
+* dropping onto an existing class will add the term as a synonym of the target class,
+* dropping onto the root of the tree will create a new class with the term as canonical representative.
+In both case, a new term will be created beforehand if it does not already exists in TyDI's database.
+
+![](images/information-balloon.png) When the modification is confirmed, the source Annotation is automatically supplied with a property containing the Term or Class resource identifier.
+
+![](images/information-balloon.png) Depending on the case, a drag and drop operation could lead to different possible modifications (adding Terms and/or Classes, merging Classes, etc.), and the final decision of which one to achieve belongs to the user.
+After that a drop operation occurs, AlvisAE extension performs multiple checks and will possibly propose alternative ulterior actions along with some information which may not be obvious.
+
+A list of message will popup in the message notification area below the toolbar ![](images/aae_MultipleAction.png)
+![](images/lightning.png) You can choose one action from all the alternative operations proposed, or even cancel the modification.
+
+<pre>
+
+</pre>
+
 ## Miscellaneous
+
+### Password change
+
+Use the sub-menu "Change password" [ ![](images/key-solid.png) ] in the global toolbar of the [[Aae_UserGuide#Campaign-and-Document-selection|Campaign and Document selection view]].
+
+A dialog box will appear allowing to type the new password. It must be entered a second time for verification purposes.
+
+![](images/changePassword.png)
+
+![](images/information-balloon.png) The change button is enabled when the two entered passwords are consistent.
+
+
+### Users Management
+
+To access Users Management screen, use the sub-menu "Manage users [ ![](images/users.png) ] in the global toolbar of the [[Aae_UserGuide#Campaign-and-Document-selection|Campaign and Document selection view]].
+
+>>>>>*TODO : add screen capture here*
+
+* The table in the top part of the screen lists all users existing in the current AlvisAE instance,
+* The table in the bottom part display Authorizations for the currently selected user (one line per campaign),
+
+Modifications can be performed directly in the tables.
+
+>>>>>*TODO : add details here*
+
+![](images/information-balloon.png) Managing user is a feature restricted to users with the Admin status enabled
+
+
 
