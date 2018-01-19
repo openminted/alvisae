@@ -31,10 +31,48 @@ Creating secondary annotations is rather simple :
 	* For more complex Relations (i.e. concerning more than 2 primary annotations, or some secondary annotation), you will need to select the arguments to be included in the relation from the Annotation Table, then clicking the "Create Relation" button [ ![](images/Relation_Add.png) ].
 	* Creating Groups is also performed by selecting the components in the Annotation Table, then clicking the "Create Group" button [ ![](images/Group_Add.png) ].
 
+## Tour of AlvisAE
+
 ### start using AlvisAE
+
 you can experiment AlvisAE with the online demo at [AlvisAE Demo](https://bibliome.jouy.inra.fr/alvisae/demo/AlvisAE/)
 
-## Tour of AlvisAE
+### Athentification
+since each user can edit its own annotation, you will need to authenticate before doing any modification.
+![](images/information-balloon.png) If you are trying the online demo, login name and password are both : @foo@
+
+![](images/signInDialog.png)
+
+![](lightning.png AlvisAE will remember your login name for next time !)
+
+### Campaign and document selection
+
+Once authenticated, AlvisAE will display the list of the available Campaigns. 
+Each campaign contains a set of documents that can be annotated according to the Annotation schema specific to the campaign.
+ 
+When selecting a specific campaign in the first table, the list of the corresponding documents will be displayed in the second table.
+Double-click on the desired document line to start annotating it (or click the "Annotate selected document" button [ ![](images/fill.png) ])
+  
+![](images/CampaignsDocuments.png)
+
+### Editing view
+
+The selected document is displayed in the editing view:
+
+![](ExplodedEditorView.png)
+
+The editing view can be divided in the following parts:  
+# *Global toolbar*, providing commands to: 
+** browse documents [ ![](images/fill-180.png) / ![](images/fill.png) ], 
+** return to campaigns & documents list [ ![](images/inbox--arrow.png) ],
+** save the edited annotations [ ![](images/disk-black.png) ],
+** end the annotation of the current document [ ![](images/receipt-share.png) ],
+** menu to sign-out or [[Aae_UserGuide#Password-change|change password]] [ ![](images/user-silhouette.png) ]
+# [[Aae_UserGuide#Editor-panel|Editor panel]], which display the document itself and commands to annotate it
+# resizeable *Panel-Boundaries*, to organize the space within the browser window 
+# [[Aae_UserGuide#Annotation-Table|Annotation table]], displaying annotation in a tabular format
+# *Side panel*, used to display and edit Annotation properties
+# *Status bar*, displaying system messages and network activity
 
 ## Editor panel
 
