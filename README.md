@@ -14,7 +14,7 @@ sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/al
 ``` 
 
 2. Test Using Web Interface
-  * Go to [http://localhost:8080/alvisae/alvisae-ws/AlvisAE/](http://192.168.56.101:8080/alvisae/alvisae-ws/AlvisAE)
+  * Go to [http://localhost:8080/alvisae/alvisae-ws/AlvisAE/](http://localhost:8080/alvisae/alvisae-ws/AlvisAE)
   * Sing-In with login *annotator1* and password *annotator1*
 
 
