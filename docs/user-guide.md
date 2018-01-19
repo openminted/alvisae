@@ -66,19 +66,60 @@ The selected document is displayed in the editing view:
 
 The editing view can be divided in the following parts:
   
-* *Global toolbar*, providing commands to: 
+1. **Global toolbar**, providing commands to: 
 	* browse documents [ ![](images/fill-180.png) / ![](images/fill.png) ], 
 	* return to campaigns & documents list [ ![](images/inbox--arrow.png) ],
 	* save the edited annotations [ ![](images/disk-black.png) ],
 	* end the annotation of the current document [ ![](images/receipt-share.png) ],
 	* menu to sign-out or [[Aae_UserGuide#Password-change|change password]] [ ![](images/user-silhouette.png) ]
-* [[Aae_UserGuide#Editor-panel|Editor panel]], which display the document itself and commands to annotate it
-* resizeable *Panel-Boundaries*, to organize the space within the browser window 
-* [[Aae_UserGuide#Annotation-Table|Annotation table]], displaying annotation in a tabular format
-* *Side panel*, used to display and edit Annotation properties
-* *Status bar*, displaying system messages and network activity
+2. [[Aae_UserGuide#Editor-panel|Editor panel]], which display the document itself and commands to annotate it
+3. resizeable **Panel-Boundaries**, to organize the space within the browser window 
+4. [[Aae_UserGuide#Annotation-Table|Annotation table]], displaying annotation in a tabular format
+5. **Side panel**, used to display and edit Annotation properties
+6. **Status bar**, displaying system messages and network activity
 
 ## Editor panel
+### Title Bar
+
+![](lightning.png) double-clicking on the title bar will maximize the document panel (double-click on it again to restore normal view) 
+
+![](information-balloon.png) when the title of the document is underlined, it contains an hyperlink to the source of the document (typically the PDF version of the document) 
+
+### ToolBar
+
+the toolbar contains all the commands used to edit annotations: 
+* ![](images/_edit-vertical-alignment-top.png) increase text interline size,
+* ![](images/_edit-vertical-alignment.png) decrease interline size,
+
+* ![](images/arrow-curve-180-left.png) undo last edit (shortcut [ @Ctrl & Z@ ]),
+* ![](images/arrow-curve.png) redo last undo-ed edit (shortcut [ @Ctrl & Y@ ]),
+
+
+* choose annotation _Type_ from the drop-down list,
+
+* ![](images/TextAnnotation_Add.png) create a new Text Annotation with the currently selected text portion (shortcut [ @A@ ]),
+* ![](images/tag--minus.png) remove the currently selected Text Annotation (shortcut [ @Del@ ]),
+
+* ![](images/ui-text-field--plus.png) add the selected text to the selected Text Annotation,
+* ![](images/ui-text-field--minus.png) remove the selected text from the selected Text Annotation,
+
+* ![](images/Group_Add.png) create a Group with the selected annotations,
+* ![](images/jar--minus.png) remove the selected Group,
+* ![](images/jar--pencil.png) edit the selected Group (add/remove components),
+
+* ![](images/Relation_Add.png) create a Relation with the selected annotations,
+* ![](images/layer-shape-line--minus.png) remove the selected Relation,
+* ![](images/layer-shape-line--pencil.png) edit the selected Relation (change type and/or arguments),
+
+* ![](images/layer-shape-text.png) / ![](images/layer-shape-curve.png) switch between Text selection and secondary annotation selection mode (shortcut [ @V@ ]),
+
+* ![](images/map.png) display the current Annotation Schema,
+* ![](images/clipboard-task.png) validate the current document,
+
+* select the displayed Annotation Sets
+
+
+![](images/lightning.png) The toolbar can be collapsed by clicking on the small triangular icon on the top left side [ ![](images/expandCollapseHandle.png) ]
 
 ## Annotation Tool
 
