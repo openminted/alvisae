@@ -13,15 +13,15 @@ Each Annotations belongs to a _Type_, and is displayed according to this _Type_ 
 
 ### ![](images/doIt.png) Quick start: creating a _Text Annotation_
 
-Creating an _Text Annotation_ is fairly intuitive : simply select the words of interest with the mouse pointer, choose the desired annotation _Type_ in the toolbar and click the “Create Text Annotation” button [ !TextAnnotation_Add.png! ].
+Creating an _Text Annotation_ is fairly intuitive : simply select the words of interest with the mouse pointer, choose the desired annotation _Type_ in the toolbar and click the “Create Text Annotation” button [ ![](images/TextAnnotation_Add.png) ].
 
 ### Annotations come in 3 differents _Kinds_
 
-	* 1- ![](images/TextAnnotation_icon.png) _Text Annotations_, also called primary annotation because they are bound to a part of the text
+* ![](images/TextAnnotation_icon.png) _Text Annotations_, also called primary annotation because they are bound to a part of the text
 
 Besides Text Annotations, AlvisAE allows to edit 2 kinds of secondary annotation, which are not bound to text but are referencing other annotations:
-	* 2- ![](images/Relation_icon.png) _Relation_ -  which contains a fixed number of arguments, each argument being associated to a named role.
-	* 3- ![](images/Group_icon.png) _Group_ - simple set of reference to other annotations (called components)
+* ![](images/Relation_icon.png) _Relation_ -  which contains a fixed number of arguments, each argument being associated to a named role.
+* ![](images/Group_icon.png) _Group_ - simple set of reference to other annotations (called components)
 
 ### ![](images/doIt.png) Creating secondary annotations
 Creating secondary annotations is rather simple :
