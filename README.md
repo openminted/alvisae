@@ -13,12 +13,12 @@ This project containsAlvisAE two main components: an Annotation Editor (alvisae-
 sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/alvisae:1.0.0
 ``` 
 
- 2.1. Test Using Web Interface
+ 2.1. Access Using Web Interface
    * Go to [http://localhost:8080/alvisae/alvisae-ws/AlvisAE/](http://localhost:8080/alvisae/alvisae-ws/AlvisAE)
    * Sing-In with login *annotator1* and password *annotator1*
 
 
-2.2. Test Using REST calls
+2.2. Play with REST calls
 
 The web service implement the [aero protocol](https://github.com/openminted/omtd-aero). Here are the calls avalaible to the users. 
 
