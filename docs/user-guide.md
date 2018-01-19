@@ -13,7 +13,7 @@ Each Annotations belongs to a _Type_, and is displayed according to this _Type_ 
 
 ### ![](images/doIt.png) Quick start: creating a _Text Annotation_
 
-Creating an _Text Annotation_ is fairly intuitive : simply select the words of interest with the mouse pointer, choose the desired annotation _Type_ in the toolbar and click the “Create Text Annotation” button [ ![](images/TextAnnotation_Add.png) ].
+Creating an _Text Annotation_ is fairly intuitive: simply select the words of interest with the mouse pointer, choose the desired annotation _Type_ in the toolbar and click the “Create Text Annotation” button [ ![](images/TextAnnotation_Add.png) ].
 
 ### Annotations come in 3 differents _Kinds_
 
@@ -26,10 +26,12 @@ Besides Text Annotations, AlvisAE allows to edit 2 kinds of secondary annotation
 3. ![](images/Group_icon.png) _Group_ - simple set of reference to other annotations (called components)
 
 ### ![](images/doIt.png) Creating secondary annotations
-Creating secondary annotations is rather simple :
-	* A Relation between 2 Text Annotations is created by dragging the first annotation and dropping it onto the other one (drag the icon that appears at the top left corner of the annotation ![](images/magnet-blue.png) ); 
-	* For more complex Relations (i.e. concerning more than 2 primary annotations, or some secondary annotation), you will need to select the arguments to be included in the relation from the Annotation Table, then clicking the "Create Relation" button [ ![](images/Relation_Add.png) ].
-	* Creating Groups is also performed by selecting the components in the Annotation Table, then clicking the "Create Group" button [ ![](images/Group_Add.png) ].
+
+Creating secondary annotations is rather simple:
+
+* A Relation between 2 Text Annotations is created by dragging the first annotation and dropping it onto the other one (drag the icon that appears at the top left corner of the annotation ![](images/magnet-blue.png) ); 
+* For more complex Relations (i.e. concerning more than 2 primary annotations, or some secondary annotation), you will need to select the arguments to be included in the relation from the Annotation Table, then clicking the "Create Relation" button [ ![](images/Relation_Add.png) ].
+* Creating Groups is also performed by selecting the components in the Annotation Table, then clicking the "Create Group" button [ ![](images/Group_Add.png) ].
 
 ## Tour of AlvisAE
 
