@@ -20,7 +20,9 @@ Creating an _Text Annotation_ is fairly intuitive : simply select the words of i
 1. ![](images/TextAnnotation_icon.png) _Text Annotations_, also called primary annotation because they are bound to a part of the text
 
 Besides Text Annotations, AlvisAE allows to edit 2 kinds of secondary annotation, which are not bound to text but are referencing other annotations:
+
 2. ![](images/Relation_icon.png) _Relation_ -  which contains a fixed number of arguments, each argument being associated to a named role.
+
 3. ![](images/Group_icon.png) _Group_ - simple set of reference to other annotations (called components)
 
 ### ![](images/doIt.png) Creating secondary annotations
