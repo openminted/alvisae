@@ -71,7 +71,7 @@ The editing view can be divided in the following parts:
 	* return to campaigns & documents list [ ![](images/inbox--arrow.png) ],
 	* save the edited annotations [ ![](images/disk-black.png) ],
 	* end the annotation of the current document [ ![](images/receipt-share.png) ],
-	* menu to sign-out or [Password-change]...? [[Aae_UserGuide#Password-change|change password]] [ ![](images/user-silhouette.png) ]
+	* menu to sign-out or [change password](#Password-change)...? [[Aae_UserGuide#Password-change|change password]] [ ![](images/user-silhouette.png) ]
 2. [[Aae_UserGuide#Editor-panel|Editor panel]], which display the document itself and commands to annotate it
 3. resizeable **Panel-Boundaries**, to organize the space within the browser window 
 4. [[Aae_UserGuide#Annotation-Table|Annotation table]], displaying annotation in a tabular format
@@ -173,7 +173,7 @@ Groups are figured by diagonal line segments linking each component to a circled
 
 
 
-h3. Occurrence bar
+### Occurrence bar
 
 This is a vertical bar (located on right side of the document panel) where each Text Annotation is figured by a little horizontal line marker :
 * the vertical position of the marker on the bar is proportional to the annotation location inside the document,
@@ -294,7 +294,7 @@ A list of message will popup in the message notification area below the toolbar 
 
 ## Miscellaneous
 
-### Password change [Password-change]
+### Password change {#Password-change}
 
 Use the sub-menu "Change password" [ ![](images/key-solid.png) ] in the global toolbar of the [[Aae_UserGuide#Campaign-and-Document-selection|Campaign and Document selection view]].
 
