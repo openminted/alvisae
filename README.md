@@ -63,13 +63,24 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisa
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae-ws/api/projects/4/documents/4/annotations
 ```
 ##### Create Annotation
-```shh
+```sh
 curl -u aae_root:Tadmin -w "%{http_code}" -X POST \
 -d 'format=json&content=[{"id":"946b5154-6b47-4e72-86cb-9f9096e7475f","propes":{},"text":[[0,28]],"type":"","kind":0}]&state=NEW' \
 http://localhost:8080/alvisae-ws/api/projects/4/documents/4/annotations/1
 ```
 ##### Delete Annotation
-```shh
+```sh
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae-ws/api/projects/4/documents/4/annotations/1
 ```
 
+The web service implements import of a PubAnnotation JSON document and export of PubAnnotation JSON document
+
+##### Export
+```sh
+curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/alvisae-ws/api/projects/4/documents/16
+```
+
+##### Import
+```sh
+curl -u aae_root:Tadmin -w "\n%{http_code}\n" -T [25314077.json](http://pubannotation.org/docs/sourcedb/PubMed/sourceid/25314077.json) http://localhost:8080/alvisae/alvisae-ws/api/user/4/projects/1/document
+```
