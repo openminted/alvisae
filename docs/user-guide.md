@@ -307,7 +307,7 @@ A dialog box will appear allowing to type the new password. It must be entered a
 
 ### Users Management
 
-To access Users Management screen, use the sub-menu "Manage users [ ![](images/users.png) ] in the global toolbar of the [[Campaign and Document selection view](#Campaign-and-Document-selection)].
+To access Users Management screen, use the sub-menu "Manage users [ ![](images/users.png) ] in the global toolbar of the [[Campaign and Document selection view](#Campaign-and-document-selection)].
 
 >>>>>*TODO : add screen capture here*
 
