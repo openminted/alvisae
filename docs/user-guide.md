@@ -42,7 +42,7 @@ you can experiment AlvisAE with the online demo at [AlvisAE Demo](https://biblio
 ### Athentification
 since each user can edit its own annotation, you will need to authenticate before doing any modification.
 
-![](images/information-balloon.png) If you are trying the online demo, login name and password are both : @foo@
+![](images/information-balloon.png) If you are trying the online demo, login name and password are both : *foo*
 
 ![](images/signInDialog.png)
 
@@ -91,14 +91,14 @@ the toolbar contains all the commands used to edit annotations:
 * ![](images/_edit-vertical-alignment-top.png) increase text interline size,
 * ![](images/_edit-vertical-alignment.png) decrease interline size,
 
-* ![](images/arrow-curve-180-left.png) undo last edit (shortcut [ @Ctrl & Z@ ]),
-* ![](images/arrow-curve.png) redo last undo-ed edit (shortcut [ @Ctrl & Y@ ]),
+* ![](images/arrow-curve-180-left.png) undo last edit (shortcut [ *Ctrl & Z* ]),
+* ![](images/arrow-curve.png) redo last undo-ed edit (shortcut [ *Ctrl & Y* ]),
 
 
 * choose annotation _Type_ from the drop-down list,
 
-* ![](images/TextAnnotation_Add.png) create a new Text Annotation with the currently selected text portion (shortcut [ @A@ ]),
-* ![](images/tag--minus.png) remove the currently selected Text Annotation (shortcut [ @Del@ ]),
+* ![](images/TextAnnotation_Add.png) create a new Text Annotation with the currently selected text portion (shortcut [ *A* ]),
+* ![](images/tag--minus.png) remove the currently selected Text Annotation (shortcut [ *Del* ]),
 
 * ![](images/ui-text-field--plus.png) add the selected text to the selected Text Annotation,
 * ![](images/ui-text-field--minus.png) remove the selected text from the selected Text Annotation,
@@ -111,7 +111,7 @@ the toolbar contains all the commands used to edit annotations:
 * ![](images/layer-shape-line--minus.png) remove the selected Relation,
 * ![](images/layer-shape-line--pencil.png) edit the selected Relation (change type and/or arguments),
 
-* ![](images/layer-shape-text.png) / ![](images/layer-shape-curve.png) switch between Text selection and secondary annotation selection mode (shortcut [ @V@ ]),
+* ![](images/layer-shape-text.png) / ![](images/layer-shape-curve.png) switch between Text selection and secondary annotation selection mode (shortcut [ *V* ]),
 
 * ![](images/map.png) display the current Annotation Schema,
 * ![](images/clipboard-task.png) validate the current document,
@@ -151,8 +151,8 @@ The border is always displayed, even if an annotation is hidden because it inclu
 
 _Edition_
 
-* Click and drag to select a fragment of text, then click the “Create Text Annotation” button [ ![](images/TextAnnotation_Add.png) ] or use the keyboard shortcut @A@
-![](images/lightning.png) It is possible to create discontinuous annotation by selecting several distinct fragments of text with the @Ctrl@ key pressed (your web browser must support discontinuous text selection)
+* Click and drag to select a fragment of text, then click the “Create Text Annotation” button [ ![](images/TextAnnotation_Add.png) ] or use the keyboard shortcut *A*
+![](images/lightning.png) It is possible to create discontinuous annotation by selecting several distinct fragments of text with the *Ctrl* key pressed (your web browser must support discontinuous text selection)
 
 
 * margin : warning icons....
