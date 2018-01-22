@@ -20,10 +20,10 @@ sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/al
   For help see the following [user guide](https://github.com/openminted/alvisae/blob/master/docs/user-guide.md)
 
 
-2.2. Play with REST calls
+2.2. Play with REST 
 
+#### AERO
 The web service implement the [aero protocol](https://github.com/openminted/omtd-aero). Here are the calls avalaible to the users. 
-
 
 ##### List Projects
 ```sh
@@ -43,10 +43,6 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisa
 curl -u aae_root:Tadmin -w "\n%{http_code}\n" http://localhost:8080/alvisae-ws/api/projects/5/export.zip
 ```
 
-##### JSON import
-```sh
-```
-
 ##### List documents of project 4
 ```sh
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae-ws/api/projects/4/documents
@@ -56,12 +52,12 @@ curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae-ws/api/p
 curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new document&format=text&content=some content&creator' http://localhost:8080/alvisae/api/projects/1/documents
 ```
 ##### Delete Document
-```
+```sh
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae-ws/api/projects/1/documents/3
 ```
 
 ##### List Annotations
-```
+```sh
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae-ws/api/projects/4/documents/4/annotations
 ```
 ##### Create Annotation
@@ -75,7 +71,7 @@ http://localhost:8080/alvisae-ws/api/projects/4/documents/4/annotations/1
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae-ws/api/projects/4/documents/4/annotations/1
 ```
 
-#### PubAnnotation doc import/export
+#### PubAnnotation: doc import/export
 
 The web service implements import of a PubAnnotation JSON document and export of PubAnnotation JSON document
 
