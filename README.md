@@ -16,6 +16,7 @@ sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/al
  2.1. Access Using Web Interface
    * Go to [http://localhost:8080/alvisae/alvisae-ws/AlvisAE/](http://localhost:8080/alvisae/alvisae-ws/AlvisAE)
    * Sing-In with login *annotator1* and password *annotator1*
+  For help see the following [user guide](https://github.com/openminted/alvisae/blob/master/docs/user-guide.md)
 
 
 2.2. Play with REST calls
