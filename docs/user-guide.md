@@ -71,10 +71,10 @@ The editing view can be divided in the following parts:
 	* return to campaigns & documents list [ ![](images/inbox--arrow.png) ],
 	* save the edited annotations [ ![](images/disk-black.png) ],
 	* end the annotation of the current document [ ![](images/receipt-share.png) ],
-	* menu to sign-out or [[change password](#Password-change)] [ ![](images/user-silhouette.png) ]
+	* menu to sign-out or [[change password](#password-change)] [ ![](images/user-silhouette.png) ]
 2. [[Aae_UserGuide#Editor-panel|Editor panel]], which display the document itself and commands to annotate it
 3. resizeable **Panel-Boundaries**, to organize the space within the browser window 
-4. [[Aae_UserGuide#Annotation-Table|Annotation table](#Annotation-Table)], displaying annotation in a tabular format
+4. [[Annotation table](#annotation-table)], displaying annotation in a tabular format
 5. **Side panel**, used to display and edit Annotation properties
 6. **Status bar**, displaying system messages and network activity
 
@@ -128,7 +128,7 @@ This is the central panel of AlvisAE, which displays the text of the document, e
 
 ![](images/information-balloon.png) When a document is loaded, Relations are hidden by default to preserve a good text readability.
 ![](images/lightning.png) when the mouse pointer fly over a Text Annotation, all Relations involving the hovered Text Annotation are temporarily revealed.
-(The visibility status of each annotation can be individually set from the [[Aae_UserGuide#Annotation-Table|Annotation table]]).
+(The visibility status of each annotation can be individually set from the [[Annotation table](#annotation-table|)]).
 
 #### Text Annotations
 
@@ -207,7 +207,7 @@ Each annotation is displayed as a single line in the table which contains the fo
 * **Type**, figured by its color and name (depending of the Annotation Schema of the current document)
 * **Details** : the fragment(s) of text covered for Text Annotation, or a specific flat representation for Relation and Group.
 ![](images/lightning.png) in the flat representation for Relation and Group: double-clicking on the grayed part representing a referenced annotation will change the selection to this specific annotation.
-* optional **Term handle** [ ![](images/term-white.png) ], used for enriching an external Terminology/Ontology resource (see [[Aae_UserGuide#Termino-Ontology-Extension|Terminology/Ontology extension]])
+* optional **Term handle** [ ![](images/term-white.png) ], used for enriching an external Terminology/Ontology resource (see [[Terminology/Ontology extension](#termino-ontology-extension)])
 * **Visibility** status, allowing to toggle (by a simple click on the icon) the visibility of the corresponding annotation in the document panel
 ![](images/lightning.png) if several lines are selected in the table, the visibility will be changed for all of them.
 ![](images/information-balloon.png) when loading a document, Relations are hidden by default, hence maintaining a good text readability.
@@ -272,7 +272,7 @@ A warning message will appear in the message notification area below the toolbar
 
 ### Enriching the Terminology/Ontology
 
-Terms or concepts occurring in the document currently annotated can be used to enrich the Terminology/Ontology, once again by simple drag and drop operations initiated from the [[Aae_UserGuide#Annotation-Table|Annotation table]].
+Terms or concepts occurring in the document currently annotated can be used to enrich the Terminology/Ontology, once again by simple drag and drop operations initiated from the [[Annotation table](#annotation-table)].
 
 Indeed, any Annotation can be dragged by its corresponding circled T symbol [ ![](images/term-white.png) ] that appear in the table if the corresponding Type has been enabled to reference a Term or Class resource, and dropped on the Terminology/Ontology tree.
 ![](images/doIt.png) The actual modification of Terminology/Ontology will depend of the target class where the Annotated term is dropped:
@@ -296,7 +296,7 @@ A list of message will popup in the message notification area below the toolbar 
 
 ### Password change
 
-Use the sub-menu "Change password" [ ![](images/key-solid.png) ] in the global toolbar of the [[Aae_UserGuide#Campaign-and-Document-selection|Campaign and Document selection view]].
+Use the sub-menu "Change password" [ ![](images/key-solid.png) ] in the global toolbar of the [[Campaign and Document selection view](#campaign-and-document-selection)].
 
 A dialog box will appear allowing to type the new password. It must be entered a second time for verification purposes.
 
@@ -307,7 +307,7 @@ A dialog box will appear allowing to type the new password. It must be entered a
 
 ### Users Management
 
-To access Users Management screen, use the sub-menu "Manage users [ ![](images/users.png) ] in the global toolbar of the [[Aae_UserGuide#Campaign-and-Document-selection|Campaign and Document selection view]].
+To access Users Management screen, use the sub-menu "Manage users [ ![](images/users.png) ] in the global toolbar of the [[Campaign and Document selection view](#Campaign-and-Document-selection)].
 
 >>>>>*TODO : add screen capture here*
 
