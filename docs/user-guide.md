@@ -72,7 +72,7 @@ The editing view can be divided in the following parts:
 	* save the edited annotations [ ![](images/disk-black.png) ],
 	* end the annotation of the current document [ ![](images/receipt-share.png) ],
 	* menu to sign-out or [[change password](#password-change)] [ ![](images/user-silhouette.png) ]
-2. [[Aae_UserGuide#Editor-panel|Editor panel]], which display the document itself and commands to annotate it
+2. [[Editor panel](#editor-panel)], which display the document itself and commands to annotate it
 3. resizeable **Panel-Boundaries**, to organize the space within the browser window 
 4. [[Annotation table](#annotation-table)], displaying annotation in a tabular format
 5. **Side panel**, used to display and edit Annotation properties
@@ -128,7 +128,7 @@ This is the central panel of AlvisAE, which displays the text of the document, e
 
 ![](images/information-balloon.png) When a document is loaded, Relations are hidden by default to preserve a good text readability.
 ![](images/lightning.png) when the mouse pointer fly over a Text Annotation, all Relations involving the hovered Text Annotation are temporarily revealed.
-(The visibility status of each annotation can be individually set from the [[Annotation table](#annotation-table|)]).
+(The visibility status of each annotation can be individually set from the [[Annotation table](#annotation-table)]).
 
 #### Text Annotations
 
@@ -307,7 +307,7 @@ A dialog box will appear allowing to type the new password. It must be entered a
 
 ### Users Management
 
-To access Users Management screen, use the sub-menu "Manage users [ ![](images/users.png) ] in the global toolbar of the [[Campaign and Document selection view](#Campaign-and-document-selection)].
+To access Users Management screen, use the sub-menu "Manage users [ ![](images/users.png) ] in the global toolbar of the [[Campaign and Document selection view](#campaign-and-document-selection)].
 
 >>>>>*TODO : add screen capture here*
 
