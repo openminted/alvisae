@@ -89,11 +89,9 @@ The editing view can be divided in the following parts:
 
 the toolbar contains all the commands used to edit annotations: 
 
-* ![](images/_edit-vertical-alignment-top.png) increase text interline size,
-* ![](images/_edit-vertical-alignment.png) decrease interline size,
-  +
-  +
-  +   
+* ![](images/_edit-vertical-alignment-top.png) increase text interline size, + * ![](images/_edit-vertical-alignment.png) decrease interline size,
+  
+     
 * ![](images/arrow-curve-180-left.png) undo last edit (shortcut [ *Ctrl & Z* ]),
 * ![](images/arrow-curve.png) redo last undo-ed edit (shortcut [ *Ctrl & Y* ]),
   
