@@ -1,10 +1,8 @@
-{{toc}}
-
 # Creating Campaign, adding Documents and importing Annotations with the Command Line Interface
 
 ## Prerequisite
 
-the 3 first steps of [[Installation]] must be completed
+the 3 first steps of [Installation](aae_ws_installation.md) must be completed
 * Install Maven
 * Get the source code
 * Set-up database parameters in a property file (named @dbparam.props@ hereafter)
