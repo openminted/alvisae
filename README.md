@@ -10,7 +10,7 @@ This project containsAlvisAE two main components: an Annotation Editor (alvisae-
 
 1. Run the following command
 ```
-sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/alvisae:1.0.0
+sudo docker run -d --rm --name alvisae.ws -p 8080:8080 -p 5432:5432  bibliome/alvisae:1.0.1
 ``` 
 
  2.1. Access Using Web Interface
@@ -40,7 +40,7 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisa
 
 ##### JSON export
 ```sh
-curl -u aae_root:Tadmin -w "\n%{http_code}\n" http://localhost:8080/alvisae-ws/api/projects/5/export.zip
+curl -u aae_root:Tadmin -w "\n%{http_code}\n" http://localhost:8080/alvisae-ws/api/projects/5/zipExport > export.zip
 ```
 
 ##### List documents of project 4
