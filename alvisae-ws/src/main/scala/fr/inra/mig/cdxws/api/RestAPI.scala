@@ -1062,8 +1062,10 @@ object RestAPI {
       }
     }
 
-    //
-    case Req("api" :: "projects" :: AsLong(campaign_id) :: "export.zip"  :: Nil,_,GetRequest) => {
+    /**
+     * curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/alvisae-ws/api/projects/5/zipExport
+     */
+    case Req("api" :: "projects" :: AsLong(campaign_id) :: "zipExport"  :: Nil,_,GetRequest) => {
       user.is match {
         case Some(user) =>
           user.is_admin match {
@@ -1077,32 +1079,25 @@ object RestAPI {
                 case Some(campaign) => {
                   val format = "JSON"
                   val tempDir = Utils.createTempDir()
-                  //val archiveBaseName = "aae_" + campaign.id + ".zip"
-                  val archiveBaseName = "export.zip"
-                  val archiveAbsoluteName = tempDir.getAbsolutePath + "/" + archiveBaseName
-                  val archiveFile = new File(archiveAbsoluteName)
+                  val workingDirBaseName = "ExportAlvisAE"
+                  val workingDir = new File(tempDir.getAbsolutePath + "/" + workingDirBaseName + "/")
+                  workingDir.mkdir()
 
-                  if (archiveFile.exists) {
-                    Console.err.println("Output file already exists! " + archiveAbsoluteName)
-                    return null
-                  }
-                  else
-                  {
-                    //val tempDir = Utils.createTempDir()
-                    val workingDirBaseName = "ExportAlvisAE"
-                    val workingDir = new File(archiveFile.getAbsolutePath + "/" + workingDirBaseName + "/")
-                    workingDir.mkdir()
-                    format match {
+                  format match {
                       case OutFormat.CSV =>
                         CVSFormatHandler.exportCampaignAnnotationAsCSV(workingDir.getAbsolutePath, campaign.id, true)
                       case OutFormat.JSON =>
                         JSONExporter.exportCampaign(workingDir.getAbsolutePath, campaign)
                     }
-                    Utils.createZipFromFolder(workingDir.getAbsolutePath, archiveAbsoluteName, false)
-                  }
+
+                  val archiveBaseName = "aae_" + campaign_id + ".zip"
+                  val archiveAbsoluteName = tempDir.getAbsolutePath + "/" + archiveBaseName
+                  Utils.createZipFromFolder(workingDir.getAbsolutePath, archiveAbsoluteName, false)
+
+                  //}
                   val stream = new FileInputStream(archiveAbsoluteName)
                   () => Full(StreamingResponse(stream, () => stream.close, stream.available, List("Content-Type" -> "application/zip"), Nil, 200))
-                }
+                 }
                 case None =>
                   () => Full(ResponseWithReason(NotFoundResponse(), "Specified campaign no found"))
                   }
@@ -1114,7 +1109,7 @@ object RestAPI {
    } // close main case
 
     //Create an annotation /!\ problem @ba I don't yet understand what are the data to send ???? request more precision to Robert and Richard
-    case req @ Req("api" :: "projects" :: AsLong(campaign_id) :: "import" :: Nil,_, PostRequest) => {
+    case req @ Req("api" :: "projects" :: AsLong(campaign_id) :: "zipImport" :: Nil,_, PostRequest) => {
       user.is match {
         case Some(user) =>
           user.is_admin match {
