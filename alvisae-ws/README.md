@@ -59,54 +59,54 @@ The web service implement the [aero protocol](https://github.com/openminted/omtd
 
 ### Projects
 #### List Projects
-```sh
+```bash
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects
 ```
 #### Create a project named with the creator named Ba
-```sh
+```bash
 curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new project&creator=Ba' http://localhost:8080/alvisae/api/projects
 ```
 #### Delete the project 1
-```sh
+```bash
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1
 ```
 
 #### JSON export
-```sh
+```bash
 curl -u aae_root:Tadmin -w "\n%{http_code}\n" http://localhost:8080/alvisae/api/projects/5/export.zip
 ```
 
 #### JSON import
-```sh
+```bash
 ```
 
 ### Documents
 #### List documents of project 4
-```sh
+```bash
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/4/documents
 ```
 #### Create a document into the project 1
-```sh
+```bash
 curl -u aae_root:Tadmin -w "%{http_code}" -X POST -d 'name=new document&format=text&content=some content&creator' http://localhost:8080/alvisae/api/projects/1/documents
 ```
 #### Delete Document
-```
+```bash
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/1/documents/3
 ```
 
 ### Annotations
 #### List Annotations
-```
+```bash
 curl -u aae_root:Tadmin -w "%{http_code}" http://localhost:8080/alvisae/api/projects/4/documents/4/annotations
 ```
 #### Create Annotation
-```shh
+```bash
 curl -u aae_root:Tadmin -w "%{http_code}" -X POST \
 -d 'format=json&content=[{"id":"946b5154-6b47-4e72-86cb-9f9096e7475f","propes":{},"text":[[0,28]],"type":"","kind":0}]&state=NEW' \
 http://localhost:8080/alvisae/api/projects/4/documents/4/annotations/1
 ```
 #### Delete Annotation
-```shh
+```bash
 curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisae/api/projects/4/documents/4/annotations/1
 ```
 
