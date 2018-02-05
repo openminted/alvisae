@@ -40,7 +40,7 @@ curl -u aae_root:Tadmin -w "%{http_code}" -X DELETE http://localhost:8080/alvisa
 
 ##### JSON export
 ```sh
-curl -u aae_root:Tadmin -w "\n%{http_code}\n" http://localhost:8080/alvisae-ws/api/projects/5/export.zip
+curl -u aae_root:Tadmin -w "\n%{http_code}\n" http://localhost:8080/alvisae-ws/api/projects/5/zipExport > export.zip
 ```
 
 ##### List documents of project 4
