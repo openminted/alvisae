@@ -16,7 +16,7 @@ svn co https://genome.jouy.inra.fr/svn_cadixe/cdxws/trunk/lift-prototype cdxws
 
 The Configuration of the database connection can be either done via parameters of the web container (allowing to deploy the same generic package for any AlvisAE instance) or by a property file embedded within the war package (hence requiring to generate a new package for each new AlvisAE instance).
 
-* Check [[WSConfig|how to configure the WebService]] using web container params
+* Check [how to configure the WebService](WS_external_params_config.md) using web container params
 
 or alternatively 
 
