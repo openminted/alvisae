@@ -53,7 +53,7 @@ the WS deployed on @/alvisae/demo/@ will search in the JNDI resource named @Alvi
 (the custom resource being an instance of @java.util.Properties@).
 
 
-![]images/AlvisAE_WSConfig_JNDIresource.png
+![](images/AlvisAE_WSConfig_JNDIresource.png)
 
 
 
