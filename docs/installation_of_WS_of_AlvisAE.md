@@ -4,7 +4,7 @@
 
 ## Install Maven
 
-The easiest way is to get it through your own package manager. Our current development version is 2.2.1, and can be obtained "here":http://www.apache.org/dyn/closer.cgi/maven/binaries/apache-maven-2.2.1-bin.tar.gz (manual installation).
+The easiest way is to get it through your own package manager. Our current development version is 2.2.1, and can be obtained ["here"](http://www.apache.org/dyn/closer.cgi/maven/binaries/apache-maven-2.2.1-bin.tar.gz) (manual installation).
 
 ## Get the source code
 
