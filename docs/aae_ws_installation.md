@@ -1,7 +1,5 @@
 # Installation of a new instance of AlvisAE web services
 
-{{toc}}
-
 ## Install Maven
 
 The easiest way is to get it through your own package manager. Our current development version is 2.2.1, and can be obtained ["here"](http://www.apache.org/dyn/closer.cgi/maven/binaries/apache-maven-2.2.1-bin.tar.gz) (manual installation).
@@ -37,7 +35,6 @@ db.schema=aae_newinstance
 
 ## Prepare deployable package
 
-
 (!) Since this project includes an in-project repository for classes shared with AlvisAE UI, it might be necessary _before compilation_ to reset cached version of the corresponding artefact (AlvisAE.shared-xx.jar) living in your local Maven repository (because during development phase, the artefact version may not be systematically increased).
 Usually, Maven repository lives in your home directory, so you can use the following command (Maven repository will be refreshed with newer version comming from svn)
 <pre>
@@ -71,7 +68,6 @@ su glassfish
 cd
 glassfishv3/bin/asadmin  -p 5848 deploy --force  --contextroot <context root of the instance> --name <name of the instance> /tmp/cdxws-lift-1.0-SNAPSHOT.war
 </pre>
-
 
 ## Exemples of deployment on bibDEV/bibWEB :
 
