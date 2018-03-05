@@ -7,7 +7,7 @@ BNF definition of the syntax of AlvisAE JSON Annotation schema
 
 ## formatted BNF definition 
 
-(generated from [raw BNF definition](#raw-BNF-definition|) using ["BNF_CHK"](http://www.icosaedro.it/bnf_chk/bnf_chk-on-line.html) and ["HTML to wiki"](http://www.keyframesandcode.com/resources/php/redmine/documentor/))
+(generated from [raw BNF definition](#raw-bnf-definition|) using ["BNF_CHK"](http://www.icosaedro.it/bnf_chk/bnf_chk-on-line.html) and ["HTML to wiki"](http://www.keyframesandcode.com/resources/php/redmine/documentor/))
 
 
 1. upper =  *"A".."Z"* ;
