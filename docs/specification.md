@@ -37,7 +37,7 @@ Relations are lists of key/value pairs. Keys, or _roles_, are strings, values, o
 
 # Schema
 
-A _schema_ is a specification of the annotation for a campaign. ([[schemaBNFdef|schema BNF definition]])
+A _schema_ is a specification of the annotation for a campaign. ([schema BNF definition](https://github.com/openminted/alvisae/edit/master/docs/annotation_schema_bnf_definition.md))
 A schema must list all allowed annotation types and for each type:
 * the kind of the annotations of this type: all annotations of a given type have the same kind
 * the list of allowed properties keys, and for each key:
