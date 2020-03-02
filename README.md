@@ -6,7 +6,7 @@ This project containsAlvisAE two main components: an Annotation Editor (alvisae-
 
 ## Try it...
 
-> Note that, you must have [docker](https://www.docker.com/) installed on your computer
+> Note that, you must have [docker](https://www.docker.com/) installed
 
 1. Run the following command
 ```
